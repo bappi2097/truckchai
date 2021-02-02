@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.app')
 @section('title', "Dashboard | Admin")
 @section('header')
     Dashboard <small>header small text goes here...</small>

@@ -1,0 +1,1 @@
+var handleDataTableRowReorder=function(){"use strict";if($('#data-table-rowreorder').length!==0){$('#data-table-rowreorder').DataTable({responsive:true,rowReorder:true});}};var TableManageRowReorder=function(){"use strict";return{init:function(){handleDataTableRowReorder();}};}();$(document).ready(function(){TableManageRowReorder.init();});

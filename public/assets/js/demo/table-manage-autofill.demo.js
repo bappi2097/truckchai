@@ -1,0 +1,1 @@
+var handleDataTableAutofill=function(){"use strict";if($('#data-table-autofill').length!==0){$('#data-table-autofill').DataTable({autoFill:true,responsive:true});}};var TableManageAutofill=function(){"use strict";return{init:function(){handleDataTableAutofill();}};}();$(document).ready(function(){TableManageAutofill.init();});

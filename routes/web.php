@@ -23,12 +23,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(
     [
-       "prefix"  => "admin",
-       "name" => ".admin",
-       "namespace" => "App\Http\Controllers",
-    ], function () {
+        "prefix"  => "admin",
+        "name" => ".admin",
+        "namespace" => "App\Http\Controllers",
+    ],
+    function () {
         // Route::get('login', [Auth\LoginController:: ])
-        Route::group(["middleware" => ["auth", "role:admin"]], function(){
+        Route::group(["middleware" => ["auth", "role:admin"]], function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         });
+    }
+);
+Route::get('/test', function () {
+    return view('frontend.layout.master');
 });

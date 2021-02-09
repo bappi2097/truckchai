@@ -1,0 +1,310 @@
+.navbar-brand img {
+  width: 87px;
+  height: 40px;
+}
+.seperator {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: #a3a3a3;
+  margin: 4px 0;
+}
+.logo {
+  width: 120px;
+  height: 50px;
+}
+.custom-index-blog {
+  position: relative;
+}
+.custom-index-blog-date {
+  top: 30%;
+  left: 39.2%;
+  position: absolute;
+  background-color: #662f90;
+  box-shadow: 0 0 0 5px rgb(255 255 255 / 22%);
+  transform: rotate(45deg);
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+}
+.custom-index-blog-date span {
+  display: block;
+  margin: 5px 0 0;
+  font-family: Ubuntu;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  transform: rotate(-45deg);
+  text-transform: uppercase;
+  text-align: center;
+}
+.custom-index-blog-admin {
+  display: flex;
+  font-weight: 400;
+  color: #a3a3a3;
+  font-size: 12px;
+}
+.custom-index-blog-title > a {
+  color: #6649b4;
+}
+.custom-index-blog-p {
+  color: #662f9e;
+  font-size: 13px;
+}
+.top-left {
+  top: 50%;
+  right: auto;
+  left: 0;
+  transform: translateY(-50%);
+  max-width: 350px;
+}
+.carousel-caption h3 {
+  color: rgba(141, 49, 228, 0.9);
+  font-weight: bold;
+}
+.carousel-caption p {
+  color: rgba(141, 49, 228, 0.5);
+}
+.lang-icon {
+  width: 20px;
+}
+.bg-light-900 {
+  background-color: var(--light-900);
+}
+.nav-item:hover {
+  color: white;
+  font-weight: 600;
+}
+.line {
+  width: 85px;
+  background-color: #cccccc;
+  height: 1px;
+}
+.square {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #cccccc;
+  margin: 0 10px;
+}
+.why-logo > img {
+  width: 100px;
+  height: 100px;
+}
+.why-logo > p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.testimonial-text {
+  color: #3c3c3c;
+  font-weight: 500;
+}
+.testimonial-slide {
+  width: 100%;
+  min-height: 350px;
+  text-align: center;
+}
+.testimonial-img {
+  width: 100px;
+  height: 100px;
+}
+.custom-social-icon {
+  width: 40px;
+  margin-right: 5px;
+}
+
+#testimonial .carousel-control-next-icon:after {
+  content: ">";
+  font-size: 35px;
+  color: grey;
+}
+
+#testimonial .carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 35px;
+  color: grey;
+}
+.client-img {
+  width: 225px;
+  height: 250px;
+  margin: 10px;
+}
+.card-img-top {
+  width: 243px;
+  height: 181px;
+}
+.category-carousel .carousel-cell {
+  width: 273px;
+  margin: 0 10px;
+}
+.category-carousel .carousel-cell:hover {
+  -webkit-box-shadow: 7px 5px 13px 1px rgba(0, 0, 0, 0.8);
+  box-shadow: 7px 5px 13px 1px rgba(0, 0, 0, 0.8);
+}
+.main-end {
+  background-color: #b486f7;
+  /* background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23ad75ff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E"); */
+  background: linear-gradient(
+    to left top,
+    #5e5eff,
+    #7b67fd,
+    #9270fa,
+    #a47bf9,
+    #b486f7
+  );
+}
+
+.custoom-footer-link {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+.custoom-footer-link:hover {
+  color: black;
+}
+
+.custom-newsletter-btn {
+  width: 16px;
+  color: white;
+}
+
+/* Truck Operator Page: start */
+.custom-truck-operator {
+  color: black;
+  text-decoration: none;
+}
+.custom-truck-operator:hover.custom-truck-operator h3 {
+  color: #1f367e;
+}
+.custom-truck-operator:hover {
+  text-decoration: none;
+}
+.custom-truck-operator:hover.custom-truck-operator p {
+  color: #544ec2;
+}
+
+/* .custom-truck-operator > img {
+  transform: translateX(3%);
+  -webkit-transform: translateX(3%);
+  -moz-transform: translateX(3%);
+  -ms-transform: translateX(3%);
+  -o-transform: translateX(3%);
+} */
+.truck-operator-carousel .carousel-cell {
+  /* width: 273px; */
+  margin: 0 10px;
+}
+.truck-operator-carousel .carousel-cell:hover {
+  -webkit-box-shadow: 7px 5px 13px 1px rgba(0, 0, 0, 0.8);
+  box-shadow: 7px 5px 13px 1px rgba(0, 0, 0, 0.8);
+}
+.truck-operator-video {
+  min-width: 100%;
+  height: 500px;
+}
+/* Truck Operator Page: end */
+
+/* Blog Page: start */
+.date-circle {
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border: 1px solid var(--grey-100);
+}
+.blog-img div {
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+}
+.blog-img:hover.blog-img div {
+  background-color: rgba(31, 54, 126, 0.75);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 315px;
+}
+.category-links {
+  list-style: none;
+  color: gray;
+}
+.category-links > li {
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+.category-links > li > a {
+  padding: 2px 2px 4px 5px;
+  text-decoration: none;
+  color: grey;
+  margin: 4px 0;
+}
+.category-links > li:hover {
+  background-color: rgb(241, 241, 241);
+  color: black;
+  border-bottom: 1px solid rgb(141, 141, 141);
+}
+.search {
+  background-color: white;
+  background-image: url("../img/search-icon.svg");
+  background-position: 95% 10px;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+/* Blog Page: end */
+
+/* Contact Ug Page: start */
+.custom-contact-map {
+  height: 300px;
+  width: 100%;
+}
+/* Contact Ug Page: end */
+
+/* SignIn: Start */
+.login-undraw-img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767.98px) {
+  .why-logo {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+  }
+  .why-logo > img {
+    width: 50px;
+    height: 50px;
+  }
+  .why-logo > p {
+    margin-top: auto;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .truck-operator-video {
+    min-width: 100%;
+    height: 300px;
+  }
+  .custom-index-blog-date {
+    top: 42%;
+    left: 0;
+    position: absolute;
+    background-color: #662f90;
+    box-shadow: 0 0 0 5px rgb(255 255 255 / 22%);
+    transform: rotate(45deg);
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+  }
+  .custom-index-blog-date span {
+    display: block;
+    margin: 5px 0 0;
+    font-family: Ubuntu;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    transform: rotate(-45deg);
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

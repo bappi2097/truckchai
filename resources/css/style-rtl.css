@@ -1,0 +1,43 @@
+.nav-rtl {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: right;
+}
+.custom-index-blog-date {
+  right: 39.2% !important;
+}
+.card {
+  text-align: right !important;
+}
+.blog-rtl {
+  text-align: right !important;
+}
+.search {
+  background-position: 5% 10px;
+}
+.text-rtl {
+  text-align: right !important;
+}
+.icon-right {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.sidebar-icon {
+  margin-left: 5px !important;
+}
+.icon-down {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+.cost-trip {
+  background-position: 6%, 20px;
+}
+.number-trip {
+  background-position: 6%, 20px;
+}

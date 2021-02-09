@@ -11,7 +11,7 @@ var switchLang = function switchLang(no) {
       link.id = "lang";
       link.rel = "stylesheet";
       link.type = "text/css";
-      link.href = "./assets/css/style-rtl.css";
+      link.href = "css/style-rtl.css";
       link.media = "all";
       head.appendChild(link);
       break;

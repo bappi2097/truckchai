@@ -1,6 +1,6 @@
 <nav class="bg-purple-300 shadow-lg navbar navbar-dark navbar-expand-lg sticky-top">
     <a class="text-white navbar-brand" href="./index.html">
-        <img src="assets/img/logo.png" alt="" />
+        <img src="images/logo.png" alt="" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
         aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,20 +35,20 @@
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="#"
                     data-toggle="dropdown">
                     <span>
-                        <img class="lang-icon" src="./assets/img/flag/uk.svg" alt="English" />
+                        <img class="lang-icon" src="images/flag/uk.svg" alt="English" />
                     </span>
                     <span class="mx-1"> ENGLISH </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                            <img class="lang-icon" src="./assets/img/flag/uk.svg" alt="English" />
+                            <img class="lang-icon" src="images/flag/uk.svg" alt="English" />
                             <span>English</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                            <img class="lang-icon" src="./assets/img/flag/uae.svg" alt="English" />
+                            <img class="lang-icon" src="images/flag/uae.svg" alt="English" />
                             <span>العربية</span>
                         </a>
                     </li>

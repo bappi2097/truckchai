@@ -5,12 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Traincu</title>
-    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
-    <link rel="stylesheet" href="./assets/css/custom.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
 </head>
 
 <body class="bg-light-900">
@@ -24,16 +22,16 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/img/slider/slider-1.jpg" alt="First slide" />
+                <img class="d-block w-100" src="images/slider/slider-1.jpg" alt="First slide" />
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="assets/img/slider/slider-2.jpg" alt="Second slide" />
+                <img class="d-block w-100" src="images/slider/slider-2.jpg" alt="Second slide" />
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="assets/img/slider/slider-3.jpg" alt="Third slide" />
+                <img class="d-block w-100" src="images/slider/slider-3.jpg" alt="Third slide" />
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="assets/img/slider/slider-4.jpg" alt="Third slide" />
+                <img class="d-block w-100" src="images/slider/slider-4.jpg" alt="Third slide" />
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,7 +53,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/why.jpeg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/why.jpeg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -93,7 +91,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/why.jpeg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/why.jpeg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -131,7 +129,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/why.jpeg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/why.jpeg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -189,7 +187,7 @@
                                 consectetur adipisicing elit. Unde
                             </p>
                         </div>
-                        <img class="testimonial-img" src="./assets/img/user150x150.jpg" alt="" />
+                        <img class="testimonial-img" src="./images/user150x150.jpg" alt="" />
                         <p>John Doe</p>
                     </div>
                 </div>
@@ -203,7 +201,7 @@
                                 aliquam quas, consectetur
                             </p>
                         </div>
-                        <img class="testimonial-img" src="./assets/img/user150x150.jpg" alt="" />
+                        <img class="testimonial-img" src="./images/user150x150.jpg" alt="" />
                         <p>John Doe</p>
                     </div>
                 </div>
@@ -216,7 +214,7 @@
                                 magnam ipsum totam eligendi! magnam ipsum totam eligendi!
                             </p>
                         </div>
-                        <img class="testimonial-img" src="./assets/img/user150x150.jpg" alt="" />
+                        <img class="testimonial-img" src="./images/user150x150.jpg" alt="" />
                         <p>John Doe</p>
                     </div>
                 </div>
@@ -242,34 +240,34 @@
         </div>
         <div class="client-carousel">
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
             <div class="carousel-cell">
-                <img class="client-img" src="./assets/img/client.jpg" alt="" />
+                <img class="client-img" src="./images/client.jpg" alt="" />
             </div>
         </div>
     </div>
@@ -285,7 +283,7 @@
         <div class="category-carousel">
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -298,7 +296,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck-2.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck-2.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -311,7 +309,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck-2.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck-2.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -324,7 +322,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck-3.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck-3.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -337,7 +335,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck-2.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck-2.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -350,7 +348,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -363,7 +361,7 @@
             </div>
             <div class="carousel-cell">
                 <div class="card" style="width: 18rem">
-                    <img class="card-img-top" src="./assets/img/truck-2.png" alt="Card image cap" />
+                    <img class="card-img-top" src="./images/truck-2.png" alt="Card image cap" />
                     <div class="card-body">
                         <h3>7.5 Ton Truck</h3>
                         <p class="card-text">
@@ -387,7 +385,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/blog-2.jpg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/blog-2.jpg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -424,7 +422,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/blog-2.jpg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/blog-2.jpg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -462,7 +460,7 @@
         <div class="row custom-index-blog">
             <div class="mt-5 row">
                 <div class="p-0 col-md-5 col-sm-12">
-                    <img class="img-fluid w-100" src="./assets/img/blog-2.jpg" alt="blog title" />
+                    <img class="img-fluid w-100" src="./images/blog-2.jpg" alt="blog title" />
                 </div>
                 <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                     <h5 class="custom-index-blog-title">
@@ -508,7 +506,7 @@
             <div class="col-md-6">
                 <h3 class="mb-3">Download the App</h3>
                 <a href="#" class="btn btn-lg">
-                    <img src="./assets/img/play-store.png" alt="" />
+                    <img src="./images/play-store.png" alt="" />
                 </a>
             </div>
         </div>
@@ -517,7 +515,7 @@
         <div class="container">
             <div class="py-5 row">
                 <div class="col-md-3 col-sm-12">
-                    <img class="logo" src="./assets/img/logo.png" alt="" />
+                    <img class="logo" src="./images/logo.png" alt="" />
                     <p class="mt-4 text-dark">
                         Hotline: +880 9638 000 245 Copyright © 2019-2020 Traincu <br />
                         All Rights Reserved
@@ -566,30 +564,32 @@
                     <h4>Social Links</h4>
                     <div class="flex-wrap d-flex">
                         <a href="#">
-                            <img class="custom-social-icon" src="./assets/img/facebook.svg" alt="" />
+                            <img class="custom-social-icon" src="./images/facebook.svg" alt="" />
                         </a>
                         <a href="#">
-                            <img class="custom-social-icon" src="./assets/img/twitter.svg" alt="" />
+                            <img class="custom-social-icon" src="./images/twitter.svg" alt="" />
                         </a>
                         <a href="#">
-                            <img class="custom-social-icon" src="./assets/img/youtube.svg" alt="" />
+                            <img class="custom-social-icon" src="./images/youtube.svg" alt="" />
                         </a>
                         <a href="#">
-                            <img class="custom-social-icon" src="./assets/img/whatsapp.svg" alt="" />
+                            <img class="custom-social-icon" src="./images/whatsapp.svg" alt="" />
                         </a>
                         <a href="#">
-                            <img class="custom-social-icon" src="./assets/img/linkedin.svg" alt="" />
+                            <img class="custom-social-icon" src="./images/linkedin.svg" alt="" />
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/frontend.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="./assets/js/app.js"></script>
+    {{-- <script src="./assets/js/app.js"></script> --}}
     <!-- JavaScript -->
     <script>
         $(".carousel").carousel({
@@ -611,10 +611,6 @@
             prevNextButtons: false,
             pageDots: false,
         });
-
-    </script>
-    <script>
-        document.re;
 
     </script>
 </body>

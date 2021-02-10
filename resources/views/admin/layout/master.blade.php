@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <title>@yield('title')</title>
@@ -8,14 +9,13 @@
     <meta content="" name="author" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous" />
-    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/default/app.min.css') }}" rel="stylesheet" />
     @stack('style')
 </head>
 
 <body>
-   @yield('app')
-
-   @stack('script')
+    @yield('app')
+    @stack('script')
 </body>
 
 

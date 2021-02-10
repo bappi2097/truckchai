@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', "Login | Admin")
+@section('title', 'Login | Admin')
 @section('app')
     <div id="page-container">
 
@@ -9,8 +9,7 @@
 
                 <div class="login-header">
                     <div class="brand">
-                        <span class="logo"></span> <b>Color</b> Admin
-                        <small>responsive bootstrap 4 admin template</small>
+                        <span class="logo"></span>Admin
                     </div>
                     <div class="icon">
                         <i class="fa fa-lock"></i>
@@ -21,8 +20,7 @@
                 <div class="login-body">
 
                     <div class="login-content">
-                        <form action="https://seantheme.com/color-admin/admin/html/index.html" method="GET"
-                            class="margin-bottom-0">
+                        <form action="" method="GET" class="margin-bottom-0">
                             <div class="form-group m-b-20">
                                 <input type="text" class="form-control form-control-lg inverse-mode"
                                     placeholder="Email Address" required />
@@ -47,4 +45,4 @@
 
             </div>
         </div>
-@endsection
+    @endsection

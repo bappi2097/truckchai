@@ -5,16 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DriverDetail extends Model
+class TripBid extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "user_id", "company_id", "uuid", "address", "image", "nid", "license"
+        "trip_id",
+        "truck_id",
+        "company_id",
+        "amount",
+        "status"
     ];
+    // bids belongs to trip
+    // bid belongs to one company
+    // bid has one truck
 
-    public function user()
+    public function trip()
     {
-        return $this->belongsTo(User::class, "user_id");
+        return $this->belongsTo(Trip::class, "trip_id");
     }
 
     public function company()

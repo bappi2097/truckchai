@@ -21,4 +21,16 @@ class CompanyDetail extends Model
     {
         return $this->belongsTo(CompanyType::class, "company_type_id");
     }
+    public function trucks()
+    {
+        return $this->hasMany(Truck::class, "company_id");
+    }
+    public function tripBids()
+    {
+        return $this->hasMany(TripBid::class, "company_id");
+    }
+    public function balanceDetail()
+    {
+        return $this->hasOne(BalanceDetail::class, "company_id");
+    }
 }

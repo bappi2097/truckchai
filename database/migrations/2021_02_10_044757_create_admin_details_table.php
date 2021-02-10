@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressBooksTable extends Migration
+class CreateAdminDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateAddressBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('address_books', function (Blueprint $table) {
+        Schema::create('admin_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("customer_id")->constrained("customer_details", "id")->onDelete("cascade");
+            $table->foreignId("user_id")->constrained("users", "id")->onDelete("cascade");
+            $table->uuid("uuid")->from(10000);
             $table->text("address");
-            $table->string("recipient_name");
-            $table->string("recipient_mobile_no");
+            $table->string("whatsapp_no")->nullable();
+            $table->string("image", 255);
+            $table->boolean("is_super_admin")->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateAddressBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address_books');
+        Schema::dropIfExists('admin_details');
     }
 }

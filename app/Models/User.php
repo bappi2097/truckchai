@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile_no',
     ];
 
     /**
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function customer()
+    {
+        return $this->hasOne(CustomerDetail::class, "user_id");
+    }
+
+    public function company()
+    {
+        return $this->hasOne(CompanyDetail::class, "user_id");
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(AdminDetail::class, "user_id");
+    }
 }

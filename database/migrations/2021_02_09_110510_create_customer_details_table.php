@@ -19,6 +19,7 @@ class CreateCustomerDetailsTable extends Migration
             $table->uuid("uuid")->from(10000);
             $table->text("address");
             $table->string("image", 255);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

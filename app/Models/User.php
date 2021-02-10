@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(AdminDetail::class, "user_id");
     }
+
+    public function driver()
+    {
+        return $this->hasOne(DriverDetail::class, "user_id");
+    }
 }

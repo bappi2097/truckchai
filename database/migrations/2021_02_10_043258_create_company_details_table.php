@@ -16,6 +16,7 @@ class CreateCompanyDetailsTable extends Migration
         Schema::create('company_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained("users", "id")->onDelete("cascade");
+            $table->foreignId("company_type_id")->constrained("company_types", "id")->onDelete("cascade");
             $table->uuid("uuid")->from(10000);
             $table->text("address");
             $table->string("account_name");

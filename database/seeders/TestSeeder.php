@@ -16,14 +16,13 @@ class TestSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'customer']);
-        User::insert([
-            "name" => "Bappi Saha",
-            "email" => "bappi2097@gmail.com",
-            "mobile_no" => "01726257333",
-            "password" => bcrypt("password"),
-        ]);
-        $customers = new CustomerDetail();
+        // User::insert([
+        //     "name" => "Bappi Saha",
+        //     "email" => "bappi2097@gmail.com",
+        //     "mobile_no" => "01726257333",
+        //     "password" => bcrypt("password"),
+        // ]);
+        // $customers = new CustomerDetail();
         // $customers->
     }
 }

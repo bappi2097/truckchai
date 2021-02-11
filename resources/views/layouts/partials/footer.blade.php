@@ -4,26 +4,29 @@
             <div class="col-md-3 col-sm-12">
                 <img class="logo" src="{{ asset('images/logo.png') }}" alt="" />
                 <p class="mt-4 text-dark">
-                    Hotline: +880 9638 000 245 Copyright © 2019-2020 Traincu <br />
-                    All Rights Reserved
+                    Hotline: +880 9638 000 245 <br> {{ __('frontend/footer.copyright') }} <br />
+                    {{ __('frontend/footer.right-reserved') }}
                 </p>
             </div>
             <div class="col-md-3 col-sm-12">
-                <h4 class="mb-4">Quick Links</h4>
-                <a class="custoom-footer-link" href="./privacy-and-policy.html">Privacy & Policy</a>
-                <a class="custoom-footer-link" href="./contact-us.html">Contact Us</a>
-                <a class="custoom-footer-link" href="./terms-and-condition.html">Terms & Condition</a>
+                <h4 class="mb-4">{{ __('frontend/footer.quick-links') }}</h4>
+                <a class="custoom-footer-link"
+                    href="./privacy-and-policy.html">{{ __('frontend/footer.privacy-policy') }}</a>
+                <a class="custoom-footer-link" href="./contact-us.html">{{ __('frontend/footer.contact-us') }}</a>
+                <a class="custoom-footer-link"
+                    href="./terms-and-condition.html">{{ __('frontend/footer.terms-condition') }}</a>
             </div>
             <div class="col-md-3 col-sm-12">
-                <h4 class="mb-4">Menu</h4>
-                <a class="custoom-footer-link" href="./truck-operator.html">Truck Operator</a>
-                <a class="custoom-footer-link" href="./faq.html">FAQ</a>
-                <a class="custoom-footer-link" href="./blog.html">Blog</a>
+                <h4 class="mb-4">{{ __('frontend/footer.menu') }}</h4>
+                <a class="custoom-footer-link"
+                    href="./truck-operator.html">{{ __('frontend/footer.truck-operator') }}</a>
+                <a class="custoom-footer-link" href="./faq.html">{{ __('frontend/footer.faq') }}</a>
+                <a class="custoom-footer-link" href="./blog.html">{{ __('frontend/footer.blog') }}</a>
             </div>
             <div class="col-md-3 col-sm-12">
-                <h4 class="mb-4">Newsletter</h4>
+                <h4 class="mb-4">{{ __('frontend/footer.newsletter') }}</h4>
                 <p class="text-dark">
-                    Please subscribe to receive news, updates & exclusive promotions
+                    {{ __('frontend/footer.subscribe-newsletter') }}
                 </p>
                 <div class="mb-3 input-group">
                     <input type="text" class="form-control" placeholder="john.doe@email.com"
@@ -48,7 +51,7 @@
                         </button>
                     </div>
                 </div>
-                <h4>Social Links</h4>
+                <h4>{{ __('frontend/footer.social-links') }}</h4>
                 <div class="flex-wrap d-flex">
                     <a href="#">
                         <img class="custom-social-icon" src="{{ asset('images/facebook.svg') }}" alt="" />

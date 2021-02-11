@@ -1,5 +1,5 @@
 <div class="container py-5 my-5 text-center">
-    <h3>Why Choose Traincu?</h3>
+    <h3>{{ __('frontend/home.why-choose-traincu') }}</h3>
     <div class="mt-4 d-flex justify-content-center align-items-center">
         <span class="line"></span>
         <span class="square"></span>
@@ -18,8 +18,8 @@
                     </a>
                 </h5>
                 <div class="custom-index-blog-admin">
-                    <p>BY:: Admin</p>
-                    <p class="mx-2">COMMENTS:: 0</p>
+                    <p>{{ __('utility.by') }}:: Admin</p>
+                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                 </div>
                 <div>
                     <span class="seperator"></span>
@@ -56,8 +56,8 @@
                     </a>
                 </h5>
                 <div class="custom-index-blog-admin">
-                    <p>BY:: Admin</p>
-                    <p class="mx-2">COMMENTS:: 0</p>
+                    <p>{{ __('utility.by') }}:: Admin</p>
+                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                 </div>
                 <div>
                     <span class="seperator"></span>
@@ -94,8 +94,8 @@
                     </a>
                 </h5>
                 <div class="custom-index-blog-admin">
-                    <p>BY:: Admin</p>
-                    <p class="mx-2">COMMENTS:: 0</p>
+                    <p>{{ __('utility.by') }}:: Admin</p>
+                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                 </div>
                 <div>
                     <span class="seperator"></span>
@@ -119,5 +119,5 @@
             </span>
         </div>
     </div>
-    <a href="#" class="mt-5 btn btn-outline-indigo">More</a>
+    <a href="#" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
 </div>

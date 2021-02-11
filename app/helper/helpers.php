@@ -10,3 +10,8 @@ function isPageRTL()
 {
     return app()->getLocale() == "ar" ? true : false;
 }
+
+function active($route)
+{
+    return request()->route()->getName() == $route ? 'active' : '';
+}

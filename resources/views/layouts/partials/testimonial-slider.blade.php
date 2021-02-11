@@ -1,6 +1,6 @@
 <div id="testimonial" class="py-5 my-5 bg-white">
     <div class="container text-center">
-        <h3 class="testimonial-text">Testimonials</h3>
+        <h3 class="testimonial-text">{{ __($title) }}</h3>
         <div class="my-4 d-flex justify-content-center align-items-center">
             <span class="line"></span>
             <span class="square"></span>

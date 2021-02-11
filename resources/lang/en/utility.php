@@ -13,12 +13,11 @@ return [
     |
     */
 
-    'why-choose-traincu' => 'Why Choose Traincu?',
-    'types-of-vehicle' => 'Types of Vehicle',
-    'our-clients' => 'Our Clients',
-    'testimonials' => 'Testimonials',
-    'latest-news' => 'LATEST NEWS',
-    'read-our-blog' => 'READ OUR LATEST BLOG',
+    'more' => 'More',
+    'by' => 'BY',
+    'comments' => 'COMMENTS',
+    'previous' => 'Previous',
+    'next' => 'Next',
     'name' => 'name',
     'name' => 'name',
     'name' => 'name',
@@ -28,4 +27,5 @@ return [
     'name' => 'name',
     'name' => 'name',
     'name' => 'name',
+
 ];

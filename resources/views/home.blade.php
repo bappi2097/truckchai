@@ -8,12 +8,12 @@
     "images/slider/slider-4.jpg",
     ]])
     @include('layouts.partials.blog-list')
-    @include('layouts.partials.testimonial-slider')
+    @include('layouts.partials.testimonial-slider', ["title" => "frontend/home.testimonials"])
     @include('layouts.partials.image-slider')
     @include('layouts.partials.category-slider')
     <div class="container py-5 my-5 text-center">
-        <h3>LATEST NEWS</h3>
-        <p class="custom-index-blog-p">READ OUR LATEST BLOG</p>
+        <h3>{{ __('frontend/home.latest-news') }}</h3>
+        <p class="custom-index-blog-p">{{ __('frontend/home.read-our-blog') }}</p>
         <div class="mt-4 d-flex justify-content-center align-items-center">
             <span class="line"></span>
             <span class="square"></span>
@@ -32,8 +32,8 @@
                         </a>
                     </h5>
                     <div class="custom-index-blog-admin">
-                        <p>BY:: Admin</p>
-                        <p class="mx-2">COMMENTS:: 0</p>
+                        <p>{{ __('utility.by') }}:: Admin</p>
+                        <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                     </div>
                     <div>
                         <span class="seperator"></span>
@@ -69,8 +69,8 @@
                         </a>
                     </h5>
                     <div class="custom-index-blog-admin">
-                        <p>BY:: Admin</p>
-                        <p class="mx-2">COMMENTS:: 0</p>
+                        <p>{{ __('utility.by') }}:: Admin</p>
+                        <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                     </div>
                     <div>
                         <span class="seperator"></span>
@@ -107,8 +107,8 @@
                         </a>
                     </h5>
                     <div class="custom-index-blog-admin">
-                        <p>BY:: Admin</p>
-                        <p class="mx-2">COMMENTS:: 0</p>
+                        <p>{{ __('utility.by') }}:: Admin</p>
+                        <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
                     </div>
                     <div>
                         <span class="seperator"></span>
@@ -132,7 +132,7 @@
                 </span>
             </div>
         </div>
-        <a href="#" class="mt-5 btn btn-outline-indigo">More</a>
+        <a href="#" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
     </div>
     @include('layouts.partials.footer-hero')
 @endsection

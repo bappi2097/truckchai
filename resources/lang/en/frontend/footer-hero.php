@@ -12,20 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'why-choose-traincu' => 'Why Choose Traincu?',
-    'types-of-vehicle' => 'Types of Vehicle',
-    'our-clients' => 'Our Clients',
-    'testimonials' => 'Testimonials',
-    'latest-news' => 'LATEST NEWS',
-    'read-our-blog' => 'READ OUR LATEST BLOG',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
-    'name' => 'name',
+    'hire-truck-now' => "Hire a truck Now",
+    'hire-truck' => "Hire truck",
+    'download-app' => "Download the App",
 ];

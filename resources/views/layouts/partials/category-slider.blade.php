@@ -49,7 +49,7 @@
         </div>
         <div class="carousel-cell">
             <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="images/truck-3.png" alt="Card image cap" />
+                <img class="card-img-top" src="{{ asset('images/truck-3.png') }}" alt="Card image cap" />
                 <div class="card-body">
                     <h3>7.5 Ton Truck</h3>
                     <p class="card-text">
@@ -75,7 +75,7 @@
         </div>
         <div class="carousel-cell">
             <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="images/truck.png" alt="Card image cap" />
+                <img class="card-img-top" src="{{ asset('images/truck.png') }}" alt="Card image cap" />
                 <div class="card-body">
                     <h3>7.5 Ton Truck</h3>
                     <p class="card-text">

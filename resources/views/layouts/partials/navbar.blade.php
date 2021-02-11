@@ -10,26 +10,28 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="mt-2 ml-auto navbar-nav mt-lg-0 nav-rtl">
             <li class="nav-item active">
-                <a class="text-white nav-link" href="./index.html">{{ __('navbar.home') }}</a>
+                <a class="text-white nav-link" href="./index.html">{{ __('frontend/navbar.home') }}</a>
             </li>
             <li class="nav-item">
                 <a class="text-white nav-link" href="./truck-operator.html">
-                    TRUCK OPERATOR
+                    {{ __('frontend/navbar.truck-operator') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="text-white nav-link" href="./blog.html">BLOG</a>
+                <a class="text-white nav-link" href="./blog.html">
+                    {{ __('frontend/navbar.blog') }}
+                </a>
             </li>
             <li class="nav-item">
                 <a class="text-white nav-link" href="./contact-us.html">
-                    CONTACT US
+                    {{ __('frontend/navbar.contact-us') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="text-white nav-link" href="./sign-in.html">LOGIN</a>
+                <a class="text-white nav-link" href="./sign-in.html">{{ __('frontend/navbar.login') }}</a>
             </li>
             <li class="nav-item">
-                <a class="text-white nav-link" href="./dashboard.html">DASHBOARD</a>
+                <a class="text-white nav-link" href="./dashboard.html">{{ __('frontend/navbar.dashboard') }}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="#"

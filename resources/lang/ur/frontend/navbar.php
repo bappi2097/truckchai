@@ -13,6 +13,10 @@ return [
     |
     */
     'home' => "HOME",
-
-
+    'truck-operator' => "TRUCK OPERATOR",
+    'blog' => "BLOG",
+    'contact-us' => "CONTACT US",
+    'login' => "LOGIN",
+    'register' => "REGISTER",
+    'dashboard' => "DASHBOARD",
 ];

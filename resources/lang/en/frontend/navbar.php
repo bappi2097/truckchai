@@ -12,9 +12,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'home' => "گھر",
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'home' => "HOME",
+    'truck-operator' => "TRUCK OPERATOR",
+    'blog' => "BLOG",
+    'contact-us' => "CONTACT US",
+    'login' => "LOGIN",
+    'register' => "REGISTER",
+    'dashboard' => "DASHBOARD",
 ];

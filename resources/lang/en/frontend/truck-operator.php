@@ -12,11 +12,14 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'why-choose-traincu' => 'Why Choose Traincu?',
-    'types-of-vehicle' => 'Types of Vehicle',
-    'our-clients' => 'Our Clients',
-    'testimonials' => 'Testimonials',
-    'latest-news' => 'LATEST NEWS',
-    'read-our-blog' => 'READ OUR LATEST BLOG',
+    'why-register-traincu' => "Why Register at Traincu?",
+    'lucrative-fare' => "Lucrative Fare",
+    'verified-shipper' => "Verified Shipper",
+    'no-middleman' => "No Middleman",
+    'name' => "name",
+    'name' => "name",
+    'name' => "name",
+    'name' => "name",
+    'name' => "name",
+    'name' => "name",
 ];

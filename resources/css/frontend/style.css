@@ -254,6 +254,7 @@
 
 /* Contact Ug Page: start */
 .custom-contact-map {
+    clip-path: polygon(100% 0%, 99.89% 83.67%, 48.06% 161.66%, -60% 0%);
     height: 300px;
     width: 100%;
 }

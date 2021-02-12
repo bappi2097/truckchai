@@ -23,37 +23,37 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="text-white nav-link" href="./contact-us.html">
+                <a class="text-white nav-link {{ active('contact-us') }}" href="{{ route('contact-us') }}">
                     {{ __('frontend/navbar.contact-us') }}
                 </a>
             </li>
             @auth
-                <li class="nav-item">
-                    <a class="text-white nav-link" href="./dashboard.html">{{ __('frontend/navbar.dashboard') }}</a>
-                </li>
+            <li class="nav-item">
+                <a class="text-white nav-link" href="./dashboard.html">{{ __('frontend/navbar.dashboard') }}</a>
+            </li>
             @else
-                <li class="nav-item">
-                    <a class="text-white nav-link {{ active('login') }}"
-                        href="{{ route('login') }}">{{ __('frontend/navbar.login') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="text-white nav-link {{ active('register') }}"
-                        href="{{ route('register') }}">{{ __('frontend/navbar.register') }}</a>
-                </li>
+            <li class="nav-item">
+                <a class="text-white nav-link {{ active('login') }}"
+                    href="{{ route('login') }}">{{ __('frontend/navbar.login') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-white nav-link {{ active('register') }}"
+                    href="{{ route('register') }}">{{ __('frontend/navbar.register') }}</a>
+            </li>
             @endauth
             <li class="nav-item dropdown">
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
                     data-toggle="dropdown">
                     @if (app()->getLocale() == 'en')
-                        <span>
-                            <img class="lang-icon" src="{{ asset('images/flag/uk.svg') }}" alt="English" />
-                        </span>
-                        <span class="mx-1"> ENGLISH </span>
+                    <span>
+                        <img class="lang-icon" src="{{ asset('images/flag/uk.svg') }}" alt="English" />
+                    </span>
+                    <span class="mx-1"> ENGLISH </span>
                     @else
-                        <span>
-                            <img class="lang-icon" src="{{ asset('images/flag/uae.svg') }}" alt="Arabic" />
-                        </span>
-                        <span class="mx-1"> العربية </span>
+                    <span>
+                        <img class="lang-icon" src="{{ asset('images/flag/uae.svg') }}" alt="Arabic" />
+                    </span>
+                    <span class="mx-1"> العربية </span>
                     @endif
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">

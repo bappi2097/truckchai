@@ -11,17 +11,17 @@
             <div class="col-md-3 col-sm-12">
                 <h4 class="mb-4">{{ __('frontend/footer.quick-links') }}</h4>
                 <a class="custoom-footer-link"
-                    href="./privacy-and-policy.html">{{ __('frontend/footer.privacy-policy') }}</a>
-                <a class="custoom-footer-link" href="./contact-us.html">{{ __('frontend/footer.contact-us') }}</a>
+                    href="{{route('privacy-and-policy')}}">{{ __('frontend/footer.privacy-policy') }}</a>
+                <a class="custoom-footer-link" href="{{route('contact-us')}}">{{ __('frontend/footer.contact-us') }}</a>
                 <a class="custoom-footer-link"
-                    href="./terms-and-condition.html">{{ __('frontend/footer.terms-condition') }}</a>
+                    href="{{route('terms-and-condition')}}">{{ __('frontend/footer.terms-condition') }}</a>
             </div>
             <div class="col-md-3 col-sm-12">
                 <h4 class="mb-4">{{ __('frontend/footer.menu') }}</h4>
                 <a class="custoom-footer-link"
-                    href="./truck-operator.html">{{ __('frontend/footer.truck-operator') }}</a>
-                <a class="custoom-footer-link" href="./faq.html">{{ __('frontend/footer.faq') }}</a>
-                <a class="custoom-footer-link" href="./blog.html">{{ __('frontend/footer.blog') }}</a>
+                    href="{{route('truck-operator')}}">{{ __('frontend/footer.truck-operator') }}</a>
+                <a class="custoom-footer-link" href="{{route('faq')}}">{{ __('frontend/footer.faq') }}</a>
+                <a class="custoom-footer-link" href="{{route('blog')}}">{{ __('frontend/footer.blog') }}</a>
             </div>
             <div class="col-md-3 col-sm-12">
                 <h4 class="mb-4">{{ __('frontend/footer.newsletter') }}</h4>

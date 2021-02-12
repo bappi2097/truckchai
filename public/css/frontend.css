@@ -243,7 +243,7 @@
 }
 .search {
     background-color: white;
-    background-image: url(/images/search-icon.svg?f15cb5693804b460e13cbdd21a6e690a);
+    background-image: url(/images/search-icon.svg?46860451725aa8828337ac1c69dc1e96);
     background-position: 95% 10px;
     background-repeat: no-repeat;
     background-size: 16px;
@@ -252,6 +252,8 @@
 
 /* Contact Ug Page: start */
 .custom-contact-map {
+    -webkit-clip-path: polygon(100% 0%, 99.89% 83.67%, 48.06% 161.66%, -60% 0%);
+            clip-path: polygon(100% 0%, 99.89% 83.67%, 48.06% 161.66%, -60% 0%);
     height: 300px;
     width: 100%;
 }

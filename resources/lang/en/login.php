@@ -12,18 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'more' => 'More',
-    'by' => 'BY',
-    'comments' => 'COMMENTS',
-    'previous' => 'Previous',
-    'next' => 'Next',
-    'full-name' => "Full Name",
-    'email-address' => "Email address",
-    'user-type' => "User Type",
-    'password' => "Password",
-    'confirm-password' => "Confirm Password",
-    'register' => "Register",
-    'remember-me' => "Remember Me",
-    'login' => "Login",
+    'never-share-email' => "We'll never share your email with anyone else.",
+    'forget-password' => "Forget Password",
+    'dont-have-account' => "Don't have an account? Create Now",
 ];

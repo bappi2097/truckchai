@@ -13,17 +13,5 @@ return [
     |
     */
 
-    'more' => 'More',
-    'by' => 'BY',
-    'comments' => 'COMMENTS',
-    'previous' => 'Previous',
-    'next' => 'Next',
-    'full-name' => "Full Name",
-    'email-address' => "Email address",
-    'user-type' => "User Type",
-    'password' => "Password",
-    'confirm-password' => "Confirm Password",
-    'register' => "Register",
-    'remember-me' => "Remember Me",
-    'login' => "Login",
+    'have-an-account' => "Already have an account? Login",
 ];

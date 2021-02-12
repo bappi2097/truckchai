@@ -1,11 +1,5 @@
 <?php
 
-// use App\Http\Controllers;
-// use App\Http\Controllers\Admin\AuthController;
-
-// use Illuminate\Http\Client\Request;
-
-// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,15 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // auth()->login(App\Models\User::find(1));
-// Auth::logout(App\Models\User::find(1));
-auth()->logout();
+// auth()->logout();
 Route::get('/', function () {
     return redirect(app()->getLocale());
 });
 Route::group(
     [
         'prefix' => '{locale}',
-        'where' => ['locale' => join("|", App\Models\Language::pluck("code")->all())],
+        'where' => ['locale' => join("|", \App\Models\Language::pluck("code")->all())],
         'middleware' => 'setlocale',
     ],
     function () {

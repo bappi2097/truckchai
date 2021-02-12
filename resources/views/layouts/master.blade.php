@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
     @if (isPageRTL())
-        <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
     @endif
 </head>
 
@@ -22,7 +22,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="http://unpkg.com/turbolinks"></script>
     @stack('script')
 </body>
 

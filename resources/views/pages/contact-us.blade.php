@@ -10,7 +10,7 @@
     <div class="my-5 row">
         <div class="mx-auto text-center text-rtl col-md-8 col-sm-12 d-flex justify-content-center">
             <h5 class="text-purple">
-                FEEL FREE TO SEND US A MESSAGE OR ASK FOR A FREE QUOTE
+                {{__('utility.feel-free-to-message')}}
             </h5>
         </div>
     </div>
@@ -18,24 +18,24 @@
         <div class="mx-auto col-md-6 col-sm-12">
             <form>
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">{{__('utility.full-name')}}</label>
                     <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">{{__('utility.email-address')}}</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" />
                 </div>
                 <div class="form-group">
-                    <label for="subject">Subject</label>
+                    <label for="subject">{{__('utility.subject')}}</label>
                     <input type="text" class="form-control" id="subject" aria-describedby="emailHelp" />
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
+                    <label for="message">{{__('utility.message')}}</label>
                     <textarea class="form-control" name="message" id="message" cols="30" rows="5"></textarea>
                 </div>
                 <div class="form-group d-flex">
                     <button type="submit" class="mx-auto btn btn-outline-indigo">
-                        Send
+                        {{__('utility.send')}}
                     </button>
                 </div>
             </form>

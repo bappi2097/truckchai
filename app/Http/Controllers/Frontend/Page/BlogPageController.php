@@ -11,4 +11,9 @@ class BlogPageController extends Controller
     {
         return view('blog');
     }
+
+    public function singlePage()
+    {
+        return view("single-blog");
+    }
 }

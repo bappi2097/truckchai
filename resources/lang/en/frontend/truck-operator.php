@@ -16,10 +16,4 @@ return [
     'lucrative-fare' => "Lucrative Fare",
     'verified-shipper' => "Verified Shipper",
     'no-middleman' => "No Middleman",
-    'name' => "name",
-    'name' => "name",
-    'name' => "name",
-    'name' => "name",
-    'name' => "name",
-    'name' => "name",
 ];

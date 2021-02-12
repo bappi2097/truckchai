@@ -1,13 +1,13 @@
 <nav class="bg-purple-300 shadow-lg navbar navbar-dark navbar-expand-lg sticky-top">
-    <a class="text-white navbar-brand" href="/">
+    <a class="text-white navbar-brand" href="{{ route('home') }}">
         <img src="{{ asset('images/logo.png') }}" alt="" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="text-white navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <div class="collapse navbar-collapse" id="navbar">
         <ul class="mt-2 ml-auto navbar-nav mt-lg-0 nav-rtl">
             <li class="nav-item {{ active('home') }}">
                 <a class="text-white nav-link" href="{{ route('home') }}">{{ __('frontend/navbar.home') }}</a>

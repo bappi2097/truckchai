@@ -2,7 +2,7 @@
 @section('content')
 <div class="container my-5 text-rtl">
     <div class="text-center">
-        <h3 class="testimonial-text">Frequently Asked Questions</h3>
+        <h3 class="testimonial-text">{{__('utility.faq-fullform')}}</h3>
         <div class="my-4 d-flex justify-content-center align-items-center">
             <span class="line"></span>
             <span class="square"></span>

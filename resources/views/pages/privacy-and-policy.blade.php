@@ -2,16 +2,16 @@
 @section('content')
 <div class="container my-3 text-rtl">
     <div class="d-flex justify-content-between">
-        <h3>Privacy & Policy</h3>
+        <h3>{{__('utility.privacy-policy')}}</h3>
         <ol class="p-0 m-0 breadcrumb bg-light-900">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">{{__('utility.home')}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">
-                Privacy & Policy
+                {{__('utility.privacy-policy')}}
             </li>
         </ol>
     </div>
 </div>
-<div class="h-5 mb-5 bg-white text-rtl">
+<div class="container h-5 mb-5 bg-white text-rtl">
     <div class="p-5">
         <p>
             Traincu is a private company limited by shares operates in the name of

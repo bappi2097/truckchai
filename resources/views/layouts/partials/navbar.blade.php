@@ -33,12 +33,12 @@
             </li>
             @else
             <li class="nav-item">
-                <a class="text-white nav-link {{ active('login') }}"
-                    href="{{ route('login') }}">{{ __('frontend/navbar.login') }}</a>
+                <a class="text-white nav-link {{ active('auth.login') }}"
+                    href="{{ route('auth.login') }}">{{ __('frontend/navbar.login') }}</a>
             </li>
             <li class="nav-item">
-                <a class="text-white nav-link {{ active('register') }}"
-                    href="{{ route('register') }}">{{ __('frontend/navbar.register') }}</a>
+                <a class="text-white nav-link {{ active('auth.register') }}"
+                    href="{{ route('auth.register') }}">{{ __('frontend/navbar.register') }}</a>
             </li>
             @endauth
             <li class="nav-item dropdown">

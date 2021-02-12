@@ -32,7 +32,7 @@
                     <input type="password" class="form-control" id="confirm-password" />
                 </div>
                 <button type="submit" class="btn btn-primary">{{__('utility.register')}}</button>
-                <a class="mt-2 d-block" href="{{ route('login') }}">{{__('register.have-an-account')}}</a>
+                <a class="mt-2 d-block" href="{{ route('auth.login') }}">{{__('register.have-an-account')}}</a>
             </form>
         </div>
     </div>

@@ -32,7 +32,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">{{__('utility.login')}}</button>
                 <a class="mt-2 d-block" href="#">{{__('login.forget-password')}}</a>
-                <a class="mt-2 d-block" href="{{ route('register') }}">{{__('login.dont-have-account')}}</a>
+                <a class="mt-2 d-block" href="{{ route('auth.register') }}">{{__('login.dont-have-account')}}</a>
             </form>
         </div>
     </div>

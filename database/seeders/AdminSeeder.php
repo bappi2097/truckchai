@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -21,6 +20,6 @@ class AdminSeeder extends Seeder
             "mobile_no" => "01726257333",
             "password" => bcrypt("admin123"),
         ]);
-        $user->assignRole('admin');
+        $user->assignRole('customer');
     }
 }

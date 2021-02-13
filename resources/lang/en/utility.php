@@ -40,4 +40,8 @@ return [
     "faq-fullform" => "Frequently Asked Questions",
     'privacy-policy' => "Privacy & Policy",
     'terms-condition' => "Terms & Condition",
+    "john-doe" => "John Doe",
+    "john-email" => "john.doe@email.com",
+    "mobile" => "Mobile No",
+    "mobile-no" => "+880XXXXXXXXXX",
 ];

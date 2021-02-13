@@ -29,7 +29,15 @@
             </li>
             @auth
             <li class="nav-item">
-                <a class="text-white nav-link" href="./dashboard.html">{{ __('frontend/navbar.dashboard') }}</a>
+                <a class="text-white nav-link {{ active('customer.dashboard') }}"
+                    href="{{route('customer.dashboard')}}">{{ __('frontend/navbar.dashboard') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-white nav-link text-uppercase" href="javascript:void(0)"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
             @else
             <li class="nav-item">

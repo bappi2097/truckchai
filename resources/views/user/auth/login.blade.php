@@ -6,7 +6,8 @@
             <img class="login-undraw-img" src="{{ asset('images/undraw_Login_re_4vu2.svg') }}" alt="" />
         </div>
         <div class="p-5 bg-white rounded shadow-lg col-md-7 col-sm-12 login-form-div text-rtl">
-            <form>
+            <form action="{{route('auth.login')}}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="email">{{__('utility.email-address')}}</label>
                     <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" />
@@ -27,7 +28,7 @@
                     @enderror
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="remember-me" />
+                    <input type="checkbox" class="form-check-input" id="remember-me" name="remember" />
                     <label class="form-check-label" for="remember-me">{{__('utility.remember-me')}}</label>
                 </div>
                 <button type="submit" class="btn btn-primary">{{__('utility.login')}}</button>

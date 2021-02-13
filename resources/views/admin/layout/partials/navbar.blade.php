@@ -101,7 +101,14 @@
                 <a href="javascript:;" class="dropdown-item">Calendar</a>
                 <a href="javascript:;" class="dropdown-item">Setting</a>
                 <div class="dropdown-divider"></div>
-                <a href="javascript:;" class="dropdown-item">Log Out</a>
+                <a href="javascript:void(0)" class="dropdown-item"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span>Logout</span>
+                    <i class="fab fa-sign-out" aria-hidden="true"></i>
+                </a>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>

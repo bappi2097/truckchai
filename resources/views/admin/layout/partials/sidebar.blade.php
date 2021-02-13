@@ -30,10 +30,52 @@
 
         <ul class="nav">
             <li class="nav-header">Navigation</li>
-            <li class="has-sub active">
-                <a href="javascript:;">
+            <li class="has-sub {{active('admin.dashboard')}}">
+                <a href="{{route('admin.dashboard')}}">
                     <i class="fa fa-th-large"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-header">User Category</li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Users</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">Admin</a>
+                    </li>
+                    <li class="">
+                        <a href="">Customer</a>
+                    </li>
+                    <li class="">
+                        <a href="">Company</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-header">Truck Category</li>
+            <li class="has-sub {{set_active('admin/truck-size-category*')}}">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Truck Category</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{active('admin.truck-size-category.index')}}">
+                        <a href="{{route('admin.truck-size-category.index')}}">Category List</a>
+                    </li>
+                    <li class="{{active('admin.truck-size-category.index')}}">
+                        <a href="{{route('admin.truck-size-category.index')}}">Truck Size</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="{{active('admin.language.index')}}">
+                <a href="{{route('admin.language.index')}}">
+                    <i class="fa fa-th-large"></i>
+                    <span>Languages</span>
                 </a>
             </li>
             <li class="has-sub">

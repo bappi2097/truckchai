@@ -16,6 +16,11 @@ function active($route)
     return request()->route()->getName() == $route ? 'active' : '';
 }
 
+function set_active($path, $active = 'active')
+{
+    return call_user_func_array('Request::is', (array)$path) ? $active : '';
+}
+
 function notification($alert_type, $message)
 {
     $notification['alert-type'] = $alert_type;

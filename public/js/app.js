@@ -32568,6 +32568,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/backend/toastr.css":
+/*!******************************************!*\
+  !*** ./resources/css/backend/toastr.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/frontend/style-rtl.css":
 /*!**********************************************!*\
   !*** ./resources/css/frontend/style-rtl.css ***!
@@ -35324,6 +35337,7 @@ Popper.Defaults = Defaults;
 /******/ 			["./resources/js/app.js"],
 /******/ 			["./resources/sass/app.scss"],
 /******/ 			["./resources/css/frontend/frontend.css"],
+/******/ 			["./resources/css/backend/toastr.css"],
 /******/ 			["./resources/css/frontend/style-rtl.css"],
 /******/ 			["./resources/css/frontend/dashboard.css"]
 /******/ 		];

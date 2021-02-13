@@ -15,8 +15,10 @@ require("laravel-mix-purgecss");
 
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/frontend/frontend.js", "public/js/frontend.js")
+    .copy("resources/js/backend/toastr.js", "public/js/toastr.js")
     .sass("resources/sass/app.scss", "public/css/app.css")
     .postCss("resources/css/frontend/frontend.css", "public/css/frontend.css")
+    .postCss("resources/css/backend/toastr.css", "public/css/toastr.css")
     .postCss("resources/css/frontend/style-rtl.css", "public/css/style-rtl.css")
     .postCss("resources/css/frontend/dashboard.css", "public/css/dashboard.css")
     .copy("resources/images/img", "public/images")

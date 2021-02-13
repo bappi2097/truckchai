@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;

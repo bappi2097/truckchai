@@ -15,7 +15,7 @@ class TruckSizeCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.truck-size.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class TruckSizeCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.truck-size.create');
     }
 
     /**

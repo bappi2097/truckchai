@@ -17,7 +17,7 @@ class LanguageSeeder extends Seeder
         Language::create([
             "name" => "English",
             "code" => "en",
-            "logo" => "images/flag/en.svg"
+            "logo" => "images/flag/uk.svg"
         ]);
 
         Language::create([

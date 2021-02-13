@@ -40,7 +40,7 @@
                 </a>
                 <a href="javascript:;" class="dropdown-item media">
                     <div class="media-left">
-                        <img src="assets/img/user/user-1.jpg" class="media-object" alt="" />
+                        <img src="{{asset('assets/img/user/user-1.jpg')}}" class="media-object" alt="" />
                         <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
                     </div>
                     <div class="media-body">
@@ -53,7 +53,7 @@
                 </a>
                 <a href="javascript:;" class="dropdown-item media">
                     <div class="media-left">
-                        <img src="assets/img/user/user-2.jpg" class="media-object" alt="" />
+                        <img src="{{asset('assets/img/user/user-2.jpg')}}" class="media-object" alt="" />
                         <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
                     </div>
                     <div class="media-body">
@@ -90,7 +90,7 @@
         </li>
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="assets/img/user/user-13.jpg" alt="" />
+                <img src="{{asset('assets/img/user/user-13.jpg')}}" alt="" />
                 <span class="d-none d-md-inline">Adam Schwartz</span>
                 <b class="caret"></b>
             </a>

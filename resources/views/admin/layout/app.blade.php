@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 
 @push('style')
-    <link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
-    <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
-    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+<link href="{{asset('assets/plugins/jvectormap-next/jquery-jvectormap.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/plugins/gritter/css/jquery.gritter.css')}}" rel="stylesheet" />
 @endpush
 
 @section('app')
@@ -29,9 +29,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-    <script src="assets/js/app.min.js" type="text/javascript"></script>
-    <script src="assets/js/theme/default.min.js" type="text/javascript"></script>
-    <script src="assets/js/demo/dashboard.js" type="text/javascript"></script>
-@endpush

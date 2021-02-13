@@ -74,10 +74,14 @@ class AuthController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request),
-            $request->filled('remember')
-        );
+        if (!User::where('email', $request->email)->first()->hasRole('admin')) {
+            return $this->guard()->attempt(
+                $this->credentials($request),
+                $request->filled('remember')
+            );
+        }
+        Toastr::error('Enter Correct Credentials', 'Wrong Credentials');
+        return false;
     }
 
     /**

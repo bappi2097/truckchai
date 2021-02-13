@@ -15,9 +15,23 @@ function active($route)
 {
     return request()->route()->getName() == $route ? 'active' : '';
 }
+
 function notification($alert_type, $message)
 {
     $notification['alert-type'] = $alert_type;
     $notification['message'] = $message;
     return $notification;
+}
+
+function dashboardURL()
+{
+    if (auth()->check()) {
+        if (auth()->user()->hasRole('customer')) {
+            return route('customer.dashboard');
+        } else if (auth()->user()->hasRole('admin')) {
+            return route('admin.dashboard');
+        } else {
+            return route('home');
+        }
+    }
 }

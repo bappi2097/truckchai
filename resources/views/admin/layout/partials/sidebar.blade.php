@@ -5,7 +5,7 @@
                 <a href="javascript:;" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="assets/img/user/user-13.jpg" alt="" />
+                        <img src="{{asset('assets/img/user/user-13.jpg')}}" alt="" />
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>Sean Ngu
@@ -32,7 +32,6 @@
             <li class="nav-header">Navigation</li>
             <li class="has-sub active">
                 <a href="javascript:;">
-                    <b class="caret"></b>
                     <i class="fa fa-th-large"></i>
                     <span>Dashboard</span>
                 </a>
@@ -51,7 +50,8 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+                <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                        class="fa fa-angle-double-left"></i></a>
             </li>
         </ul>
     </div>

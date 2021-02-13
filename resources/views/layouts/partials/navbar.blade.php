@@ -30,7 +30,7 @@
             @auth
             <li class="nav-item">
                 <a class="text-white nav-link {{ active('customer.dashboard') }}"
-                    href="{{route('customer.dashboard')}}">{{ __('frontend/navbar.dashboard') }}</a>
+                    href="{{dashboardURL()}}">{{ __('frontend/navbar.dashboard') }}</a>
             </li>
             <li class="nav-item">
                 <a class="text-white nav-link text-uppercase" href="javascript:void(0)"

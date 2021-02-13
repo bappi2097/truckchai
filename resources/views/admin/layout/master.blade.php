@@ -16,6 +16,9 @@
 <body>
     @yield('app')
     @stack('script')
+    <script src="{{asset('assets/js/app.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/theme/default.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/demo/dashboard.js')}}" type="text/javascript"></script>
 </body>
 
 

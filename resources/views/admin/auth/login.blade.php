@@ -2,11 +2,8 @@
 @section('title', 'Login | Admin')
 @section('app')
 <div id="page-container">
-
     <div class="login login-v1">
-
         <div class="login-container">
-
             <div class="login-header">
                 <div class="brand">
                     <span class="logo"></span>Admin

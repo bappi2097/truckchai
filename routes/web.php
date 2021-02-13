@@ -60,9 +60,10 @@ Route::group(
 Route::group(
     ["prefix" => "admin", "as" => "admin."],
     function () {
-        // Route::get('login',  [\App\Http\Controllers\Admin\AuthController::class, 'loginPage'])->name('login');
-        // Route::group(["middleware" => ["auth", "role:admin"]], function () {
-        //     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        // });
+        Route::get('login',  [\App\Http\Controllers\Admin\AuthController::class, 'loginPage'])->name('login');
+        Route::post('login',  [\App\Http\Controllers\Admin\AuthController::class, 'login'])->name('login');
+        Route::group(["middleware" => ["auth", "role:admin"]], function () {
+            Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        });
     }
 );

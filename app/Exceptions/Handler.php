@@ -37,4 +37,11 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $exception)
+    {
+        if (($request->is('admin') || $request->is('admin/*')) && !auth()->check()) {
+            return redirect()->route('admin.login');
+        }
+        return parent::render($request, $exception);
+    }
 }

@@ -1,37 +1,31 @@
 @extends('admin.layout.app')
 @section('content')
-<a href="{{route('admin.language.create')}}" class="btn btn-primary">Add Data</a>
+<a href="{{route('admin.truck-brand-category.create')}}" class="btn btn-primary">Add Data</a>
 <div class="col-12">
     <div class="table-responsive">
         <table class="table table-striped m-b-0">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Code</th>
                     <th>Name</th>
-                    <th>Logo</th>
                     <th width="1%">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($languages as $index => $language)
+                @foreach ($truckBrandCategories as $index => $truckBrandCategory)
                 <tr>
                     <td>{{$index+1}}</td>
-                    <td>{{$language->code}}</td>
-                    <td>{{$language->name}}</td>
-                    <td class="with-img">
-                        <img src="{{asset($language->logo)}}" class="img-rounded height-30">
-                    </td>
+                    <td>{{$truckBrandCategory->name}}</td>
                     <td class="with-btn" nowrap="">
-                        <a href="{{route('admin.language.edit', $language->id)}}"
+                        <a href="{{route('admin.truck-brand-category.edit', $truckBrandCategory->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-danger width-60"
-                            onclick="event.preventDefault(); document.getElementById('language{{ $language->code }}').submit();">
+                            onclick="event.preventDefault(); document.getElementById('language{{ $index }}').submit();">
                             Delete
                         </a>
-                        <form id="language{{ $language->code }}"
-                            action="{{ route('admin.language.destroy', $language->id) }}" method="POST"
-                            style="display: none;">
+                        <form id="language{{ $index }}"
+                            action="{{ route('admin.truck-brand-category.destroy', $truckBrandCategory->id) }}"
+                            method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
                         </form>

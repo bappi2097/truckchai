@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\TruckSizeCategory;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TruckSizeCategoryController extends Controller
@@ -15,7 +16,9 @@ class TruckSizeCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.truck-size.index');
+        return view('admin.pages.truck-size.index', [
+            "truckSizes" => TruckSizeCategory::paginate(10)
+        ]);
     }
 
     /**
@@ -36,7 +39,24 @@ class TruckSizeCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+            'size' => 'required|numeric',
+        ]);
+
+        $data = [
+            "name" => $request->name,
+            "size" => $request->size,
+        ];
+
+        $truckSize = new TruckSizeCategory($data);
+
+        if ($truckSize->save()) {
+            Toastr::success("Truck SIze Added Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +78,9 @@ class TruckSizeCategoryController extends Controller
      */
     public function edit(TruckSizeCategory $truckSizeCategory)
     {
-        //
+        return view('admin.pages.truck-size.edit', [
+            "truckSizeCategory" => $truckSizeCategory
+        ]);
     }
 
     /**
@@ -70,7 +92,24 @@ class TruckSizeCategoryController extends Controller
      */
     public function update(Request $request, TruckSizeCategory $truckSizeCategory)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+            'size' => 'required|numeric',
+        ]);
+
+        $data = [
+            "name" => $request->name,
+            "size" => $request->size,
+        ];
+
+        $truckSizeCategory->fill($data);
+
+        if ($truckSizeCategory->save()) {
+            Toastr::success("Truck SIze Updated Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +120,11 @@ class TruckSizeCategoryController extends Controller
      */
     public function destroy(TruckSizeCategory $truckSizeCategory)
     {
-        //
+        if ($truckSizeCategory->delete()) {
+            Toastr::success("Truck Size Deleted Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 }

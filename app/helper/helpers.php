@@ -40,3 +40,8 @@ function dashboardURL()
         }
     }
 }
+
+function selected($data1, $data2)
+{
+    return $data1 == $data2 ? 'selected' : '';
+}

@@ -13,6 +13,6 @@ class TruckBrandCategory extends Model
     ];
     public function truckModelCategories()
     {
-        return $this->hasMany(TruckModelCategory::class, "truck_brand_id");
+        return $this->hasMany(TruckModelCategory::class, "truck_brand_category_id");
     }
 }

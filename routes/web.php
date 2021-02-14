@@ -15,16 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 // auth()->login(App\Models\User::find(1));
 // auth()->logout();
+
 Route::get('/', function () {
     return redirect(app()->getLocale());
 });
 
 Route::group(
-    [
-        'prefix' => '{locale}',
-        'where' => ['locale' => join("|", \App\Models\Language::pluck("code")->all())],
-        'middleware' => 'setlocale',
-    ],
+    ['prefix' => '{locale}', 'where' => ['locale' => join("|", \App\Models\Language::pluck("code")->all())], 'middleware' => 'setlocale',],
     function () {
         Route::get("/", function () {
             return view('home');
@@ -47,19 +44,12 @@ Route::group(
         Route::get('faq', [\App\Http\Controllers\Frontend\Page\PageController::class, 'faq'])->name('faq');
 
 
-        Route::group([
-            "as" => "customer.",
-            "prefix" => "customer",
-            "middleware" => ["auth", "role:customer"],
-        ], function () {
+        Route::group(["as" => "customer.", "prefix" => "customer", "middleware" => ["auth", "role:customer"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\User\DashboardController::class, "index"])->name('dashboard');
         });
     }
 );
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(
     ["prefix" => "admin", "as" => "admin."],
     function () {
@@ -75,6 +65,20 @@ Route::group(
             Route::group(['prefix' => 'truck-size-category', 'as' => 'truck-size-category.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'index'])->name('index');
                 Route::get('/create', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckSizeCategory}', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckSizeCategory}', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckSizeCategory}', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+
+            Route::group(['prefix' => 'truck-weight-category', 'as' => 'truck-weight-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckWeightCategory}', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckWeightCategory}', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckWeightCategory}', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'destroy'])->name('destroy');
             });
 
             Route::group(['prefix' => 'language', 'as' => 'language.'], function () {
@@ -85,6 +89,40 @@ Route::group(
                 Route::put('/{language}', [\App\Http\Controllers\backend\LanguageController::class, 'update'])->name('update');
                 Route::delete('/{language}', [\App\Http\Controllers\backend\LanguageController::class, 'destroy'])->name('destroy');
             });
+
+
+            Route::group(['prefix' => 'truck-covered-category', 'as' => 'truck-covered-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckCoveredCategory}', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckCoveredCategory}', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckCoveredCategory}', [\App\Http\Controllers\backend\TruckCoveredCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+
+            Route::group(['prefix' => 'truck-brand-category', 'as' => 'truck-brand-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckBrandCategory}', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckBrandCategory}', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckBrandCategory}', [\App\Http\Controllers\backend\TruckBrandCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::group(['prefix' => 'truck-model-category', 'as' => 'truck-model-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'destroy'])->name('destroy');
+            });
         });
     }
 );
+
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

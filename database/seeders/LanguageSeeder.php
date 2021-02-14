@@ -31,5 +31,11 @@ class LanguageSeeder extends Seeder
             "code" => "ur",
             "logo" => "images/flag/ur.svg"
         ]);
+
+        Language::create([
+            "name" => "Bangla",
+            "code" => "bn",
+            "logo" => "images/flag/bn.svg"
+        ]);
     }
 }

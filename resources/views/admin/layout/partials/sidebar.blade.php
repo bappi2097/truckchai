@@ -57,18 +57,30 @@
                 </ul>
             </li>
             <li class="nav-header">Truck Category</li>
-            <li class="has-sub {{set_active('admin/truck-size-category*')}}">
+            <li class="has-sub {{set_active('admin/truck-*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
                     <i class="fa fa-th-large"></i>
                     <span>Truck Category</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="{{active('admin.truck-size-category.index')}}">
+                    <li class="{{active('admin.truck-category.index')}}">
                         <a href="{{route('admin.truck-size-category.index')}}">Category List</a>
                     </li>
                     <li class="{{active('admin.truck-size-category.index')}}">
                         <a href="{{route('admin.truck-size-category.index')}}">Truck Size</a>
+                    </li>
+                    <li class="{{active('admin.truck-weight-category.index')}}">
+                        <a href="{{route('admin.truck-weight-category.index')}}">Truck Weight</a>
+                    </li>
+                    <li class="{{active('admin.truck-covered-category.index')}}">
+                        <a href="{{route('admin.truck-covered-category.index')}}">Truck Covered</a>
+                    </li>
+                    <li class="{{active('admin.truck-brand-category.index')}}">
+                        <a href="{{route('admin.truck-brand-category.index')}}">Truck Brand</a>
+                    </li>
+                    <li class="{{active('admin.truck-model-category.index')}}">
+                        <a href="{{route('admin.truck-model-category.index')}}">Truck Model</a>
                     </li>
                 </ul>
             </li>

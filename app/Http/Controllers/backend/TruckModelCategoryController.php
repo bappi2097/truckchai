@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\TruckModelCategory;
 use Illuminate\Http\Request;
+use App\Models\TruckBrandCategory;
+use App\Models\TruckModelCategory;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class TruckModelCategoryController extends Controller
 {
@@ -15,7 +17,9 @@ class TruckModelCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.truck-model.index', [
+            "truckModelCategories" => TruckModelCategory::with('truckBrandCategory')->paginate(10)
+        ]);
     }
 
     /**
@@ -25,7 +29,9 @@ class TruckModelCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.truck-model.create', [
+            "truckBrandCategories" => TruckBrandCategory::all()
+        ]);
     }
 
     /**
@@ -36,7 +42,24 @@ class TruckModelCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'model' => "required|string|max:100",
+            'truck_brand_category_id' => "exists:truck_brand_categories,id",
+        ]);
+
+        $data = [
+            "model" => $request->model,
+            "truck_brand_category_id" => $request->truck_brand_category_id,
+        ];
+
+        $truckModelCategory = new TruckModelCategory($data);
+
+        if ($truckModelCategory->save()) {
+            Toastr::success("Truck Model Added Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +81,10 @@ class TruckModelCategoryController extends Controller
      */
     public function edit(TruckModelCategory $truckModelCategory)
     {
-        //
+        return view('admin.pages.truck-model.edit', [
+            'truckModelCategory' => $truckModelCategory,
+            'truckBrandCategories' => TruckBrandCategory::all()
+        ]);
     }
 
     /**
@@ -70,7 +96,23 @@ class TruckModelCategoryController extends Controller
      */
     public function update(Request $request, TruckModelCategory $truckModelCategory)
     {
-        //
+        $this->validate($request, [
+            'model' => "required|string|max:100",
+            'truck_brand_category_id' => "exists:truck_brand_categories,id",
+        ]);
+
+        $data = [
+            "model" => $request->model,
+            "truck_brand_category_id" => $request->truck_brand_category_id,
+        ];
+
+        $truckModelCategory->fill($data);
+        if ($truckModelCategory->save()) {
+            Toastr::success("Truck Model Updated Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +123,11 @@ class TruckModelCategoryController extends Controller
      */
     public function destroy(TruckModelCategory $truckModelCategory)
     {
-        //
+        if ($truckModelCategory->delete()) {
+            Toastr::success("Truck Model Deleted Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 }

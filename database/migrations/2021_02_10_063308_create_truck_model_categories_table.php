@@ -15,7 +15,7 @@ class CreateTruckModelCategoriesTable extends Migration
     {
         Schema::create('truck_model_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("truck_brand_id")->constrained("truck_brand_categories", "id")->onDelete("cascade");
+            $table->foreignId("truck_brand_category_id")->constrained("truck_brand_categories", "id")->onDelete("cascade");
             $table->string("model");
             $table->softDeletes();
             $table->timestamps();

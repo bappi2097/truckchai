@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TruckCoveredCategory;
-use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class TruckCoveredCategoryController extends Controller
 {
@@ -15,7 +16,9 @@ class TruckCoveredCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.truck-covered.index', [
+            "truckCoveredCategories" => TruckCoveredCategory::paginate(10)
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TruckCoveredCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.truck-covered.create');
     }
 
     /**
@@ -36,7 +39,22 @@ class TruckCoveredCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+
+        $truckCoveredCategory = new TruckCoveredCategory($data);
+
+        if ($truckCoveredCategory->save()) {
+            Toastr::success("Truck Covered Added Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +76,9 @@ class TruckCoveredCategoryController extends Controller
      */
     public function edit(TruckCoveredCategory $truckCoveredCategory)
     {
-        //
+        return view("admin.pages.truck-covered.edit", [
+            "truckCoveredCategory" => $truckCoveredCategory
+        ]);
     }
 
     /**
@@ -70,7 +90,21 @@ class TruckCoveredCategoryController extends Controller
      */
     public function update(Request $request, TruckCoveredCategory $truckCoveredCategory)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+        $truckCoveredCategory->fill($data);
+
+        if ($truckCoveredCategory->save()) {
+            Toastr::success("Truck Covered Updated Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +115,11 @@ class TruckCoveredCategoryController extends Controller
      */
     public function destroy(TruckCoveredCategory $truckCoveredCategory)
     {
-        //
+        if ($truckCoveredCategory->delete()) {
+            Toastr::success("Truck Covered Deleted Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 }

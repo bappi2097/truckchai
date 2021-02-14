@@ -9,11 +9,11 @@ class TruckModelCategory extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "truck_brand_id", "model"
+        "truck_brand_category_id", "model"
     ];
     public function truckBrandCategory()
     {
-        return $this->belongsTo(TruckBrandCategory::class, "truck_brand_id");
+        return $this->belongsTo(TruckBrandCategory::class, "truck_brand_category_id");
     }
     public function truckCategories()
     {

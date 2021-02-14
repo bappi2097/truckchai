@@ -124,7 +124,7 @@ class AuthController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->hasRole('admin')) {
-            Toastr::success('Welcome TO Dashboard', 'Welcome');
+            Toastr::success('Welcome To Dashboard', 'Welcome');
             return redirect()->intended(route("admin.dashboard"));
         }
     }

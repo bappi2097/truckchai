@@ -1,5 +1,6 @@
 @extends('admin.layout.app')
 @section('content')
+<a href="{{route('admin.language.index')}}" class="btn btn-white"> &lt; Back</a>
 <div class="bg-white p-20 col-12 m-t-30">
     <form action="{{route('admin.language.update', $language->id)}}" method="POST" enctype="multipart/form-data">
         @csrf

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\TruckBrandCategory;
 use Illuminate\Http\Request;
+use App\Models\TruckBrandCategory;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class TruckBrandCategoryController extends Controller
 {
@@ -15,7 +16,9 @@ class TruckBrandCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.truck-brand.index', [
+            "truckBrandCategories" => TruckBrandCategory::paginate(10)
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TruckBrandCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.truck-brand.create');
     }
 
     /**
@@ -36,7 +39,22 @@ class TruckBrandCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+
+        $truckBrandCategory = new TruckBrandCategory($data);
+
+        if ($truckBrandCategory->save()) {
+            Toastr::success("Truck Brand Added Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +76,9 @@ class TruckBrandCategoryController extends Controller
      */
     public function edit(TruckBrandCategory $truckBrandCategory)
     {
-        //
+        return view("admin.pages.truck-brand.edit", [
+            "truckBrandCategory" => $truckBrandCategory
+        ]);
     }
 
     /**
@@ -70,7 +90,21 @@ class TruckBrandCategoryController extends Controller
      */
     public function update(Request $request, TruckBrandCategory $truckBrandCategory)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|string|max:100",
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+        $truckBrandCategory->fill($data);
+
+        if ($truckBrandCategory->save()) {
+            Toastr::success("Truck Brand Updated Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +115,11 @@ class TruckBrandCategoryController extends Controller
      */
     public function destroy(TruckBrandCategory $truckBrandCategory)
     {
-        //
+        if ($truckBrandCategory->delete()) {
+            Toastr::success("Truck Brand Deleted Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 }

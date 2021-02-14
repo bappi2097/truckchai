@@ -62,6 +62,15 @@ Route::group(
             Route::post('logout',  [\App\Http\Controllers\backend\AuthController::class, 'logout'])->name('logout');
             Route::get('dashboard', [\App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
 
+            Route::group(['prefix' => 'truck-category', 'as' => 'truck-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckCategory}', [\App\Http\Controllers\backend\TruckCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckCategory}', [\App\Http\Controllers\backend\TruckCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckCategory}', [\App\Http\Controllers\backend\TruckCategoryController::class, 'destroy'])->name('destroy');
+            });
+
             Route::group(['prefix' => 'truck-size-category', 'as' => 'truck-size-category.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'index'])->name('index');
                 Route::get('/create', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'create'])->name('create');
@@ -70,7 +79,6 @@ Route::group(
                 Route::put('/{truckSizeCategory}', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'update'])->name('update');
                 Route::delete('/{truckSizeCategory}', [\App\Http\Controllers\backend\TruckSizeCategoryController::class, 'destroy'])->name('destroy');
             });
-
 
             Route::group(['prefix' => 'truck-weight-category', 'as' => 'truck-weight-category.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckWeightCategoryController::class, 'index'])->name('index');

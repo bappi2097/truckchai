@@ -19,6 +19,7 @@ class CreateTruckCategoriesTable extends Migration
             $table->foreignId("truck_covered_category_id")->constrained("truck_covered_categories")->onDelete("cascade");
             $table->foreignId("truck_size_category_id")->constrained("truck_size_categories")->onDelete("cascade");
             $table->foreignId("truck_weight_category_id")->constrained("truck_weight_categories")->onDelete("cascade");
+            $table->text("description")->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

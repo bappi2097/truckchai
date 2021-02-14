@@ -65,7 +65,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="{{active('admin.truck-category.index')}}">
-                        <a href="{{route('admin.truck-size-category.index')}}">Category List</a>
+                        <a href="{{route('admin.truck-category.index')}}">Category List</a>
                     </li>
                     <li class="{{active('admin.truck-size-category.index')}}">
                         <a href="{{route('admin.truck-size-category.index')}}">Truck Size</a>

@@ -37,18 +37,18 @@
                 </a>
             </li>
             <li class="nav-header">User Category</li>
-            <li class="has-sub">
+            <li class="has-sub {{set_active('admin/user*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
                     <i class="fa fa-th-large"></i>
                     <span>Users</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="">
-                        <a href="">Admin</a>
+                    <li class="{{active('admin.user.admins.index')}}">
+                        <a href="{{route('admin.user.admins.index')}}">Admin</a>
                     </li>
-                    <li class="">
-                        <a href="">Customer</a>
+                    <li class="{{active('admin.user.customer.index')}}">
+                        <a href="{{route('admin.user.customer.index')}}">Customer</a>
                     </li>
                     <li class="">
                         <a href="">Company</a>
@@ -84,6 +84,7 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-header">Language</li>
             <li class="{{active('admin.language.index')}}">
                 <a href="{{route('admin.language.index')}}">
                     <i class="fa fa-th-large"></i>

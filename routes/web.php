@@ -61,6 +61,29 @@ Route::group(
 
             Route::post('logout',  [\App\Http\Controllers\backend\AuthController::class, 'logout'])->name('logout');
             Route::get('dashboard', [\App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
+            Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+
+                Route::group(['prefix' => 'admins', 'as' => 'admins.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\AdminsController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\AdminsController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\AdminsController::class, 'store'])->name('store');
+                    Route::get('/edit/{user}', [\App\Http\Controllers\backend\AdminsController::class, 'edit'])->name('edit');
+                    Route::put('/{user}', [\App\Http\Controllers\backend\AdminsController::class, 'update'])->name('update');
+                    Route::put('/change-password/{user}', [\App\Http\Controllers\backend\AdminsController::class, 'changePassword'])->name('change-password');
+                    Route::delete('/{user}', [\App\Http\Controllers\backend\AdminsController::class, 'destroy'])->name('destroy');
+                });
+
+                Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\CustomerController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\CustomerController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\CustomerController::class, 'store'])->name('store');
+                    Route::get('/edit/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'edit'])->name('edit');
+                    Route::put('/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'update'])->name('update');
+                    Route::put('/change-password/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'changePassword'])->name('change-password');
+                    Route::delete('/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'destroy'])->name('destroy');
+                });
+            });
+
 
             Route::group(['prefix' => 'truck-category', 'as' => 'truck-category.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckCategoryController::class, 'index'])->name('index');

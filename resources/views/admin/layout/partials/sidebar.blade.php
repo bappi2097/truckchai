@@ -50,8 +50,19 @@
                     <li class="{{active('admin.user.customer.index')}}">
                         <a href="{{route('admin.user.customer.index')}}">Customer</a>
                     </li>
-                    <li class="">
-                        <a href="">Company</a>
+                    <li class="has-sub {{set_active('admin/user/customer*')}}">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <span>Company</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="{{active('admin.user.company.index')}}">
+                                <a href="{{route('admin.user.company.index')}}">Company Details</a>
+                            </li>
+                            <li class="{{active('admin.user.company-type.index')}}">
+                                <a href="{{route('admin.user.company-type.index')}}">Company Type</a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>

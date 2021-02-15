@@ -82,6 +82,25 @@ Route::group(
                     Route::put('/change-password/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'changePassword'])->name('change-password');
                     Route::delete('/{user}', [\App\Http\Controllers\backend\CustomerController::class, 'destroy'])->name('destroy');
                 });
+
+                Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\CompanyController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\CompanyController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\CompanyController::class, 'store'])->name('store');
+                    Route::get('/edit/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'edit'])->name('edit');
+                    Route::put('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'update'])->name('update');
+                    Route::put('/change-password/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'changePassword'])->name('change-password');
+                    Route::delete('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'destroy'])->name('destroy');
+                });
+
+                Route::group(['prefix' => 'company-type', 'as' => 'company-type.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\CompanyTypeController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\CompanyTypeController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\CompanyTypeController::class, 'store'])->name('store');
+                    Route::get('/edit/{companyType}', [\App\Http\Controllers\backend\CompanyTypeController::class, 'edit'])->name('edit');
+                    Route::put('/{companyType}', [\App\Http\Controllers\backend\CompanyTypeController::class, 'update'])->name('update');
+                    Route::delete('/{companyType}', [\App\Http\Controllers\backend\CompanyTypeController::class, 'destroy'])->name('destroy');
+                });
             });
 
 

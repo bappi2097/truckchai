@@ -13,6 +13,9 @@
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="John Doe"
                             value="{{$user->name}}">
+                        @error('name')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -20,6 +23,9 @@
                         <label for="email">Email Address</label>
                         <input type="eamil" class="form-control" name="email" id="email" placeholder="john.doe@mail.com"
                             value="{{$user->email}}">
+                        @error('email')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -30,6 +36,9 @@
                         <label for="mobile_no">Mobile No</label>
                         <input type="text" class="form-control" name="mobile_no" id="mobile_no"
                             placeholder="+97XXXXXXXX" value="{{$user->mobile_no}}">
+                        @error('mobile_no')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -37,12 +46,18 @@
                         <label for="whatsapp_no">WhatsApp No</label>
                         <input type="text" class="form-control" name="whatsapp_no" id="whatsapp_no"
                             placeholder="+97XXXXXXXX" value="{{$user->admin->whatsapp_no}}">
+                        @error('whatsapp_no')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="image">Image (<span class="text-warning">Optional</span>)</label>
                 <input type="file" class="form-control" name="image" id="image" accept="images/*">
+                @error('image')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <div class="d-flex align-items-center">
@@ -51,6 +66,9 @@
                         <input type="checkbox" name="is_super_admin" id="is_super_admin"
                             {{$user->admin->is_super_admin==1 ? 'checked' : ''}} value="1">
                         <label for="is_super_admin"></label>
+                        @error('is_super_admin')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -58,6 +76,9 @@
                 <label for="address">Address</label>
                 <input type="text" class="form-control" name="address" id="address" placeholder="24/B Baker Street"
                     value="{{$user->admin->address}}">
+                @error('address')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>
@@ -75,6 +96,9 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" placeholder="*******">
+                        @error('password')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -82,6 +106,9 @@
                         <label for="password_confirmation">Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation"
                             id="password_confirmation" placeholder="*******">
+                        @error('password_confirmation')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
             </div>

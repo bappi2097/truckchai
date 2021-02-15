@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\CompanyDetail;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -15,7 +18,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.company.index', [
+            "companies" => User::role('company')->with("company")->get(),
+        ]);
     }
 
     /**
@@ -25,7 +30,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.company.create');
     }
 
     /**
@@ -36,7 +41,43 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string|max:255",
+            "email" => "required|email|unique:users,email",
+            "mobile_no" => "required|string|max:25",
+            "password" => "required|string|min:8|max:25|confirmed",
+            "image" => "nullable|file",
+            "address" => "required|string",
+        ]);
+        $user = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "mobile_no" => $request->mobile_no,
+            "password" => bcrypt($request->password),
+        ];
+        $user = new User($user);
+        if ($user->save()) {
+            if ($request->hasFile('image')) {
+                $image = Storage::disk("local")->put("images\\company", $request->image);
+            }
+            $userDetails = [
+                "uuid" => $user->id + 10000,
+                "address" => $request->address ?: "",
+                "image" => $image ?: "",
+            ];
+
+
+            if ($user->company()->save(new CompanyDetail($userDetails))) {
+                $user->assignRole("admin");
+                Toastr::success('Successfully company Added', "Success");
+            } else {
+                $user->delete();
+                Toastr::error('Something Went Wrong!', "Error");
+            }
+        } else {
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +99,9 @@ class CompanyController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.pages.company.edit', [
+            "user" => $user
+        ]);
     }
 
     /**
@@ -70,7 +113,43 @@ class CompanyController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string|max:255",
+            "email" => "required|email|unique:users,email," . $user->id,
+            "mobile_no" => "required|string|max:25",
+            "image" => "nullable|file",
+            "address" => "required|string",
+        ]);
+        $userData = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "mobile_no" => $request->mobile_no,
+        ];
+        $user->fill($userData);
+
+        if ($user->save()) {
+            $userDetails = [
+                "address" => $request->address ?: "",
+            ];
+            if ($request->hasFile('image')) {
+                if (Storage::disk("local")->exists($user->company->image)) {
+                    Storage::disk("local")->delete($user->company->image);
+                }
+                $userDetails['image'] = Storage::disk("local")->put("images\\company", $request->image);
+            }
+
+            if ($user->company()->update($userDetails)) {
+                $user->assignRole("admin");
+                Toastr::success('Successfully company Added', "Success");
+            } else {
+
+                Toastr::error('Something Went Wrong!', "Error");
+            }
+        } else {
+
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +160,33 @@ class CompanyController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if (Storage::disk("local")->exists($user->company->image)) {
+            Storage::disk("local")->delete($user->company->image);
+        }
+        if ($user->company()->delete() && $user->delete()) {
+            Toastr::success('Successfully company Deleted', "Success");
+        } else {
+
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return redirect()->back();
+    }
+
+    public function changePassword(Request $request, User $user)
+    {
+        $this->validate($request, [
+            "password" => "required|confirmed",
+        ]);
+        $password = [
+            "password" => bcrypt($request->password),
+        ];
+        $user->fill($password);
+        if ($user->save()) {
+            Toastr::success('Successfully Password Changed', "Success");
+        } else {
+
+            Toastr::error('Something Went Wrong!', "Error");
+        }
+        return redirect()->back();
     }
 }

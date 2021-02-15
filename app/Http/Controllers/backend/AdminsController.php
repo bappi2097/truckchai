@@ -131,6 +131,7 @@ class AdminsController extends Controller
             "email" => $request->email,
             "mobile_no" => $request->mobile_no,
         ];
+
         $user->fill($userData);
 
         if ($user->save()) {
@@ -174,7 +175,6 @@ class AdminsController extends Controller
         if ($user->admin()->delete() && $user->delete()) {
             Toastr::success('Successfully Admin Deleted', "Success");
         } else {
-
             Toastr::error('Something Went Wrong!', "Error");
         }
         return redirect()->back();
@@ -185,14 +185,16 @@ class AdminsController extends Controller
         $this->validate($request, [
             "password" => "required|confirmed",
         ]);
+
         $password = [
             "password" => bcrypt($request->password),
         ];
+
         $user->fill($password);
+
         if ($user->save()) {
             Toastr::success('Successfully Password Changed', "Success");
         } else {
-
             Toastr::error('Something Went Wrong!', "Error");
         }
         return redirect()->back();

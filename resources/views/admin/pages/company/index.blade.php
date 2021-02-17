@@ -7,10 +7,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>User ID</th>
+                    <th>Company ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Mobile No</th>
+                    <th>Image</th>
                     <th width="1%">Action</th>
                 </tr>
             </thead>
@@ -22,6 +23,9 @@
                     <td>{{$company->name}}</td>
                     <td>{{$company->email}}</td>
                     <td>{{$company->mobile_no}}</td>
+                    <td class="with-img">
+                        <img src="{{asset($company->company->image)}}" class="img-rounded height-30">
+                    </td>
                     <td class="with-btn" nowrap="">
                         <a href="{{route('admin.user.company.edit', $company->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>

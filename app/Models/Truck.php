@@ -14,7 +14,7 @@ class Truck extends Model
 
     public function company()
     {
-        return $this->belongsTo(CompanyDetail::class, "company_id");
+        return $this->belongsTo(CompanyDetail::class, "company_detail_id");
     }
 
     public function truckCategory()

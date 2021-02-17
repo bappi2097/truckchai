@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\User;
+use App\Models\CompanyType;
 use Illuminate\Http\Request;
 use App\Models\CompanyDetail;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.company.create');
+        return view('admin.pages.company.create', [
+            "companyTypes" => CompanyType::all()
+        ]);
     }
 
     /**
@@ -48,6 +51,8 @@ class CompanyController extends Controller
             "password" => "required|string|min:8|max:25|confirmed",
             "image" => "nullable|file",
             "address" => "required|string",
+            "account_name" => "required|string|unique:company_details,account_name",
+            'company_type_id' => "exists:company_types,id",
         ]);
         $user = [
             "name" => $request->name,
@@ -64,11 +69,13 @@ class CompanyController extends Controller
                 "uuid" => $user->id + 10000,
                 "address" => $request->address ?: "",
                 "image" => $image ?: "",
+                "account_name" => $request->account_name,
+                "company_type_id" => $request->company_type_id,
             ];
 
 
             if ($user->company()->save(new CompanyDetail($userDetails))) {
-                $user->assignRole("admin");
+                $user->assignRole("company");
                 Toastr::success('Successfully company Added', "Success");
             } else {
                 $user->delete();
@@ -100,7 +107,8 @@ class CompanyController extends Controller
     public function edit(User $user)
     {
         return view('admin.pages.company.edit', [
-            "user" => $user
+            "user" => $user,
+            "companyTypes" => CompanyType::all()
         ]);
     }
 
@@ -119,6 +127,7 @@ class CompanyController extends Controller
             "mobile_no" => "required|string|max:25",
             "image" => "nullable|file",
             "address" => "required|string",
+            "account_name" => "required|string|unique:company_details,account_name," . $user->company->id,
         ]);
         $userData = [
             "name" => $request->name,
@@ -130,6 +139,8 @@ class CompanyController extends Controller
         if ($user->save()) {
             $userDetails = [
                 "address" => $request->address ?: "",
+                "account_name" => $request->account_name,
+                "company_type_id" => $request->company_type_id,
             ];
             if ($request->hasFile('image')) {
                 if (Storage::disk("local")->exists($user->company->image)) {
@@ -139,7 +150,7 @@ class CompanyController extends Controller
             }
 
             if ($user->company()->update($userDetails)) {
-                $user->assignRole("admin");
+                $user->assignRole("company");
                 Toastr::success('Successfully company Added', "Success");
             } else {
 

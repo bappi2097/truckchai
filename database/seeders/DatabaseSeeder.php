@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LanguageSeeder::class,
             AdminSeeder::class,
             TestSeeder::class,
+            CompanyTypeSeeder::class,
         ]);
     }
 }

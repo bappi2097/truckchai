@@ -78,7 +78,9 @@ class CompanyTypeController extends Controller
      */
     public function edit(CompanyType $companyType)
     {
-        //
+        return view('admin.pages.company-type.edit', [
+            "companyType" => $companyType
+        ]);
     }
 
     /**
@@ -90,7 +92,24 @@ class CompanyTypeController extends Controller
      */
     public function update(Request $request, CompanyType $companyType)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string|max:255",
+            "description" => "required|string",
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+
+        $companyType->fill($data);
+
+        if ($companyType->save()) {
+            Toastr::success("Successfully Company Type Updated", "Success");
+        } else {
+            Toastr::error("Something Went Worng!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -101,6 +120,11 @@ class CompanyTypeController extends Controller
      */
     public function destroy(CompanyType $companyType)
     {
-        //
+        if ($companyType->delete()) {
+            Toastr::success("Successfully Company Type Deleted", "Success");
+        } else {
+            Toastr::error("Something Went Worng!", "Error");
+        }
+        return redirect()->back();
     }
 }

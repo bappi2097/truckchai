@@ -1,22 +1,21 @@
 @extends('admin.layout.app')
 @section('content')
-<a href="{{route('admin.truck-size-category.index')}}" class="btn btn-white"> &lt; Back</a>
+<a href="{{route('admin.user.company-type.index')}}" class="btn btn-white"> &lt; Back</a>
 <div class="bg-white p-20 col-12 m-t-30">
-    <form action="{{route('admin.truck-size-category.update', $truckSizeCategory->id)}}" method="POST"
-        enctype="multipart/form-data">
+    <form action="{{route('admin.user.company-type.update', $companyType->id)}}" method="POST">
         @csrf
         @method('PUT')
         <fieldset>
-            <legend class="m-b-15">Edit Truck Size Category</legend>
+            <legend class="m-b-15">Edit Company Type</legend>
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Twelve Ton"
-                    value="{{$truckSizeCategory->name}}">
+                    value="{{$companyType->name}}">
             </div>
             <div class="form-group">
-                <label for="size">Size (Feet)</label>
-                <input type="number" class="form-control" name="size" id="size" placeholder="12" min="1"
-                    value="{{$truckSizeCategory->size}}">
+                <label for="description">Description (<span class="text-warning">Optional</span>)</label>
+                <textarea name="description" id="description" cols="30" rows="5"
+                    class="form-control">{{$companyType->description}}</textarea>
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>

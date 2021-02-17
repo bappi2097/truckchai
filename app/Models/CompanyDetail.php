@@ -10,7 +10,7 @@ class CompanyDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        "user_id", "company_type_id", "uuid", "address", "image", "account_name",
+        "user_id", "company_type_id", "uuid", "address", "image", "account_name", 'account_name',
     ];
 
     public function user()
@@ -25,7 +25,7 @@ class CompanyDetail extends Model
 
     public function trucks()
     {
-        return $this->hasMany(Truck::class, "company_id");
+        return $this->hasMany(Truck::class, "truck_id");
     }
 
     public function tripBids()

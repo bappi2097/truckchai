@@ -9,6 +9,7 @@ use App\Models\TruckModelCategory;
 use App\Models\TruckWeightCategory;
 use App\Http\Controllers\Controller;
 use App\Models\TruckCoveredCategory;
+use App\Models\TruckTripCategory;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TruckCategoryController extends Controller
@@ -37,6 +38,7 @@ class TruckCategoryController extends Controller
             "truckCoveredCategories" => TruckCoveredCategory::all(),
             "truckSizeCategories" => TruckSizeCategory::all(),
             "truckWeightCategories" => TruckWeightCategory::all(),
+            "truckTripCategories" => TruckTripCategory::all(),
         ]);
     }
 
@@ -48,13 +50,17 @@ class TruckCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'description' => "nullable|string",
             'truck_model_category_id' => "exists:truck_model_categories,id",
             'truck_weight_category_id' => "exists:truck_weight_categories,id",
             'truck_size_category_id' => "exists:truck_size_categories,id",
             'truck_covered_category_id' => "exists:truck_covered_categories,id",
+            'truck_trip_category_id' => "required|array",
         ]);
+
+        // dd($request->all());
 
         $data = [
             "description" => $request->description ?: "",
@@ -65,8 +71,11 @@ class TruckCategoryController extends Controller
         ];
 
         $truckCategory = new TruckCategory($data);
+        // dd($truckCategory->truckTripCategories());
+        // dd($request->truck_trip_category_id);
 
         if ($truckCategory->save()) {
+            $truckCategory->truckTripCategories()->sync($request->truck_trip_category_id);
             Toastr::success("Truck Added Successfully", "Success");
         } else {
             Toastr::error("Something Went Wrong!", "Error");
@@ -98,6 +107,7 @@ class TruckCategoryController extends Controller
             "truckModelCategories" => TruckModelCategory::all(),
             "truckCoveredCategories" => TruckCoveredCategory::all(),
             "truckSizeCategories" => TruckSizeCategory::all(),
+            "truckTripCategories" => TruckTripCategory::all(),
             "truckWeightCategories" => TruckWeightCategory::all(),
         ]);
     }
@@ -117,6 +127,7 @@ class TruckCategoryController extends Controller
             'truck_weight_category_id' => "exists:truck_weight_categories,id",
             'truck_size_category_id' => "exists:truck_size_categories,id",
             'truck_covered_category_id' => "exists:truck_covered_categories,id",
+            'truck_trip_category_id' => "required|array",
         ]);
 
         $data = [
@@ -128,8 +139,8 @@ class TruckCategoryController extends Controller
         ];
 
         $truckCategory->fill($data);
-
         if ($truckCategory->save()) {
+            $truckCategory->truckTripCategories()->sync($request->truck_trip_category_id);
             Toastr::success("Truck Updated Successfully", "Success");
         } else {
             Toastr::error("Something Went Wrong!", "Error");
@@ -145,6 +156,7 @@ class TruckCategoryController extends Controller
      */
     public function destroy(TruckCategory $truckCategory)
     {
+        dd($truckCategory->truckTripCategories());
         if ($truckCategory->delete()) {
             Toastr::success("Truck Deleted Successfully", "Success");
         } else {

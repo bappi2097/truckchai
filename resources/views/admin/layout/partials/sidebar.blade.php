@@ -93,6 +93,9 @@
                     <li class="{{active('admin.truck-model-category.index')}}">
                         <a href="{{route('admin.truck-model-category.index')}}">Truck Model</a>
                     </li>
+                    <li class="{{active('admin.truck-trip-category.index')}}">
+                        <a href="{{route('admin.truck-trip-category.index')}}">Truck Trip</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-header">Language</li>

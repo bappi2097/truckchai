@@ -14,6 +14,6 @@ class TruckTripCategory extends Model
 
     public function truckCategories()
     {
-        return $this->hasMany(TruckCategory::class);
+        return $this->belongsToMany(TruckCategory::class);
     }
 }

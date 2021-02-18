@@ -9,25 +9,26 @@ class Truck extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "company_id", "truck_category_id", "truck_no", "license", "image"
+        "truck_category_id", "truck_no", "license", "image",
     ];
 
     public function company()
     {
-        return $this->belongsTo(CompanyDetail::class, "company_detail_id");
+        return $this->belongsToMany(CompanyDetail::class);
     }
 
     public function truckCategory()
     {
-        return $this->hasOne(TruckCategory::class, "truck_category_id");
+        return $this->belongsTo(TruckCategory::class);
+    }
+
+    public function tripBid()
+    {
+        return $this->belongsToMany(TripBid::class, "truck_id");
     }
 
     public function driver()
     {
         return $this->belongsTo(DriverDetail::class, "truck_id");
-    }
-    public function tripBid()
-    {
-        return $this->belongsToMany(TripBid::class, "truck_id");
     }
 }

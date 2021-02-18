@@ -43,5 +43,9 @@ function dashboardURL()
 
 function selected($data1, $data2)
 {
-    return $data1 == $data2 ? 'selected' : '';
+    if (!is_array($data2)) {
+        return $data1 == $data2 ? 'selected' : '';
+    } else {
+        return in_array($data1, $data2) ? 'selected' : '';
+    }
 }

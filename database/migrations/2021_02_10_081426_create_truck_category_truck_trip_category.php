@@ -16,7 +16,8 @@ class CreateTruckCategoryTruckTripCategory extends Migration
         Schema::create('truck_category_truck_trip_category', function (Blueprint $table) {
             $table->id();
             $table->foreignId("truck_category_id")->constrained("truck_categories")->onDelete("cascade");
-            $table->foreignId("truck_trip_category_id");
+            $table->unsignedBigInteger("truck_trip_category_id");
+            $table->foreign('truck_trip_category_id', "truck_category_truck_trip_category_trip_id")->references("id")->on("truck_trip_categories")->onDelete("cascade");
             $table->softDeletes();
             $table->timestamps();
         });

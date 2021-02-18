@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\TruckTripCategory;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TruckTripCategoryController extends Controller
@@ -15,7 +16,9 @@ class TruckTripCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.pages.truck-trip.index", [
+            "truckTripCategories" => TruckTripCategory::all(),
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TruckTripCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.pages.truck-trip.create");
     }
 
     /**
@@ -36,7 +39,22 @@ class TruckTripCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string|max:100|unique:truck_trip_categories,name",
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+
+        $truckTripCategory = new TruckTripCategory($data);
+
+        if ($truckTripCategory->save()) {
+            Toastr::success("Truck Trip Added Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +76,9 @@ class TruckTripCategoryController extends Controller
      */
     public function edit(TruckTripCategory $truckTripCategory)
     {
-        //
+        return view("admin.pages.truck-trip.edit", [
+            "truckTripCategory" => $truckTripCategory
+        ]);
     }
 
     /**
@@ -70,7 +90,22 @@ class TruckTripCategoryController extends Controller
      */
     public function update(Request $request, TruckTripCategory $truckTripCategory)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|string|max:100|unique:truck_trip_categories,name," . $truckTripCategory->id,
+        ]);
+
+        $data = [
+            "name" => $request->name,
+        ];
+
+        $truckTripCategory->fill($data);
+
+        if ($truckTripCategory->save()) {
+            Toastr::success("Truck Trip Updated Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +116,11 @@ class TruckTripCategoryController extends Controller
      */
     public function destroy(TruckTripCategory $truckTripCategory)
     {
-        //
+        if ($truckTripCategory->delete()) {
+            Toastr::success("Truck Trip Deleted Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong!", "Error");
+        }
+        return redirect()->back();
     }
 }

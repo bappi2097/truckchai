@@ -15,11 +15,11 @@ class CreateTrucksTable extends Migration
     {
         Schema::create('trucks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("company_id")->constrained("company_details");
             $table->foreignId("truck_category_id")->constrained("truck_categories");
             $table->string("truck_no");
             $table->string("license");
             $table->string("image");
+            $table->tinyInteger("is_valid")->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

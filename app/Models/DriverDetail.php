@@ -9,17 +9,12 @@ class DriverDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "user_id", "company_id", "uuid", "address", "image", "nid", "license"
+        "user_id", "uuid", "address", "image", "nid", "license", "truck_id"
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, "user_id");
-    }
-
-    public function company()
-    {
-        return $this->belongsTo(CompanyDetail::class, "company_id");
     }
 
     public function truck()

@@ -91,6 +91,15 @@ Route::group(
                     Route::put('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'update'])->name('update');
                     Route::put('/change-password/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'changePassword'])->name('change-password');
                     Route::delete('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'destroy'])->name('destroy');
+
+                    Route::group(['prefix' => 'truck', 'as' => 'truck.'], function () {
+                        Route::get('/{company}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'index'])->name('index');
+                        Route::get('/create/{company}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'create'])->name('create');
+                        Route::post('/{company}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'store'])->name('store');
+                        Route::get('/edit/{company}/{truck}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'edit'])->name('edit');
+                        Route::put('/{company}/{truck}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'update'])->name('update');
+                        Route::delete('/{company}/{truck}', [\App\Http\Controllers\backend\CompanyTruckController::class, 'destroy'])->name('destroy');
+                    });
                 });
 
                 Route::group(['prefix' => 'company-type', 'as' => 'company-type.'], function () {
@@ -167,6 +176,15 @@ Route::group(
                 Route::get('/edit/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'edit'])->name('edit');
                 Route::put('/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'update'])->name('update');
                 Route::delete('/{truckModelCategory}', [\App\Http\Controllers\backend\TruckModelCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::group(['prefix' => 'truck-trip-category', 'as' => 'truck-trip-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'update'])->name('update');
+                Route::delete('/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'destroy'])->name('destroy');
             });
         });
     }

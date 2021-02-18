@@ -60,6 +60,19 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="trip">Trip</label>
+                <select name="truck_trip_category_id[]" id="trip" class="form-control" multiple>
+                    @foreach ($truckTripCategories as $item)
+                    <option value="{{$item->id}}"
+                        {{selected($item->id, $truckCategory->truckTripCategories->pluck("id")->all())}}>
+                        {{$item->name}}</option>
+                    @endforeach
+                </select>
+                @error('truck_trip_category_id')
+                <span>{{$message}}</span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="description">Description (<span class="text-warning">Optional</span>)</label>
                 <textarea name="description" id="description" cols="30" rows="5"
                     class="form-control">{{$truckCategory->description}}</textarea>

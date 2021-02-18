@@ -52,7 +52,7 @@ class TruckSizeCategoryController extends Controller
         $truckSize = new TruckSizeCategory($data);
 
         if ($truckSize->save()) {
-            Toastr::success("Truck SIze Added Successfully", "Success");
+            Toastr::success("Truck Size Added Successfully", "Success");
         } else {
             Toastr::error("Something Went Wrong!", "Error");
         }
@@ -105,7 +105,7 @@ class TruckSizeCategoryController extends Controller
         $truckSizeCategory->fill($data);
 
         if ($truckSizeCategory->save()) {
-            Toastr::success("Truck SIze Updated Successfully", "Success");
+            Toastr::success("Truck Size Updated Successfully", "Success");
         } else {
             Toastr::error("Something Went Wrong!", "Error");
         }

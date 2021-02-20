@@ -45,7 +45,17 @@ Route::group(
 
 
         Route::group(["as" => "customer.", "prefix" => "customer", "middleware" => ["auth", "role:customer"]], function () {
-            Route::get("dashboard", [\App\Http\Controllers\Frontend\User\DashboardController::class, "index"])->name('dashboard');
+            Route::get("dashboard", [\App\Http\Controllers\Frontend\Customer\DashboardController::class, "index"])->name('dashboard');
+
+            Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "showProfile"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "updateProfile"])->name('update');
+            });
+
+            Route::group(['prefix' => 'change-password', 'as' => 'change-password.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Customer\ChangePasswordController::class, "show"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Customer\ChangePasswordController::class, "update"])->name('update');
+            });
         });
     }
 );

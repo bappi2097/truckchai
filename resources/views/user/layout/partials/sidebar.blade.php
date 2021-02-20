@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-12 dashboard-sidebar">
+<div class="col-md-2 col-sm-12 dashboard-sidebar">
     <div class="mr-1 shadow-lg">
         <div class="px-2 py-3 bg-purple-300 d-flex align-items-center">
             <div class="mx-2 sidebar-user-img-div">
@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="./profile.html">
+                    <a class="sidebar-link" href="{{route('customer.my-profile.show')}}">
                         <span class="sidebar-icon">
                             <i class="icon-user"></i>
                         </span>
@@ -121,6 +121,17 @@
                             <i class="icon-ticket"></i>
                         </span>
                         <span class="sidebar-link-name"> Cuppon </span>
+                        <span class="ml-auto nav-rtl icon-right">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a class="sidebar-link" href="{{route('customer.change-password.show')}}">
+                        <span class="sidebar-icon">
+                            <i class="icon-key"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Change Password </span>
                         <span class="ml-auto nav-rtl icon-right">
                             <i class="icon-chevron-right"></i>
                         </span>

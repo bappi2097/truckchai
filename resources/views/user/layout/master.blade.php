@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link href="{{asset('css/toastr.css')}}" rel="stylesheet" />
     @if (isPageRTL())
     <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
     @endif
@@ -22,10 +22,10 @@
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
-    {{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> --}}
     <script src="{{asset('js/frontend.js')}}"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{asset('js/toastr.js')}}"></script>
     {!! Toastr::message() !!}
+    @stack('script')
 </body>
 
 </html>

@@ -12,7 +12,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous" />
     <link href="{{ asset('assets/css/default/app.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     @stack('style')
+    <style>
+        #myTable {
+            margin-top: 100px;
+        }
+
+        .p-3 {
+            padding: 16px !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,6 +34,7 @@
     <script src="{{asset('js/toastr.js')}}"></script>
     {!! Toastr::message() !!}
     @stack('script')
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 </body>
 
 

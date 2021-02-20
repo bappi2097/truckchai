@@ -19,7 +19,7 @@ class CustomerController extends Controller
     public function index()
     {
         return view('admin.pages.customer.index', [
-            "customers" => User::role('customer')->get(),
+            "customers" => User::role('customer')->with("customer")->get(),
         ]);
     }
 

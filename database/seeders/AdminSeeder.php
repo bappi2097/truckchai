@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CustomerDetail;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -29,5 +30,10 @@ class AdminSeeder extends Seeder
             "password" => bcrypt("admin123"),
         ]);
         $user->assignRole('customer');
+        $user->customer()->save(new CustomerDetail([
+            "uuid" => 10005,
+            "address" => "jfkhdskjfsd",
+            "image" => "",
+        ]));
     }
 }

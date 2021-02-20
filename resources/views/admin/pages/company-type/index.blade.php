@@ -1,9 +1,9 @@
 @extends('admin.layout.app')
 @section('content')
 <a href="{{route('admin.user.company-type.create')}}" class="btn btn-primary">Add Data</a>
-<div class="col-12">
+<div class="col-12 mt-3 bg-white rounded p-3">
     <div class="table-responsive">
-        <table class="table table-striped m-b-0">
+        <table class="table table-striped m-b-0" id="myTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -39,3 +39,10 @@
     </div>
 </div>
 @endsection
+@push('script')
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+        } );
+</script>
+@endpush

@@ -19,7 +19,7 @@ class DriverController extends Controller
     public function index()
     {
         return view('admin.pages.driver.index', [
-            "drivers" => User::role('driver')->get(),
+            "drivers" => User::role('driver')->with("driver")->get(),
         ]);
     }
 
@@ -197,6 +197,9 @@ class DriverController extends Controller
 
         if (Storage::disk("local")->exists($user->driver->nid)) {
             Storage::disk("local")->delete($user->driver->nid);
+        }
+        if ($user->driver->truck()->exists()) {
+            $user->driver->truck()->delete();
         }
         if ($user->driver()->delete() && $user->delete()) {
             Toastr::success('Successfully Driver Deleted', "Success");

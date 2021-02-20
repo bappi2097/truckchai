@@ -102,6 +102,22 @@ Route::group(
                     });
                 });
 
+                Route::group(['prefix' => 'driver', 'as' => 'driver.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\DriverController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\DriverController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\DriverController::class, 'store'])->name('store');
+                    Route::get('/edit/{user}', [\App\Http\Controllers\backend\DriverController::class, 'edit'])->name('edit');
+                    Route::put('/{user}', [\App\Http\Controllers\backend\DriverController::class, 'update'])->name('update');
+                    Route::put('/change-password/{user}', [\App\Http\Controllers\backend\DriverController::class, 'changePassword'])->name('change-password');
+                    Route::delete('/{user}', [\App\Http\Controllers\backend\DriverController::class, 'destroy'])->name('destroy');
+
+                    Route::group(['prefix' => 'truck', 'as' => 'truck.'], function () {
+                        Route::get('/create/{driver}', [\App\Http\Controllers\backend\DriverTruckController::class, 'create'])->name('create');
+                        Route::post('/{driver}', [\App\Http\Controllers\backend\DriverTruckController::class, 'store'])->name('store');
+                        Route::put('/{driver}/{truck}', [\App\Http\Controllers\backend\DriverTruckController::class, 'update'])->name('update');
+                    });
+                });
+
                 Route::group(['prefix' => 'company-type', 'as' => 'company-type.'], function () {
                     Route::get('/', [\App\Http\Controllers\backend\CompanyTypeController::class, 'index'])->name('index');
                     Route::get('/create', [\App\Http\Controllers\backend\CompanyTypeController::class, 'create'])->name('create');

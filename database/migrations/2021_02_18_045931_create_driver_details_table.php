@@ -16,7 +16,7 @@ class CreateDriverDetailsTable extends Migration
         Schema::create('driver_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained("users", "id")->onDelete("cascade");
-            $table->foreignId("company_id")->constrained("company_details")->onDelete("cascade");
+            $table->foreignId("truck_id")->nullable()->constrained("trucks")->onDelete("cascade");
             $table->uuid("uuid")->from(10000);
             $table->text("address");
             $table->string("license");

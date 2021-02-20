@@ -8,7 +8,7 @@
                         <img src="{{asset('assets/img/user/user-13.jpg')}}" alt="" />
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>Sean Ngu
+                        <b class="caret pull-right"></b>{{auth()->user()->name}}
                         <small>Front end developer</small>
                     </div>
                 </a>
@@ -49,6 +49,9 @@
                     </li>
                     <li class="{{active('admin.user.customer.index')}}">
                         <a href="{{route('admin.user.customer.index')}}">Customer</a>
+                    </li>
+                    <li class="{{active('admin.user.driver.index')}}">
+                        <a href="{{route('admin.user.driver.index')}}">Driver</a>
                     </li>
                     <li class="has-sub {{set_active('admin/user/customer*')}}">
                         <a href="javascript:;">

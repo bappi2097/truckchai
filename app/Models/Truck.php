@@ -29,6 +29,6 @@ class Truck extends Model
 
     public function driver()
     {
-        return $this->belongsTo(DriverDetail::class, "truck_id");
+        return $this->hasOne(DriverDetail::class, "truck_id");
     }
 }

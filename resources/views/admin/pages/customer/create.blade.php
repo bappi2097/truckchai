@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="eamil" class="form-control" name="email" id="email"
+                        <input type="email" class="form-control" name="email" id="email"
                             placeholder="john.doe@mail.com">
                         @error('email')
                         <span class="text-red">{{$message}}</span>

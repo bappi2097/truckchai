@@ -1,5 +1,17 @@
 @extends('user.layout.master')
 
+@push('style')
+<style>
+    .h-100 {
+        height: 100%;
+    }
+
+    .mt-50 {
+        margin-top: auto;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="col-md-10">
     @foreach ($trips as $trip)
@@ -33,5 +45,13 @@
         </div>
     </div>
     @endforeach
+    @if ($trips->isEmpty())
+    <div class="row justify-content-center h-100">
+        <div class="col-md-5 d-flex flex-column  justify-content-center">
+            <h4 class="text-purple text-uppercase text-weight-bold text-center">You Don't Have Any Trip Yet.</h4>
+            <a href="{{route('customer.dashboard')}}" class="btn btn-outline-indigo text-center">Make a Trip</a>
+        </div>
+    </div>
+    @endif
 </div>
 @endsection

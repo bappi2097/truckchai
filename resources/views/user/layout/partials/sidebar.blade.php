@@ -8,7 +8,7 @@
             </div>
             <div class="ml-2 text-white text-rtl">
                 <p class="m-0 text-17 font-weight-bold">Welcome Back!</p>
-                <p class="m-0 text-17">John Doe</p>
+                <p class="m-0 text-17">{{auth()->user()->name}}</p>
             </div>
         </div>
         <div>

@@ -4,4 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/traincu/beta.traincu.com
     - /bin/cp public/index.php $DEPLOYPATH
     - /bin/cp public/.htaccess $DEPLOYPATH
-    - /bin/cp * $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH

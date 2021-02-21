@@ -74,4 +74,11 @@ class TripController extends Controller
 
         return redirect()->back();
     }
+
+    public function showTrip($locale, Trip $trip)
+    {
+        return view("user.pages.trip.single-current", [
+            "trip" => $trip
+        ]);
+    }
 }

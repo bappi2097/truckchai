@@ -75,7 +75,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-list-item">
+                {{-- <li class="sidebar-list-item">
                     <a class="sidebar-link" href="#">
                         <span class="sidebar-icon">
                             <i class="icon-book"></i>
@@ -131,7 +131,7 @@
                             <i class="icon-chevron-right"></i>
                         </span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-list-item">
                     <a class="sidebar-link" href="{{route('customer.change-password.show')}}">
                         <span class="sidebar-icon">
@@ -143,7 +143,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="sidebar-list-item">
+                {{-- <li class="sidebar-list-item">
                     <a class="sidebar-link" href="#">
                         <span class="sidebar-icon">
                             <i class="icon-cog"></i>
@@ -153,7 +153,7 @@
                             <i class="icon-chevron-right"></i>
                         </span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -54,7 +54,7 @@ function tripStatus($no)
 {
     switch ($no) {
         case 0:
-            return ["Pending", "warning"];
+            return ["Bidding", "dark"];
         case 1:
             return ["Running", "primary"];
         case 2:

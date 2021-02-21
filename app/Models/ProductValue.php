@@ -17,6 +17,6 @@ class ProductValue extends Model
     }
     public function productTypes()
     {
-        return $this->hasMany(ProductType::class, "product_type_id");
+        return $this->belongsTo(ProductType::class, "product_type_id");
     }
 }

@@ -13,6 +13,6 @@ class ProductType extends Model
     ];
     public function productValue()
     {
-        return $this->belongsTo(ProductValue::class, "product_type_id");
+        return $this->hasMany(ProductValue::class, "product_type_id");
     }
 }

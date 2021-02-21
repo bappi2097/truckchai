@@ -61,6 +61,7 @@ Route::group(
                 Route::post("/make-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "store"])->name('store');
                 Route::get("/current-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "indexCurrent"])->name('current-trip');
                 Route::get("/history-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "indexHistory"])->name('history-trip');
+                Route::get("/show-trip/{trip}", [\App\Http\Controllers\Frontend\Customer\TripController::class, "showTrip"])->name('show-trip');
             });
         });
     }

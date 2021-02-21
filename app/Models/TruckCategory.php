@@ -37,4 +37,8 @@ class TruckCategory extends Model
     {
         return $this->hasOne(Truck::class);
     }
+    public function trip()
+    {
+        return $this->hasOne(Trip::class, "truck_category_id");
+    }
 }

@@ -58,9 +58,8 @@ Route::group(
             });
 
             Route::group(['prefix' => 'make-trip', 'as' => 'make-trip.'], function () {
-                Route::get("/", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "show"])->name('show');
-                Route::post("/make-trip", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "store"])->name('store');
-                Route::post("/", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "update"])->name('update');
+                Route::post("/make-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "store"])->name('store');
+                Route::get("/current-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "indexCurrent"])->name('current-trip');
             });
         });
     }

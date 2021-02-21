@@ -11,9 +11,9 @@ function isPageRTL()
     return app()->getLocale() == "ar" ? true : false;
 }
 
-function active($route)
+function active($route, $text = "active")
 {
-    return request()->route()->getName() == $route ? 'active' : '';
+    return request()->route()->getName() == $route ? $text : '';
 }
 
 function set_active($path, $active = 'active')

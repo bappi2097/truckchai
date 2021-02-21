@@ -22,4 +22,8 @@ class CustomerDetail extends Model
     {
         return $this->hasMany(AddressBook::class, "customer_id");
     }
+    public function trips()
+    {
+        return $this->hasMany(Trip::class, "customer_id");
+    }
 }

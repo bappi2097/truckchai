@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Frontend\Customer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Trip;
 use App\Models\Product;
 use App\Models\ProductValue;
-use App\Models\Trip;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\CustomerDetail;
+use Brian2694\Toastr\Facades\Toastr;
 
-class MakeTripController extends Controller
+class TripController extends Controller
 {
+    public function indexCurrent()
+    {
+        return view("user.pages.trip.current-trip", [
+            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->with(["truckCategory", "product", "tripBids"])->latest()->get()
+        ]);
+    }
     public function store(Request $request)
     {
         $this->validate($request, [

@@ -24,7 +24,8 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="{{route('customer.my-profile.show')}}">
+                    <a class="sidebar-link {{active('customer.my-profile.show')}}"
+                        href="{{route('customer.my-profile.show')}}">
                         <span class="sidebar-icon">
                             <i class="icon-user"></i>
                         </span>
@@ -40,13 +41,15 @@
                             <i class="icon-dashboard"></i>
                         </span>
                         <span class="sidebar-link-name"> Trip </span>
-                        <span class="ml-auto nav-rtl icon-right">
+                        <span
+                            class="ml-auto nav-rtl icon-right {{active('customer.make-trip.current-trip', 'icon-down')}}">
                             <i class="icon-chevron-right"></i>
                         </span>
                     </a>
-                    <ul class="sidebar-list d-none">
+                    <ul class="sidebar-list d-none {{active('customer.make-trip.current-trip', 'd-block')}}">
                         <li class="sidebar-list-item">
-                            <a class="sidebar-link" href="#">
+                            <a class="sidebar-link {{active('customer.make-trip.current-trip')}}"
+                                href="{{route('customer.make-trip.current-trip')}}">
                                 <span class="sidebar-icon">
                                     <i class="icon-bolt"></i>
                                 </span>

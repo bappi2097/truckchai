@@ -16,4 +16,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductValue::class, "product_id");
     }
+    public function trip()
+    {
+        return $this->hasOne(Trip::class, "product_id");
+    }
 }

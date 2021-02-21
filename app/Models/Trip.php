@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Trip extends Model
 {
@@ -24,11 +24,11 @@ class Trip extends Model
     }
     public function truckCategory()
     {
-        return $this->hasOne(TruckCategory::class, "truck_category_id");
+        return $this->belongsTo(TruckCategory::class, "truck_category_id");
     }
     public function product()
     {
-        return $this->hasOne(Product::class, "product_id");
+        return $this->belongsTo(Product::class, "product_id");
     }
     public function tripBids()
     {

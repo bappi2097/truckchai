@@ -271,6 +271,15 @@ nav {
     -ms-transform: rotate(90deg);
     -o-transform: rotate(90deg);
 }
+.bid-item:hover {
+    outline: 1px solid blue;
+    margin: 2px 0 3px 0;
+}
+
+.selected {
+    outline: 1px solid var(--indigo-500);
+    background-color: rgb(230, 230, 230);
+}
 
 
 

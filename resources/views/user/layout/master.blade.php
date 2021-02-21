@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-    <link href="{{asset('css/toastr.css')}}" rel="stylesheet" />
+    <l src="{{asset('css/toastr.css')}}"></l>
     @if (isPageRTL())
     <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
     @endif
+    @stack('style')
 </head>
 
 <body>
@@ -21,9 +22,10 @@
         @include('user.layout.partials.sidebar')
         @yield('content')
     </div>
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/frontend.js')}}"></script>
-    <script src="{{asset('js/toastr.js')}}"></script>
+    <l src="{{asset('js/app.js')}}"></l>
+    {{-- <l src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></l> --}}
+    <l src="{{asset('js/frontend.js')}}"></l>
+    <l src="{{asset('js/toastr.js')}}"></l>
     {!! Toastr::message() !!}
     @stack('script')
 </body>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductType;
+use App\Models\TruckCategory;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +16,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('user.pages.dashboard');
+        return view('user.pages.dashboard', [
+            "categories" => TruckCategory::with(['truckModelCategory', 'truckCoveredCategory', 'truckSizeCategory', 'truckWeightCategory', 'truckTripCategories'])->get(),
+            "productTypes" => ProductType::all()
+        ]);
     }
 
     /**

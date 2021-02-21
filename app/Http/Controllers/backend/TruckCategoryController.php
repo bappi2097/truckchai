@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TruckCoveredCategory;
 use App\Models\TruckTripCategory;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class TruckCategoryController extends Controller
 {
@@ -58,21 +59,23 @@ class TruckCategoryController extends Controller
             'truck_size_category_id' => "exists:truck_size_categories,id",
             'truck_covered_category_id' => "exists:truck_covered_categories,id",
             'truck_trip_category_id' => "required|array",
+            'image' => "required|file",
         ]);
 
         // dd($request->all());
-
+        if ($request->hasFile("image")) {
+            $image = Storage::disk("local")->put("images\\truck", $request->image);
+        }
         $data = [
             "description" => $request->description ?: "",
             "truck_model_category_id" => $request->truck_model_category_id,
             "truck_weight_category_id" => $request->truck_weight_category_id,
             "truck_size_category_id" => $request->truck_size_category_id,
             "truck_covered_category_id" => $request->truck_covered_category_id,
+            "image" => $image,
         ];
 
         $truckCategory = new TruckCategory($data);
-        // dd($truckCategory->truckTripCategories());
-        // dd($request->truck_trip_category_id);
 
         if ($truckCategory->save()) {
             $truckCategory->truckTripCategories()->sync($request->truck_trip_category_id);
@@ -128,6 +131,7 @@ class TruckCategoryController extends Controller
             'truck_size_category_id' => "exists:truck_size_categories,id",
             'truck_covered_category_id' => "exists:truck_covered_categories,id",
             'truck_trip_category_id' => "required|array",
+            'image' => "nullable|file",
         ]);
 
         $data = [
@@ -137,6 +141,13 @@ class TruckCategoryController extends Controller
             "truck_size_category_id" => $request->truck_size_category_id,
             "truck_covered_category_id" => $request->truck_covered_category_id,
         ];
+
+        if ($request->hasFile('image')) {
+            if (Storage::disk("local")->exists($truckCategory->image)) {
+                Storage::disk("local")->delete($truckCategory->image);
+            }
+            $data["image"] = Storage::disk("local")->put("images\\truck", $request->image);
+        }
 
         $truckCategory->fill($data);
         if ($truckCategory->save()) {
@@ -156,7 +167,9 @@ class TruckCategoryController extends Controller
      */
     public function destroy(TruckCategory $truckCategory)
     {
-        dd($truckCategory->truckTripCategories());
+        if (Storage::disk("local")->exists($truckCategory->image)) {
+            Storage::disk("local")->delete($truckCategory->image);
+        }
         if ($truckCategory->delete()) {
             Toastr::success("Truck Deleted Successfully", "Success");
         } else {

@@ -17,7 +17,6 @@ class CreateProductValuesTable extends Migration
             $table->id();
             $table->foreignId("product_type_id")->constrained("product_types")->onDelete("cascade");
             $table->foreignId("product_id")->constrained("products")->onDelete("cascade");
-            $table->text("value");
             $table->softDeletes();
             $table->timestamps();
         });

@@ -2,7 +2,8 @@
 @section('content')
 <a href="{{route('admin.truck-category.index')}}" class="btn btn-white"> &lt; Back</a>
 <div class="bg-white p-20 col-12 m-t-30">
-    <form action="{{route('admin.truck-category.update', $truckCategory->id)}}" method="POST">
+    <form action="{{route('admin.truck-category.update', $truckCategory->id)}}" method="POST"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <fieldset>
@@ -77,6 +78,13 @@
                 <textarea name="description" id="description" cols="30" rows="5"
                     class="form-control">{{$truckCategory->description}}</textarea>
                 @error('description')
+                <span>{{$message}}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" />
+                @error('image')
                 <span>{{$message}}</span>
                 @enderror
             </div>

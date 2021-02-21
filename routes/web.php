@@ -56,6 +56,12 @@ Route::group(
                 Route::get("/", [\App\Http\Controllers\Frontend\Customer\ChangePasswordController::class, "show"])->name('show');
                 Route::post("/", [\App\Http\Controllers\Frontend\Customer\ChangePasswordController::class, "update"])->name('update');
             });
+
+            Route::group(['prefix' => 'make-trip', 'as' => 'make-trip.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "show"])->name('show');
+                Route::post("/make-trip", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "store"])->name('store');
+                Route::post("/", [\App\Http\Controllers\Frontend\Customer\MakeTripController::class, "update"])->name('update');
+            });
         });
     }
 );
@@ -211,6 +217,15 @@ Route::group(
                 Route::get('/edit/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'edit'])->name('edit');
                 Route::put('/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'update'])->name('update');
                 Route::delete('/{truckTripCategory}', [\App\Http\Controllers\backend\TruckTripCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::group(['prefix' => 'product-type', 'as' => 'product-type.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\ProductTypeController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\ProductTypeController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\ProductTypeController::class, 'store'])->name('store');
+                Route::get('/edit/{productType}', [\App\Http\Controllers\backend\ProductTypeController::class, 'edit'])->name('edit');
+                Route::put('/{productType}', [\App\Http\Controllers\backend\ProductTypeController::class, 'update'])->name('update');
+                Route::delete('/{productType}', [\App\Http\Controllers\backend\ProductTypeController::class, 'destroy'])->name('destroy');
             });
         });
     }

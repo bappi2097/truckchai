@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{route('admin.truck-category.index')}}" class="btn btn-white"> &lt; Back</a>
 <div class="bg-white p-20 col-12 m-t-30">
-    <form action="{{route('admin.truck-category.store')}}" method="POST">
+    <form action="{{route('admin.truck-category.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <fieldset>
             <legend class="m-b-15">Add Truck Category</legend>
@@ -69,6 +69,13 @@
                 <label for="description">Description (<span class="text-warning">Optional</span>)</label>
                 <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
                 @error('description')
+                <span>{{$message}}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" />
+                @error('image')
                 <span>{{$message}}</span>
                 @enderror
             </div>

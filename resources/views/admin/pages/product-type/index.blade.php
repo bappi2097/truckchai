@@ -1,43 +1,32 @@
 @extends('admin.layout.app')
 @section('content')
-<a href="{{route('admin.truck-category.create')}}" class="btn btn-primary">Add Data</a>
+<a href="{{route('admin.product-type.create')}}" class="btn btn-primary">Add Data</a>
 <div class="col-12 mt-3 bg-white rounded p-3">
     <div class="table-responsive">
         <table class="table table-striped m-b-0" id="myTable">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Truck</th>
-                    <th>Model</th>
-                    <th>Size</th>
-                    <th>Weight</th>
-                    <th>Covered</th>
-                    <th>Description</th>
+                    <th>Name</th>
+                    <th>Key</th>
                     <th width="1%">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($truckCategories as $index => $truckCategory)
+                @foreach ($productTypes as $index => $productType)
                 <tr>
-                    <td class="with-img">
-                        <img src="{{asset($truckCategory->image ?: 'images/truck.png')}}" class="img-rounded height-30">
-                    </td>
                     <td>{{$index+1}}</td>
-                    <td>{{$truckCategory->truckModelCategory->truckBrandCategory->name}}
-                        {{$truckCategory->truckModelCategory->model}}</td>
-                    <td>{{$truckCategory->truckSizeCategory->size}}</td>
-                    <td> {{$truckCategory->truckWeightCategory->weight}}</td>
-                    <td> {{$truckCategory->truckCoveredCategory->name}}</td>
-                    <td>{{$truckCategory->description}}</td>
+                    <td>{{$productType->value}}</td>
+                    <td>{{$productType->key}}</td>
                     <td class="with-btn" nowrap="">
-                        <a href="{{route('admin.truck-category.edit', $truckCategory->id)}}"
+                        <a href="{{route('admin.product-type.edit', $productType->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-danger width-60"
                             onclick="event.preventDefault(); document.getElementById('language{{ $index }}').submit();">
                             Delete
                         </a>
                         <form id="language{{ $index }}"
-                            action="{{ route('admin.truck-category.destroy', $truckCategory->id) }}" method="POST"
+                            action="{{ route('admin.product-type.destroy', $productType->id) }}" method="POST"
                             style="display: none;">
                             @csrf
                             @method('DELETE')

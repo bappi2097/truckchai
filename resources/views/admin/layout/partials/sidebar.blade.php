@@ -101,6 +101,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-header">Product Type</li>
+            <li class="has-sub {{set_active('admin/product-*')}}">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Product</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{active('admin.product-type.index')}}">
+                        <a href="{{route('admin.product-type.index')}}">Product Type</a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-header">Language</li>
             <li class="{{active('admin.language.index')}}">
                 <a href="{{route('admin.language.index')}}">

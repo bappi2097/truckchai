@@ -129,6 +129,16 @@ class AuthController extends Controller
             Toastr::success('Welcome TO Dashboard', 'Welcome');
             return redirect()->intended(route("customer.dashboard"));
         }
+
+        if ($user->hasRole('company')) {
+            Toastr::success('Welcome TO Dashboard', 'Welcome');
+            return redirect()->intended(route("company.dashboard"));
+        }
+
+        if ($user->hasRole('driver')) {
+            Toastr::success('Welcome TO Dashboard', 'Welcome');
+            return redirect()->intended(route("driver.dashboard"));
+        }
     }
 
     /**
@@ -237,7 +247,7 @@ class AuthController extends Controller
             Toastr::error('Something Went Wrong', 'Error');
             return back();
         }
-        Toastr::success("Successfully registered as" . $user->getRoleNames()->all()[0], 'Success');
+        Toastr::success("Successfully registered as " . $user->getRoleNames()->all()[0], 'Success');
         return back();
     }
 }

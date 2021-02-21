@@ -64,6 +64,14 @@ Route::group(
                 Route::get("/show-trip/{trip}", [\App\Http\Controllers\Frontend\Customer\TripController::class, "showTrip"])->name('show-trip');
             });
         });
+
+        Route::group(["as" => "company.", "prefix" => "company", "middleware" => ["auth", "role:company"]], function () {
+            Route::get("dashboard", [\App\Http\Controllers\Frontend\Company\DashboardController::class, "index"])->name('dashboard');
+        });
+
+        Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {
+            Route::get("dashboard", [\App\Http\Controllers\Frontend\Driver\DashboardController::class, "index"])->name('dashboard');
+        });
     }
 );
 

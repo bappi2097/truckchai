@@ -68,3 +68,10 @@
     outline: 1px solid var(--indigo-500);
     background-color: rgb(230, 230, 230);
 }
+.seperate-icon {
+    height: 30px;
+    width: 1px;
+    background-color: grey;
+    display: block;
+    margin-left: 5px;
+}

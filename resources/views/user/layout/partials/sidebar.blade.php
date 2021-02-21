@@ -19,7 +19,7 @@
                         </span>
                         <span class="sidebar-link-name"> Dashboard </span>
                         <span class="ml-auto nav-rtl icon-right">
-                            <i class="icon-chevron-right"></i>
+                            <i class="fas fa-arrow-circle-down"></i>
                         </span>
                     </a>
                 </li>
@@ -42,11 +42,12 @@
                         </span>
                         <span class="sidebar-link-name"> Trip </span>
                         <span
-                            class="ml-auto nav-rtl icon-right {{active('customer.make-trip.current-trip', 'icon-down')}}">
+                            class="ml-auto nav-rtl icon-right {{active('customer.make-trip.current-trip', 'icon-down')}}{{active('customer.make-trip.history-trip', 'icon-down')}}">
                             <i class="icon-chevron-right"></i>
                         </span>
                     </a>
-                    <ul class="sidebar-list d-none {{active('customer.make-trip.current-trip', 'd-block')}}">
+                    <ul
+                        class="sidebar-list d-none {{active('customer.make-trip.current-trip', 'd-block')}}{{active('customer.make-trip.history-trip', 'd-block')}}">
                         <li class="sidebar-list-item">
                             <a class="sidebar-link {{active('customer.make-trip.current-trip')}}"
                                 href="{{route('customer.make-trip.current-trip')}}">
@@ -60,7 +61,8 @@
                             </a>
                         </li>
                         <li class="sidebar-list-item">
-                            <a class="sidebar-link" href="#">
+                            <a class="sidebar-link {{active('customer.make-trip.history-trip')}}"
+                                href="{{route('customer.make-trip.history-trip')}}">
                                 <span class="sidebar-icon">
                                     <i class="icon-calendar"></i>
                                 </span>

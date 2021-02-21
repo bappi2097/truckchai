@@ -15,9 +15,17 @@ class TripController extends Controller
     public function indexCurrent()
     {
         return view("user.pages.trip.current-trip", [
-            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->with(["truckCategory", "product", "tripBids"])->latest()->get()
+            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->whereNotIn("status",  [2, 3])->with(["truckCategory", "product", "tripBids"])->latest()->get()
         ]);
     }
+
+    public function indexHistory()
+    {
+        return view("user.pages.trip.history-trip", [
+            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->whereIn("status",  [2, 3])->with(["truckCategory", "product", "tripBids"])->latest()->get()
+        ]);
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [

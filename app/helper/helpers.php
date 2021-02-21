@@ -49,3 +49,17 @@ function selected($data1, $data2)
         return in_array($data1, $data2) ? 'selected' : '';
     }
 }
+
+function tripStatus($no)
+{
+    switch ($no) {
+        case 0:
+            return ["Pending", "warning"];
+        case 1:
+            return ["Running", "primary"];
+        case 2:
+            return ["Cancelled", "danger"];
+        case 3:
+            return ["Finished", "danger"];
+    }
+}

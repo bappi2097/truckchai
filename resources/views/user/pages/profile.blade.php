@@ -5,11 +5,12 @@
         @csrf
         <fieldset>
             <img id="user-image"
-                src="@if(!empty($user->customer)) {{asset($user->customer->image)}} @else {{asset('images/user2-160x160.jpg')}} @endif"
-                alt="your image" width="105" height="112" /><br>
+                src="@if(!empty($user->customer)) {{asset($user->customer->image ?: 'images/user2-160x160.jpg')}} @endif"
+                alt="your image" width="118" height="122" /><br>
             <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                 accept="image/*" />
-            <input type="button" value="Update Image" onclick="document.getElementById('user-image-btn').click();" />
+            <input type="button" class="btn btn-outline-secondary" value="Update Image"
+                onclick="document.getElementById('user-image-btn').click();" />
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

@@ -22,10 +22,10 @@
         @include('user.layout.partials.sidebar')
         @yield('content')
     </div>
-    <l src="{{asset('js/app.js')}}"></l>
+    <script src="{{asset('js/app.js')}}"></script>
     {{-- <l src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></l> --}}
-    <l src="{{asset('js/frontend.js')}}"></l>
-    <l src="{{asset('js/toastr.js')}}"></l>
+    <script src="{{asset('js/frontend.js')}}"></script>
+    <script src="{{asset('js/toastr.js')}}"></script>
     {!! Toastr::message() !!}
     @stack('script')
 </body>

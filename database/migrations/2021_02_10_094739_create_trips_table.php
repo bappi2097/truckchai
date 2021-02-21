@@ -21,7 +21,7 @@ class CreateTripsTable extends Migration
             $table->text("load_location");
             $table->text("unload_location");
             $table->timestamp("load_time");
-            $table->tinyInteger("status");
+            $table->tinyInteger("status")->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -2,6 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/traincu/beta.traincu.com
-    - /bin/cp -r public/index.php $DEPLOYPATH
-    - /bin/cp -r public/.htaccess $DEPLOYPATH
+    - /bin/cp public/index.php $DEPLOYPATH
+    - /bin/cp public/.htaccess $DEPLOYPATH
     - /bin/cp * $DEPLOYPATH

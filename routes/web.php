@@ -76,6 +76,15 @@ Route::group(
                 Route::get("/", [\App\Http\Controllers\Frontend\Company\ChangePasswordController::class, "show"])->name('show');
                 Route::post("/", [\App\Http\Controllers\Frontend\Company\ChangePasswordController::class, "update"])->name('update');
             });
+
+            Route::group(['prefix' => 'truck', 'as' => 'truck.'], function () {
+                Route::get('/', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'store'])->name('store');
+                Route::get('/edit/{truck}', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'edit'])->name('edit');
+                Route::put('/{truck}', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'update'])->name('update');
+                Route::delete('/{truck}', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'destroy'])->name('destroy');
+            });
         });
 
         Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {
@@ -88,6 +97,15 @@ Route::group(
             Route::group(['prefix' => 'change-password', 'as' => 'change-password.'], function () {
                 Route::get("/", [\App\Http\Controllers\Frontend\Driver\ChangePasswordController::class, "show"])->name('show');
                 Route::post("/", [\App\Http\Controllers\Frontend\Driver\ChangePasswordController::class, "update"])->name('update');
+            });
+
+            Route::group(['prefix' => 'truck', 'as' => 'truck.'], function () {
+                Route::get('/', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'store'])->name('store');
+                Route::get('/edit/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'edit'])->name('edit');
+                Route::put('/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'update'])->name('update');
+                Route::delete('/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'destroy'])->name('destroy');
             });
         });
     }

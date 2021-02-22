@@ -23,7 +23,7 @@ class ProfileController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string|max:255",
-            "account_name" => "required|string|max:255|unique:company_details,account_name" . (auth()->user()->company ? "" : "," . auth()->user()->company->id),
+            "account_name" => "required|string|max:255|unique:company_details,account_name" . (empty(auth()->user()->company) ? "" : "," . auth()->user()->company->id),
             "address" => "required|string|max:255",
             "mobile_no" => "required|string|max:100",
             "image" => "nullable|file",

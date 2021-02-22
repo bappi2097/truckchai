@@ -38,6 +38,17 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
+                    <a class="sidebar-link {{active('company.truck.index')}}" href="{{route('company.truck.index')}}">
+                        <span class="sidebar-icon">
+                            <i class="icon-user"></i>
+                        </span>
+                        <span class="sidebar-link-name">Truck</span>
+                        <span class="ml-auto nav-rtl icon-right">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
                     <a class="sidebar-link" href="{{route('company.change-password.show')}}">
                         <span class="sidebar-icon">
                             <i class="icon-key"></i>

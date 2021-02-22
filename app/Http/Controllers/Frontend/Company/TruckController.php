@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Frontend\Company;
 
-use App\Http\Controllers\Controller;
-use App\Models\CompanyDetail;
+use App\Models\User;
 use App\Models\Truck;
-use App\Models\TruckCategory;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\CompanyType;
 use Illuminate\Http\Request;
+use App\Models\CompanyDetail;
+use App\Models\TruckCategory;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Storage;
 
 class TruckController extends Controller
@@ -21,7 +23,10 @@ class TruckController extends Controller
     {
         if (empty(auth()->user()->company)) {
             Toastr::warning("First update your profile", "Warning");
-            return view("company.pages.profile");
+            return view("company.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
+                "companyTypes" => CompanyType::all(),
+            ]);
         }
         return view("company.pages.truck.index", [
             "company" => CompanyDetail::where("id", auth()->user()->company->id)->with("trucks")->first()
@@ -50,7 +55,10 @@ class TruckController extends Controller
     {
         if (empty(auth()->user()->company)) {
             Toastr::warning("First update your profile", "Warning");
-            return view("company.pages.profile");
+            return view("company.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
+                "companyTypes" => CompanyType::all(),
+            ]);
         }
         $company = CompanyDetail::where("id", auth()->user()->company->id)->with("trucks")->first();
         $this->validate($request, [

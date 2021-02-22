@@ -25,6 +25,29 @@
                         </span>
                     </a>
                 </li>
+                <li class="sidebar-list-item">
+                    <a class="sidebar-link {{active('company.my-profile.show')}}"
+                        href="{{route('company.my-profile.show')}}">
+                        <span class="sidebar-icon">
+                            <i class="icon-user"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Profile </span>
+                        <span class="ml-auto nav-rtl icon-right">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a class="sidebar-link" href="{{route('company.change-password.show')}}">
+                        <span class="sidebar-icon">
+                            <i class="icon-key"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Change Password </span>
+                        <span class="ml-auto nav-rtl icon-right">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

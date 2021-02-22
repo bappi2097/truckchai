@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-    <l src="{{asset('css/toastr.css')}}"></l>
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}" />
     @if (isPageRTL())
     <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
     @endif

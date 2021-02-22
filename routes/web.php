@@ -67,10 +67,28 @@ Route::group(
 
         Route::group(["as" => "company.", "prefix" => "company", "middleware" => ["auth", "role:company"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Company\DashboardController::class, "index"])->name('dashboard');
+            Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Company\ProfileController::class, "showProfile"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Company\ProfileController::class, "updateProfile"])->name('update');
+            });
+
+            Route::group(['prefix' => 'change-password', 'as' => 'change-password.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Company\ChangePasswordController::class, "show"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Company\ChangePasswordController::class, "update"])->name('update');
+            });
         });
 
         Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Driver\DashboardController::class, "index"])->name('dashboard');
+            Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Driver\ProfileController::class, "showProfile"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Driver\ProfileController::class, "updateProfile"])->name('update');
+            });
+
+            Route::group(['prefix' => 'change-password', 'as' => 'change-password.'], function () {
+                Route::get("/", [\App\Http\Controllers\Frontend\Driver\ChangePasswordController::class, "show"])->name('show');
+                Route::post("/", [\App\Http\Controllers\Frontend\Driver\ChangePasswordController::class, "update"])->name('update');
+            });
         });
     }
 );

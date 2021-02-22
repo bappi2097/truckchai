@@ -1,7 +1,7 @@
-@extends('user.layout.master')
+@extends('driver.layout.master')
 @section('content')
 <div class="bg-white p-5 col-md-10">
-    <form action="{{route('customer.change-password.update')}}" method="POST">
+    <form action="{{route('driver.change-password.update')}}" method="POST">
         @csrf
         <fieldset class="mt-5">
             <div class="form-group">

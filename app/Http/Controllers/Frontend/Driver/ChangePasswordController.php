@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
 {
     public function show(Request $request)
     {
-        return view("user.pages.change-password");
+        return view("driver.pages.change-password");
     }
     public function update(Request $request)
     {
@@ -22,6 +22,7 @@ class ChangePasswordController extends Controller
         ]);
 
         $user = User::where("id", auth()->user()->id)->first();
+
         if (Hash::check($request->old_password, $user->password)) {
             $user->fill(["password" => bcrypt($request->old_password)]);
             if ($user->save()) {

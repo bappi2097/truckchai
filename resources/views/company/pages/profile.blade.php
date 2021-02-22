@@ -1,11 +1,11 @@
-@extends('user.layout.master')
+@extends('company.layout.master')
 @section('content')
 <div class="bg-white p-20 col-md-10 m-t-30">
-    <form action="{{route('customer.my-profile.update')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('company.my-profile.update')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <fieldset>
             <img id="user-image"
-                src="@if(!empty($user->customer)) {{asset($user->customer->image ?: 'images/user2-160x160.jpg')}} @endif"
+                src="@if(!empty($user->company)) {{asset($user->company->image ?: 'images/user2-160x160.jpg')}} @endif"
                 alt="your image" width="118" height="122" /><br>
             <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                 accept="image/*" />
@@ -49,9 +49,37 @@
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" id="address"
-                            placeholder="24/B Baker Street" @if(!empty($user->customer))
-                        value="{{$user->customer->address}}" @endif required>
+                            placeholder="24/B Baker Street" @if(!empty($user->company))
+                        value="{{$user->company->address}}" @endif required>
                         @error('address')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="company_type_id">Company Type</label>
+                        <select name="company_type_id" id="company_type_id" class="form-control">
+                            <option> Choose </option>
+                            @foreach ($companyTypes as $companyType)
+                            <option value="{{$companyType->id}}"
+                                {{selected($companyType->id, $user->company ? $user->company->company_type_id : "")}}>
+                                {{$companyType->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('company_type_id')
+                        <span class="text-red">{{$message}}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="account_name">Account Name</label>
+                        <input type="text" class="form-control" name="account_name" @if(!empty($user->company))
+                        value="{{$user->company->account_name}}" @endif required>
+                        @error('account_name')
                         <span class="text-red">{{$message}}</span>
                         @enderror
                     </div>

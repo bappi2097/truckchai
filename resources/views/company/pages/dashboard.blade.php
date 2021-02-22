@@ -5,7 +5,7 @@
     <div class="p-2 shadow-lg">
         <div class="row justify-content-center my-4">
             <div class="col-md-5">
-                fsfsdf
+                company
             </div>
         </div>
     </div>

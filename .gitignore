@@ -1,6 +1,11 @@
 /node_modules
 /public/hot
 /public/storage
+/publi/images/admins
+/publi/images/customers
+/publi/images/company
+/publi/images/drivers
+/publi/images/trucks
 /storage/*.key
 /vendor
 .env

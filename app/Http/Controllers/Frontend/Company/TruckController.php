@@ -19,6 +19,10 @@ class TruckController extends Controller
      */
     public function index()
     {
+        if (empty(auth()->user()->company)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("company.pages.profile");
+        }
         return view("company.pages.truck.index", [
             "company" => CompanyDetail::where("id", auth()->user()->company->id)->with("trucks")->first()
         ]);
@@ -46,7 +50,7 @@ class TruckController extends Controller
     {
         if (empty(auth()->user()->company)) {
             Toastr::warning("First update your profile", "Warning");
-            return redirect()->back();
+            return view("company.pages.profile");
         }
         $company = CompanyDetail::where("id", auth()->user()->company->id)->with("trucks")->first();
         $this->validate($request, [

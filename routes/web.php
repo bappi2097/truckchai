@@ -85,6 +85,11 @@ Route::group(
                 Route::put('/{truck}', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'update'])->name('update');
                 Route::delete('/{truck}', [\App\Http\Controllers\Frontend\Company\TruckController::class, 'destroy'])->name('destroy');
             });
+            Route::group(['prefix' => 'bid', 'as' => 'bid.'], function () {
+                Route::get('/', [\App\Http\Controllers\Frontend\Company\BidController::class, 'index'])->name('index');
+                Route::get('/{trip}', [\App\Http\Controllers\Frontend\Company\BidController::class, 'show'])->name('show');
+                Route::post('/create/{trip}', [\App\Http\Controllers\Frontend\Company\BidController::class, 'create'])->name('create');
+            });
         });
 
         Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {

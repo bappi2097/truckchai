@@ -34,7 +34,7 @@ class TripController extends Controller
             "load_time" => "required",
             "truck_category_id" => "required",
             "products_description" => "required|string",
-            "product_types" => "required|array",
+            "product_types" => "nullable|array",
             "worker" => "nullable",
         ]);
 
@@ -45,11 +45,13 @@ class TripController extends Controller
 
         $product = new Product($productData);
         if ($product->save()) {
-            foreach ($request->product_types as $key => $productType) {
-                $productValueData = [
-                    "product_type_id" => $key
-                ];
-                $product->productValues()->save(new ProductValue($productValueData));
+            if (!empty($request->product_types)) {
+                foreach ($request->product_types as $key => $productType) {
+                    $productValueData = [
+                        "product_type_id" => $key
+                    ];
+                    $product->productValues()->save(new ProductValue($productValueData));
+                }
             }
             $tripData = [
                 "product_id" => $product->id,

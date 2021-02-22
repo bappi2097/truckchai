@@ -3,7 +3,6 @@
 @section('content')
 <div class="col-md-10">
     @foreach ($trips as $trip)
-    {{-- {{dd($trip)}} --}}
     <a href="{{route('customer.make-trip.show-trip', ['trip' => $trip->id])}}" class="text-decoration-none">
         <div class="row">
             <div class="col-md-12">

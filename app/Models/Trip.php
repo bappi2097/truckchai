@@ -34,4 +34,12 @@ class Trip extends Model
     {
         return $this->hasMany(TripBid::class, "trip_id");
     }
+    public function hasBid(CompanyDetail $companyDetail)
+    {
+        return $this->tripBids->where("company_id", $companyDetail->id)->first()->exists();
+    }
+    public function companyBid(CompanyDetail $companyDetail)
+    {
+        return $this->hasBid($companyDetail) ? $this->tripBids->where("company_id", $companyDetail->id)->first() : null;
+    }
 }

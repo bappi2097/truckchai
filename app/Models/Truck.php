@@ -24,7 +24,7 @@ class Truck extends Model
 
     public function tripBid()
     {
-        return $this->belongsToMany(TripBid::class, "truck_id");
+        return $this->hasMany(TripBid::class, "truck_id");
     }
 
     public function driver()

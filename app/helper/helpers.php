@@ -33,6 +33,10 @@ function dashboardURL()
     if (auth()->check()) {
         if (auth()->user()->hasRole('customer')) {
             return route('customer.dashboard');
+        } else if (auth()->user()->hasRole('company')) {
+            return route('company.dashboard');
+        } else if (auth()->user()->hasRole('driver')) {
+            return route('driver.dashboard');
         } else if (auth()->user()->hasRole('admin')) {
             return route('admin.dashboard');
         } else {

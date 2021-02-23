@@ -19,7 +19,7 @@
                             consectetur adipisicing elit. Unde
                         </p>
                     </div>
-                    <img class="testimonial-img" src="{{ asset('images/user150x150.jpg') }}" alt="" />
+                    <img class="testimonial-img" src="{{ asset('images/truck-driver.jpeg') }}" alt="" />
                     <p>John Doe</p>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                             aliquam quas, consectetur
                         </p>
                     </div>
-                    <img class="testimonial-img" src="{{ asset('images/user150x150.jpg') }}" alt="" />
+                    <img class="testimonial-img" src="{{ asset('images/truck-driver.jpeg') }}" alt="" />
                     <p>John Doe</p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                             magnam ipsum totam eligendi! magnam ipsum totam eligendi!
                         </p>
                     </div>
-                    <img class="testimonial-img" src="{{ asset('images/user150x150.jpg') }}" alt="" />
+                    <img class="testimonial-img" src="{{ asset('images/truck-driver.jpeg') }}" alt="" />
                     <p>John Doe</p>
                 </div>
             </div>

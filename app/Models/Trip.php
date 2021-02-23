@@ -22,23 +22,28 @@ class Trip extends Model
     {
         return $this->belongsTo(CustomerDetail::class, "customer_id");
     }
+
     public function truckCategory()
     {
         return $this->belongsTo(TruckCategory::class, "truck_category_id");
     }
+
     public function product()
     {
         return $this->belongsTo(Product::class, "product_id");
     }
+
     public function tripBids()
     {
         return $this->hasMany(TripBid::class, "trip_id");
     }
+
     public function hasBid(CompanyDetail $companyDetail)
     {
         $trip = $this->tripBids->where("company_id", $companyDetail->id)->first();
         return empty($trip) ? false : $trip->exists();
     }
+
     public function companyBid(CompanyDetail $companyDetail)
     {
         return $this->hasBid($companyDetail) ? $this->tripBids->where("company_id", $companyDetail->id)->first() : null;

@@ -196,8 +196,6 @@ Route::group(
 
             Route::group(['prefix' => 'trucks', 'as' => 'trucks.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckController::class, 'index'])->name('index');
-                Route::get('create', [\App\Http\Controllers\backend\TruckController::class, 'create'])->name('create');
-                Route::post('/', [\App\Http\Controllers\backend\TruckController::class, 'store'])->name('store');
                 Route::post('/accept/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'accept'])->name('accept');
                 Route::post('/reject/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'reject'])->name('reject');
                 Route::get('/edit/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'edit'])->name('edit');

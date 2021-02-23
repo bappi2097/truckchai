@@ -38,7 +38,7 @@ class CompanyDetail extends Model
         return $this->hasOne(BalanceDetail::class, "company_id");
     }
 
-    function validTrucks()
+    public function validTrucks()
     {
         return $this->trucks->where("is_valid", 1);
     }

@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Truck;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TruckCategory;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class TruckController extends Controller
 {
@@ -41,7 +43,39 @@ class TruckController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "truck_no" => "required|unique:trucks,truck_no",
+            "truck_category_id" => "required|exists:truck_categories,id",
+            "image" => "required|file",
+            "license" => "required|file",
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = Storage::disk("local")->put("images\\truck\\image", $request->image);
+        }
+
+
+        if ($request->hasFile('license')) {
+            $license = Storage::disk("local")->put("images\\truck\\license", $request->license);
+        }
+
+        $data = [
+            "truck_no" => $request->truck_no,
+            "license" => $license,
+            "image" => $image,
+            "truck_category_id" => $request->truck_category_id,
+            "is_valid" => 1,
+        ];
+
+        $truck = new Truck($data);
+
+        if ($truck->save()) {
+            $company->trucks()->attach($truck->id);
+            Toastr::success('Truck Added Successfully', 'Success');
+        } else {
+            Toastr::error('Something Went Wrong', 'Error');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -63,7 +97,10 @@ class TruckController extends Controller
      */
     public function edit(Truck $truck)
     {
-        dd($truck);
+        return view("admin.pages.truck.edit", [
+            "truck" => $truck,
+            "truckCategories" => TruckCategory::all()
+        ]);
     }
 
     /**
@@ -75,7 +112,41 @@ class TruckController extends Controller
      */
     public function update(Request $request, Truck $truck)
     {
-        dd($truck);
+        $this->validate($request, [
+            "truck_no" => "required|unique:trucks,truck_no," . $truck->id,
+            "truck_category_id" => "required|exists:truck_categories,id",
+            "image" => "nullable|file",
+            "license" => "nullable|file",
+        ]);
+
+        $data = [
+            "truck_no" => $request->truck_no,
+            "truck_category_id" => $request->truck_category_id,
+            "is_valid" => 1,
+        ];
+
+        if ($request->hasFile('image')) {
+            if (Storage::disk("local")->exists($truck->image)) {
+                Storage::disk("local")->delete($truck->image);
+            }
+            $data['image'] = Storage::disk("local")->put("images\\truck\\image", $request->image);
+        }
+
+
+        if ($request->hasFile('license')) {
+            if (Storage::disk("local")->exists($truck->license)) {
+                Storage::disk("local")->delete($truck->license);
+            }
+            $data['license'] = Storage::disk("local")->put("images\\truck\\license", $request->license);
+        }
+
+        $truck->fill($data);
+        if ($truck->save()) {
+            Toastr::success('Truck Updated Successfully', 'Success');
+        } else {
+            Toastr::error('Something Went Wrong', 'Error');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -86,7 +157,21 @@ class TruckController extends Controller
      */
     public function destroy(Truck $truck)
     {
-        dd($truck);
+        if (Storage::disk("local")->exists($truck->image)) {
+            Storage::disk("local")->delete($truck->image);
+        }
+
+        if (Storage::disk("local")->exists($truck->license)) {
+            Storage::disk("local")->delete($truck->license);
+        }
+
+        if ($truck->delete()) {
+            Toastr::success('Truck Deleted Successfully', 'Success');
+        } else {
+            Toastr::error('Something Went Wrong', 'Error');
+        }
+
+        return redirect()->back();
     }
 
 

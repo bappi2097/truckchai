@@ -1,9 +1,9 @@
-@extends('company.layout.master')
+@extends('admin.layout.app')
 @section('content')
 <div class="bg-white p-20 col-md-10 m-t-30">
-    <a href="{{route('company.truck.index')}}" class="btn btn-outline-primary">Back</a>
+    <a href="{{route('admin.trucks.index')}}" class="btn btn-outline-primary">Back</a>
     <div class="bg-white p-20 col-12 m-t-30">
-        <form action="{{route('company.truck.update', $truck->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.trucks.update', $truck->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <fieldset>

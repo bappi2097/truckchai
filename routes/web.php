@@ -152,6 +152,7 @@ Route::group(
                 Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
                     Route::get('/', [\App\Http\Controllers\backend\CompanyController::class, 'index'])->name('index');
                     Route::get('/create', [\App\Http\Controllers\backend\CompanyController::class, 'create'])->name('create');
+                    Route::get('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'show'])->name('show');
                     Route::post('/', [\App\Http\Controllers\backend\CompanyController::class, 'store'])->name('store');
                     Route::get('/edit/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'edit'])->name('edit');
                     Route::put('/{user}', [\App\Http\Controllers\backend\CompanyController::class, 'update'])->name('update');
@@ -196,6 +197,7 @@ Route::group(
 
             Route::group(['prefix' => 'trucks', 'as' => 'trucks.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\TruckController::class, 'index'])->name('index');
+                Route::get('/user/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'user'])->name('user');
                 Route::post('/accept/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'accept'])->name('accept');
                 Route::post('/reject/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'reject'])->name('reject');
                 Route::get('/edit/{truck}', [\App\Http\Controllers\backend\TruckController::class, 'edit'])->name('edit');

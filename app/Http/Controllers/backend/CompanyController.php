@@ -95,7 +95,10 @@ class CompanyController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view("admin.pages.company.show", [
+            "user" => $user,
+            "route" => url()->previous() == route("admin.trucks.index") ? "admin.trucks.index" : "admin.user.company.index",
+        ]);
     }
 
     /**

@@ -19,7 +19,6 @@ class TruckController extends Controller
      */
     public function index()
     {
-        // dd(Truck::orderBy("is_valid")->latest()->get());
         return view('admin.pages.truck.index', [
             "trucks" => Truck::orderBy("is_valid")->latest()->get(),
         ]);
@@ -172,6 +171,11 @@ class TruckController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function user(Truck $truck)
+    {
+        return redirect()->route("admin.user.company.show", $truck->company->first()->user_id);
     }
 
 

@@ -55,6 +55,10 @@
                             @csrf
                         </form>
                         @endif
+                        <a href="{{route('admin.trucks.user', $truck->id)}}"
+                            class="btn btn-sm btn-light width-60 m-r-2">
+                            <i class="fas fa-lg fa-fw m-r-10 fa-user"></i>
+                        </a>
                         <a href="{{route('admin.trucks.edit', $truck->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-danger width-60"

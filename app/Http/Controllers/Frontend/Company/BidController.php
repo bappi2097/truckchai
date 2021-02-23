@@ -24,13 +24,14 @@ class BidController extends Controller
             "amount" => "required",
             "truck_id" => "required|exists:trucks,id",
         ]);
+
         $data = [
             "truck_id" => $request->truck_id,
             "amount" => $request->amount,
-            "company_id" => auth()->user()->company->id,
             "status" => 0,
             "trip_id" => $trip->id
         ];
+
         $tripBid = new TripBid($data);
         if ($tripBid->save()) {
             Toastr::success("TripBid Successfully Added", "Success");

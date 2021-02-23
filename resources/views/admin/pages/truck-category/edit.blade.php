@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
         <fieldset>
-            <legend class="m-b-15">Add Truck Category</legend>
+            <legend class="m-b-15">Edit Truck Category</legend>
             <div class="form-group">
                 <label for="model">Model</label>
                 <select name="truck_model_category_id" id="model" class="form-control">

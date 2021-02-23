@@ -11,7 +11,7 @@
                 <select name="truck_model_category_id" id="model" class="form-control">
                     <option selected>Choose Model</option>
                     @foreach ($truckModelCategories as $item)
-                    <option value="{{$item->id}}">{{$item->model}}</option>
+                    <option value="{{$item->id}}">{{$item->model . ", " . $item->truckBrandCategory->name}}</option>
                     @endforeach
                 </select>
                 @error('truck_model_category_id')

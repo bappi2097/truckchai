@@ -83,4 +83,13 @@ class TripController extends Controller
             "trip" => $trip
         ]);
     }
+    public function cancel($locale, Trip $trip)
+    {
+        if ($trip->update(["status" => 2])) {
+            Toastr::success("Trip Canceled Successfully", "Success");
+        } else {
+            Toastr::error("Something Went Wrong", "Error");
+        }
+        return redirect()->back();
+    }
 }

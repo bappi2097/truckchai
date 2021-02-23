@@ -17,7 +17,6 @@ class CreateTripBidsTable extends Migration
             $table->id();
             $table->foreignId("trip_id")->constrained("trips")->onDelete("cascade");
             $table->foreignId("truck_id")->constrained("trucks")->onDelete("cascade");
-            $table->foreignId("company_id")->constrained("company_details")->onDelete("cascade");
             $table->double("amount");
             $table->tinyInteger("status")->default(0);
             $table->softDeletes();

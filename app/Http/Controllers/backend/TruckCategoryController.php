@@ -51,7 +51,6 @@ class TruckCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $this->validate($request, [
             'description' => "nullable|string",
             'truck_model_category_id' => "exists:truck_model_categories,id",
@@ -61,8 +60,6 @@ class TruckCategoryController extends Controller
             'truck_trip_category_id' => "required|array",
             'image' => "required|file",
         ]);
-
-        // dd($request->all());
         if ($request->hasFile("image")) {
             $image = Storage::disk("local")->put("images\\truck", $request->image);
         }

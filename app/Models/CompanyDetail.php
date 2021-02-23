@@ -28,11 +28,6 @@ class CompanyDetail extends Model
         return $this->belongsToMany(Truck::class);
     }
 
-    public function tripBids()
-    {
-        return $this->hasMany(TripBid::class, "company_id");
-    }
-
     public function balanceDetail()
     {
         return $this->hasOne(BalanceDetail::class, "company_id");

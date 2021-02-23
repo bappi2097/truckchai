@@ -48,15 +48,52 @@
                         @endforeach
                     </div>
                 </div>
+                @if (!$trip->isCanceled())
+                <div class="d-flex justify-content-center">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                        onclick="event.preventDefault(); document.getElementById('trip{{ $trip->id }}').submit();">
+                        Cancel Trip
+                    </a>
+                    <form id="trip{{ $trip->id }}" action="{{ route('customer.make-trip.cancel', $trip->id) }}"
+                        method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+                @endif
             </div>
         </div>
     </div>
     @foreach ($trip->tripBids as $tripBid)
+    @php
+    $tripCompany= $tripBid->truck->company->first();
+    $truckCat = $tripBid->truck->truckCategory;
+    @endphp
     <div class="row">
         <div class="col-md-12">
             <div class="card rounded px-5 py-3">
                 <div class="card-body">
-                    {{--  --}}
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <img style="width: 100px; height:100px;" class="rounded"
+                                src="{{asset($tripCompany->image)}}" alt="">
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h5>
+                                        {{$tripCompany->user->name}}
+                                    </h5>
+                                    <p class="text-muted">
+                                        {{$truckCat->truckModelCategory->model . " " . $truckCat->truckModelCategory->truckBrandCategory->name}}
+                                        <br>
+                                        {{$truckCat->truckSizeCategory->size . " Feet " . $truckCat->truckWeightCategory->weight . " Ton " . $truckCat->truckCoveredCategory->name}}
+                                        <br>
+                                        {{$tripBid->amount . " TK"}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

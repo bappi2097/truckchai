@@ -35,17 +35,24 @@ class Trip extends Model
 
     public function tripBids()
     {
-        return $this->hasMany(TripBid::class, "trip_id");
+        return $this->hasMany(TripBid::class, "trip_id")->with("truck");
     }
 
     public function hasBid(CompanyDetail $companyDetail)
     {
-        $trip = $this->tripBids->where("company_id", $companyDetail->id)->first();
+        $truckIds = $companyDetail->trucks->pluck("id")->all();
+        $trip = $this->tripBids->whereIn("truck_id", $truckIds)->first();
         return empty($trip) ? false : $trip->exists();
     }
 
     public function companyBid(CompanyDetail $companyDetail)
     {
-        return $this->hasBid($companyDetail) ? $this->tripBids->where("company_id", $companyDetail->id)->first() : null;
+        $truckIds = $companyDetail->trucks->pluck("id")->all();
+        return $this->hasBid($companyDetail) ? $this->tripBids->whereIn("truck_id", $truckIds)->first() : null;
+    }
+
+    public function isCanceled()
+    {
+        return $this->status == 2;
     }
 }

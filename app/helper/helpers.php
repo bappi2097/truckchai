@@ -67,3 +67,14 @@ function tripStatus($no)
             return ["Finished", "danger"];
     }
 }
+function truckValid($status)
+{
+    switch ($status) {
+        case 0:
+            return ["Not Valid Yet", "warning"];
+        case 1:
+            return ["Valid", "success"];
+        case 2:
+            return ["Rejected", "danger"];
+    }
+}

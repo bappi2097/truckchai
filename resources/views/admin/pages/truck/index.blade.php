@@ -1,27 +1,7 @@
-@extends('company.layout.master')
-@push('style')
-<style>
-    .height-30 {
-        height: 30px !important;
-    }
-
-    .height-40 {
-        height: 40px !important;
-    }
-
-    .img-rounded {
-        border-radius: .375rem;
-    }
-
-    img {
-        vertical-align: middle;
-        border-style: none;
-    }
-</style>
-@endpush
+@extends('admin.layout.app')
 @section('content')
-<div class="bg-white p-20 col-md-10 m-t-30">
-    <a class="btn btn-outline-indigo mb-3" href="{{route('company.truck.create')}}">Add Truck</a>
+<a href="{{route('admin.trucks.create')}}" class="btn btn-primary">Add Data</a>
+<div class="col-12 mt-3 bg-white rounded p-3">
     <div class="table-responsive">
         <table class="table table-striped m-b-0" id="myTable">
             <thead>
@@ -36,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($company->trucks as $index => $truck)
+                @foreach ($trucks as $index => $truck)
                 <tr>
                     <td>{{ $index+1 }}</td>
                     <td>{{$truck->truck_no}}</td>
@@ -54,14 +34,36 @@
                             class="badge badge-{{truckValid($truck->is_valid)[1]}} text-uppercase">{{truckValid($truck->is_valid)[0]}}</span>
                     </td>
                     <td class="with-btn" nowrap="">
-                        <a href="{{route('company.truck.edit', $truck->id)}}"
+                        @if ($truck->is_valid != 1)
+                        <a href="javascript:void(0)" class="btn btn-sm btn-success width-60"
+                            onclick="event.preventDefault(); document.getElementById('accept{{ $index }}').submit();">
+                            <i class="fas fa-lg fa-fw m-r-10 fa-check"></i>
+                        </a>
+                        <form id="accept{{ $index }}"
+                            action="{{ route('admin.trucks.accept', [ "truck" => $truck->id ]) }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        @endif
+                        @if ($truck->is_valid != 2)
+                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary width-60"
+                            onclick="event.preventDefault(); document.getElementById('reject{{ $index }}').submit();">
+                            <i class="fas fa-lg fa-fw m-r-10 fa-times"></i>
+                        </a>
+                        <form id="reject{{ $index }}"
+                            action="{{ route('admin.trucks.reject', [ "truck" => $truck->id ]) }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        @endif
+                        <a href="{{route('admin.trucks.edit', $truck->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-danger width-60"
                             onclick="event.preventDefault(); document.getElementById('language{{ $index }}').submit();">
                             Delete
                         </a>
                         <form id="language{{ $index }}"
-                            action="{{ route('company.truck.destroy', [ "truck" => $truck->id ]) }}" method="POST"
+                            action="{{ route('admin.trucks.destroy', [ "truck" => $truck->id ]) }}" method="POST"
                             style="display: none;">
                             @csrf
                             @method('DELETE')
@@ -74,3 +76,10 @@
     </div>
 </div>
 @endsection
+@push('script')
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+        } );
+</script>
+@endpush

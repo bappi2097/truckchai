@@ -70,7 +70,7 @@
 
                 </ul>
             </li>
-            <li class="nav-header">Truck Category</li>
+            <li class="nav-header">Truck</li>
             <li class="has-sub {{set_active('admin/truck-*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
@@ -98,6 +98,18 @@
                     </li>
                     <li class="{{active('admin.truck-trip-category.index')}}">
                         <a href="{{route('admin.truck-trip-category.index')}}">Truck Trip</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-sub {{set_active('admin/trucks*')}}">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Truck</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{active('admin.trucks.index')}}">
+                        <a href="{{route('admin.trucks.index')}}">Truck</a>
                     </li>
                 </ul>
             </li>

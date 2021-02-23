@@ -47,6 +47,7 @@
                         @endforeach
                     </div>
                 </div>
+                @if (auth()->user()->company->hasValidTruck())
                 @if (!$trip->hasBid(auth()->user()->company))
                 <div>
                     <form action="{{route("company.bid.create", $trip->id)}}" method="POST">
@@ -63,7 +64,7 @@
                                 <div class="form-group">
                                     <label for="truck_id">Truck</label>
                                     <select name="truck_id" id="truck_id" class="form-control">
-                                        @foreach ($trucks as $truck)
+                                        @foreach (auth()->user()->company->validTrucks() as $truck)
                                         <option value="{{$truck->id}}">
                                             {{$truck->truck_no . " (" . $truck->truckCategory->truckModelCategory->model . ")"}}
                                         </option>
@@ -88,6 +89,9 @@
                         {{$bid->truck->truck_no . " (" . $bid->truck->truckCategory->truckModelCategory->model . ")"}}
                     </p>
                 </div>
+                @endif
+                @else
+                <h4 class="text-danger text-uppercase">You Don't Have any valid Truck</h4>
                 @endif
             </div>
         </div>

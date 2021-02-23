@@ -37,4 +37,19 @@ class CompanyDetail extends Model
     {
         return $this->hasOne(BalanceDetail::class, "company_id");
     }
+
+    function validTrucks()
+    {
+        return $this->trucks->where("is_valid", 1);
+    }
+
+    public function hasTruck()
+    {
+        return !$this->trucks->isEmpty();
+    }
+
+    public function hasValidTruck()
+    {
+        return !$this->validTrucks()->isEmpty();
+    }
 }

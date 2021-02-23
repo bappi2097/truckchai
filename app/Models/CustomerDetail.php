@@ -26,4 +26,12 @@ class CustomerDetail extends Model
     {
         return $this->hasMany(Trip::class, "customer_id");
     }
+    /**
+     * Get the user's testimonial.
+     */
+
+    public function testimonial()
+    {
+        return $this->morphOne(Testimonial::class, 'testimonialable');
+    }
 }

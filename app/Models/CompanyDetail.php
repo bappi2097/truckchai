@@ -47,4 +47,13 @@ class CompanyDetail extends Model
     {
         return !$this->validTrucks()->isEmpty();
     }
+
+    /**
+     * Get the user's testimonial.
+     */
+
+    public function testimonial()
+    {
+        return $this->morphOne(Testimonial::class, 'testimonialable');
+    }
 }

@@ -21,4 +21,12 @@ class DriverDetail extends Model
     {
         return $this->belongsTo(Truck::class, "truck_id");
     }
+    /**
+     * Get the user's testimonial.
+     */
+
+    public function testimonial()
+    {
+        return $this->morphOne(Testimonial::class, 'testimonialable');
+    }
 }

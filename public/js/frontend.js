@@ -1,10 +1,1 @@
-/******/ (() => { // webpackBootstrap
-/*!*******************************************!*\
-  !*** ./resources/js/frontend/frontend.js ***!
-  \*******************************************/
-sidebarLinkToggle = function sidebarLinkToggle(e) {
-  e.nextElementSibling.classList.toggle("d-block");
-  e.childNodes[5].classList.toggle("icon-down");
-};
-/******/ })()
-;
+sidebarLinkToggle=function(i){i.nextElementSibling.classList.toggle("d-block"),i.childNodes[5].classList.toggle("icon-down")};

@@ -102,7 +102,7 @@
                     <div class="col-md-3">
                         <div class="card  p-3">
                             @php
-                            $bid = $trip->companyBid(auth()->user()->company)->with("truck")->first();
+                            $bid = $trip->companyBid(auth()->user()->company);
                             @endphp
                             <h5>My BID</h5>
                             <p>Amount: {{$bid->amount}}</p>
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                @if (!$trip->isFinished())
+                @if (!$trip->isFinished() && $bid->isApproved())
                 <div>
                     <a href="javascript:void(0)" class="btn btn-sm btn-success float-right"
                         onclick="event.preventDefault(); document.getElementById('trip{{ $trip->id }}').submit();">

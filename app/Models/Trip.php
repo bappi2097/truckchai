@@ -48,6 +48,7 @@ class Trip extends Model
     public function companyBid(CompanyDetail $companyDetail)
     {
         $truckIds = $companyDetail->trucks->pluck("id")->all();
+        // dd($this->tripBids->whereIn("truck_id", $truckIds)->first());
         return $this->hasBid($companyDetail) ? $this->tripBids->whereIn("truck_id", $truckIds)->first() : null;
     }
 

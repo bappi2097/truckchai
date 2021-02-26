@@ -62,10 +62,6 @@ class TripController extends Controller
             $data->truck = Truck::where("id", $data->truck_id)->first();
             return $data;
         });
-        // dd($datas[0]);
-        // $trip = Trip::latest()->get();
-        // dd($trip[0]->companyTrip(auth()->user()->company));
-        // dd(Trip::latest()->get());
         return view("company.pages.trip.history-trip", [
             "trips" => $datas
         ]);
@@ -131,16 +127,14 @@ class TripController extends Controller
     public function finish(Request $request, $locale, Trip $trip)
     {
         $company = auth()->user()->company;
-        // dd($trip->approvedBid()->amount);
-        // dd(auth()->user()->company->balance);
         if ($trip->update(["status" => 3])) {
-            if (empty($company->balance)) {
+            if (empty($company->balanceDetail)) {
                 $balance = new BalanceDetail(["company_id" => $company->id, "balance" => $trip->approvedBid()->amount, "trip_no" => 1]);
                 $balance->save();
             } else {
-                $company->balance->increment("trip_no");
-                $company->balance->balance = $company->balance->balance + $trip->approvedBid()->amount;
-                $company->balance->save();
+                $company->balanceDetail->increment("trip_no");
+                $company->balanceDetail->balance = $company->balanceDetail->balance + $trip->approvedBid()->amount;
+                $company->balanceDetail->save();
             }
             Toastr::success("Trip Successfully Finished", "Success");
         } else {

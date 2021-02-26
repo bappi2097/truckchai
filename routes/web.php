@@ -121,6 +121,17 @@ Route::group(
                 Route::post("/", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "store"])->name('store');
                 Route::put("/{truck}", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "update"])->name('update');
             });
+            Route::group(['prefix' => 'bid', 'as' => 'bid.'], function () {
+                Route::get('/', [\App\Http\Controllers\Frontend\Driver\BidController::class, 'index'])->name('index');
+                Route::get('/{trip}', [\App\Http\Controllers\Frontend\Driver\BidController::class, 'show'])->name('show');
+                Route::post('/create/{trip}', [\App\Http\Controllers\Frontend\Driver\BidController::class, 'create'])->name('create');
+            });
+            Route::group(['prefix' => 'trip', 'as' => 'trip.'], function () {
+                Route::get("/current-trip", [\App\Http\Controllers\Frontend\Driver\TripController::class, "indexCurrent"])->name('current-trip');
+                Route::get("/history-trip", [\App\Http\Controllers\Frontend\Driver\TripController::class, "indexHistory"])->name('history-trip');
+                Route::get("/show-trip/{trip}", [\App\Http\Controllers\Frontend\Driver\TripController::class, "showTrip"])->name('show-trip');
+                Route::post("/finish/{trip}", [\App\Http\Controllers\Frontend\Driver\TripController::class, "finish"])->name('finish');
+            });
         });
     }
 );

@@ -49,6 +49,45 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
+                    <a class="sidebar-link" href="javascript:void(0);" onclick="sidebarLinkToggle(this);">
+                        <span class="sidebar-icon">
+                            <i class="icon-dashboard"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Trip </span>
+                        <span
+                            class="ml-auto nav-rtl icon-right {{active('driver.trip.current-trip', 'icon-down')}}{{active('driver.trip.history-trip', 'icon-down')}}">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                    <ul
+                        class="sidebar-list d-none {{active('driver.trip.current-trip', 'd-block')}}{{active('driver.trip.history-trip', 'd-block')}}">
+                        <li class="sidebar-list-item">
+                            <a class="sidebar-link {{active('driver.trip.current-trip')}}"
+                                href="{{route('driver.trip.current-trip')}}">
+                                <span class="sidebar-icon">
+                                    <i class="icon-bolt"></i>
+                                </span>
+                                <span class="sidebar-link-name"> Current Trip </span>
+                                <span class="ml-auto nav-rtl icon-right">
+                                    <i class="icon-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list-item">
+                            <a class="sidebar-link {{active('driver.trip.history-trip')}}"
+                                href="{{route('driver.trip.history-trip')}}">
+                                <span class="sidebar-icon">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                                <span class="sidebar-link-name"> Trip History </span>
+                                <span class="ml-auto nav-rtl icon-right">
+                                    <i class="icon-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-list-item">
                     <a class="sidebar-link" href="{{route('driver.change-password.show')}}">
                         <span class="sidebar-icon">
                             <i class="icon-key"></i>

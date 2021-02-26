@@ -29,4 +29,8 @@ class DriverDetail extends Model
     {
         return $this->morphOne(Testimonial::class, 'testimonialable');
     }
+    public function driverBalanceDetail()
+    {
+        return $this->hasOne(DriverBalanceDetail::class, "driver_id");
+    }
 }

@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Frontend\Driver;
 
-use App\Http\Controllers\Controller;
-use App\Models\ProductType;
-use App\Models\TruckCategory;
+use App\Models\Trip;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\DriverBalanceDetail;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('driver.pages.dashboard');
+        return view('driver.pages.dashboard', [
+            "trips" => Trip::where("status", 0)->latest()->get(),
+            "balance" => DriverBalanceDetail::where("driver_id", auth()->user()->driver->id)->first()
+        ]);
     }
 }

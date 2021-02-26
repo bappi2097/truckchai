@@ -43,19 +43,15 @@ class ProfileController extends Controller
 
         $user->fill($data);
         if (empty($user->driver)) {
-            if ($request->hasFile('image')) {
-                $image = Storage::disk("local")->put("images\\drivers\\image", $request->image);
-            }
-            if ($request->hasFile('nid')) {
-                $nid = Storage::disk("local")->put("images\\drivers\\nid", $request->nid);
-            }
-            if ($request->hasFile('license')) {
-                $license = Storage::disk("local")->put("images\\drivers\\license", $request->license);
-            }
+
+            $driverData["image"] = $request->hasFile('image') ? Storage::disk("local")->put("images\\drivers\\image", $request->image) : "";
+
+            $driverData["nid"] = $request->hasFile('nid') ? Storage::disk("local")->put("images\\drivers\\nid", $request->nid) : "";
+
+            $driverData["license"] = $request->hasFile('license') ? Storage::disk("local")->put("images\\drivers\\license", $request->license) : "";
+
             $driverData["uuid"] = $user->id + 10000;
-            $driverData["image"] = $image ?: "";
-            $driverData["nid"] = $nid ?: "";
-            $driverData["license"] = $license ?: "";
+
             $driver = new DriverDetail($driverData);
 
             if ($user->save() && $user->driver()->save($driver)) {

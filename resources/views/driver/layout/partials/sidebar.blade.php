@@ -38,6 +38,17 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
+                    <a class="sidebar-link {{active('driver.truck.show')}}" href="{{route('driver.truck.show')}}">
+                        <span class="sidebar-icon">
+                            <i class="icon-truck"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Truck </span>
+                        <span class="ml-auto nav-rtl icon-right">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
                     <a class="sidebar-link" href="{{route('driver.change-password.show')}}">
                         <span class="sidebar-icon">
                             <i class="icon-key"></i>

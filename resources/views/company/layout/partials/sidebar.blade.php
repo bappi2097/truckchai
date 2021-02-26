@@ -79,7 +79,7 @@
                 <li class="sidebar-list-item">
                     <a class="sidebar-link {{active('company.truck.index')}}" href="{{route('company.truck.index')}}">
                         <span class="sidebar-icon">
-                            <i class="icon-user"></i>
+                            <i class="icon-truck"></i>
                         </span>
                         <span class="sidebar-link-name">Truck</span>
                         <span class="ml-auto nav-rtl icon-right">

@@ -116,12 +116,10 @@ Route::group(
             });
 
             Route::group(['prefix' => 'truck', 'as' => 'truck.'], function () {
-                Route::get('/', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'index'])->name('index');
-                Route::get('/create', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'create'])->name('create');
-                Route::post('/', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'store'])->name('store');
-                Route::get('/edit/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'edit'])->name('edit');
-                Route::put('/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'update'])->name('update');
-                Route::delete('/{truck}', [\App\Http\Controllers\Frontend\Driver\TruckController::class, 'destroy'])->name('destroy');
+                Route::get("/", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "show"])->name('show');
+                Route::get("/edit/{truck}", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "edit"])->name('edit');
+                Route::post("/", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "store"])->name('store');
+                Route::put("/{truck}", [\App\Http\Controllers\Frontend\Driver\TruckController::class, "update"])->name('update');
             });
         });
     }

@@ -74,7 +74,8 @@ class AuthController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        if (!User::where('email', $request->email)->first()->hasRole('admin')) {
+        $user = User::where('email', $request->email);
+        if ($user->exists() && !$user->first()->hasRole('admin')) {
             return $this->guard()->attempt(
                 $this->credentials($request),
                 $request->filled('remember')

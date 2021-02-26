@@ -55,4 +55,23 @@ class Trip extends Model
     {
         return $this->status == 2;
     }
+
+    public function isFinished()
+    {
+        return $this->status == 3;
+    }
+    public function approvedBid()
+    {
+        return $this->tripBids->where("status", 1)->first();
+    }
+    public function isApprovedBid()
+    {
+        return !empty($this->approvedBid()) && $this->approvedBid()->exists();
+    }
+
+    // public function companyTrip(CompanyDetail $company)
+    // {
+    //     dd($this);
+    //     dd(true);
+    // }
 }

@@ -1,4 +1,4 @@
-@extends('user.layout.master')
+@extends('company.layout.master')
 
 @section('content')
 <div class="col-md-10">

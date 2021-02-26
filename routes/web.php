@@ -63,6 +63,10 @@ Route::group(
                 Route::get("/current-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "indexCurrent"])->name('current-trip');
                 Route::get("/history-trip", [\App\Http\Controllers\Frontend\Customer\TripController::class, "indexHistory"])->name('history-trip');
                 Route::get("/show-trip/{trip}", [\App\Http\Controllers\Frontend\Customer\TripController::class, "showTrip"])->name('show-trip');
+                Route::group(['prefix' => 'bid-trip', 'as' => 'bid-trip.'], function () {
+                    Route::post("/approve/{tripBid}", [\App\Http\Controllers\Frontend\Customer\BidController::class, "bidApprove"])->name('approve');
+                    Route::post("/decline/{tripBid}", [\App\Http\Controllers\Frontend\Customer\BidController::class, "bidDecline"])->name('decline');
+                });
             });
         });
 
@@ -90,6 +94,12 @@ Route::group(
                 Route::get('/', [\App\Http\Controllers\Frontend\Company\BidController::class, 'index'])->name('index');
                 Route::get('/{trip}', [\App\Http\Controllers\Frontend\Company\BidController::class, 'show'])->name('show');
                 Route::post('/create/{trip}', [\App\Http\Controllers\Frontend\Company\BidController::class, 'create'])->name('create');
+            });
+            Route::group(['prefix' => 'trip', 'as' => 'trip.'], function () {
+                Route::get("/current-trip", [\App\Http\Controllers\Frontend\Company\TripController::class, "indexCurrent"])->name('current-trip');
+                Route::get("/history-trip", [\App\Http\Controllers\Frontend\Company\TripController::class, "indexHistory"])->name('history-trip');
+                Route::get("/show-trip/{trip}", [\App\Http\Controllers\Frontend\Company\TripController::class, "showTrip"])->name('show-trip');
+                Route::post("/finish/{trip}", [\App\Http\Controllers\Frontend\Company\TripController::class, "finish"])->name('finish');
             });
         });
 

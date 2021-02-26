@@ -38,6 +38,45 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
+                    <a class="sidebar-link" href="javascript:void(0);" onclick="sidebarLinkToggle(this);">
+                        <span class="sidebar-icon">
+                            <i class="icon-dashboard"></i>
+                        </span>
+                        <span class="sidebar-link-name"> Trip </span>
+                        <span
+                            class="ml-auto nav-rtl icon-right {{active('company.trip.current-trip', 'icon-down')}}{{active('company.trip.history-trip', 'icon-down')}}">
+                            <i class="icon-chevron-right"></i>
+                        </span>
+                    </a>
+                    <ul
+                        class="sidebar-list d-none {{active('company.trip.current-trip', 'd-block')}}{{active('company.trip.history-trip', 'd-block')}}">
+                        <li class="sidebar-list-item">
+                            <a class="sidebar-link {{active('company.trip.current-trip')}}"
+                                href="{{route('company.trip.current-trip')}}">
+                                <span class="sidebar-icon">
+                                    <i class="icon-bolt"></i>
+                                </span>
+                                <span class="sidebar-link-name"> Current Trip </span>
+                                <span class="ml-auto nav-rtl icon-right">
+                                    <i class="icon-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list-item">
+                            <a class="sidebar-link {{active('company.trip.history-trip')}}"
+                                href="{{route('company.trip.history-trip')}}">
+                                <span class="sidebar-icon">
+                                    <i class="icon-calendar"></i>
+                                </span>
+                                <span class="sidebar-link-name"> Trip History </span>
+                                <span class="ml-auto nav-rtl icon-right">
+                                    <i class="icon-chevron-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-list-item">
                     <a class="sidebar-link {{active('company.truck.index')}}" href="{{route('company.truck.index')}}">
                         <span class="sidebar-icon">
                             <i class="icon-user"></i>

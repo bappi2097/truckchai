@@ -56,4 +56,8 @@ class CompanyDetail extends Model
     {
         return $this->morphOne(Testimonial::class, 'testimonialable');
     }
+    public function tripBids()
+    {
+        return $this->hasMany(TripBid::class);
+    }
 }

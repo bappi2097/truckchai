@@ -24,4 +24,17 @@ class TripBid extends Model
     {
         return $this->belongsTo(Truck::class, "truck_id");
     }
+    public function isApproved()
+    {
+        return $this->status == 1;
+    }
+
+    public function isDeclined()
+    {
+        return $this->status == 2;
+    }
+    public function company()
+    {
+        return $this->belongsTo(CompanyDetail::class);
+    }
 }

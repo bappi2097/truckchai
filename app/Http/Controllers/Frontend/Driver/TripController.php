@@ -30,10 +30,6 @@ class TripController extends Controller
                 "trips.status as trip_status",
                 "trip_bids.status as trip_bid_status"
             )->get();
-        // dd($datas);
-        // $trip = Trip::latest()->get();
-        // dd($trip[0]->companyTrip(auth()->user()->driver));
-        // dd(Trip::latest()->get());
         return view("driver.pages.trip.current-trip", [
             "trips" => $datas
         ]);
@@ -41,7 +37,6 @@ class TripController extends Controller
 
     public function indexHistory()
     {
-        // dd(true);
         $datas = \DB::table("driver_details")
             ->where("driver_details.id", auth()->user()->driver->id)
             ->where("trips.status", 3)

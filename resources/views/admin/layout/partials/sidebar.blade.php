@@ -133,6 +133,22 @@
                     <span>Languages</span>
                 </a>
             </li>
+            <li class="nav-header">Blog</li>
+            <li class="has-sub {{set_active('admin/blog*')}}">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa fa-th-large"></i>
+                    <span>Blog</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{active('admin.blog-category.index')}}">
+                        <a href="{{route('admin.blog-category.index')}}">Category</a>
+                    </li>
+                    <li class="{{active('admin.blog.index')}}">
+                        <a href="{{route('admin.blog.index')}}">Blog</a>
+                    </li>
+                </ul>
+            </li>
             <li class="has-sub">
                 <a href="javascript:;">
                     <span class="badge pull-right">10</span>

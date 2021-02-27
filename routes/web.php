@@ -307,6 +307,24 @@ Route::group(
                 Route::put('/{productType}', [\App\Http\Controllers\backend\ProductTypeController::class, 'update'])->name('update');
                 Route::delete('/{productType}', [\App\Http\Controllers\backend\ProductTypeController::class, 'destroy'])->name('destroy');
             });
+
+            Route::group(['prefix' => 'blog-category', 'as' => 'blog-category.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\BlogCategoryController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\BlogCategoryController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\BlogCategoryController::class, 'store'])->name('store');
+                Route::get('/edit/{blogCategory}', [\App\Http\Controllers\backend\BlogCategoryController::class, 'edit'])->name('edit');
+                Route::put('/{blogCategory}', [\App\Http\Controllers\backend\BlogCategoryController::class, 'update'])->name('update');
+                Route::delete('/{blogCategory}', [\App\Http\Controllers\backend\BlogCategoryController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\BlogController::class, 'index'])->name('index');
+                Route::get('/create', [\App\Http\Controllers\backend\BlogController::class, 'create'])->name('create');
+                Route::post('/', [\App\Http\Controllers\backend\BlogController::class, 'store'])->name('store');
+                Route::get('/edit/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'edit'])->name('edit');
+                Route::put('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'update'])->name('update');
+                Route::delete('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'destroy'])->name('destroy');
+            });
         });
     }
 );

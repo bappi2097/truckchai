@@ -7,21 +7,63 @@ use App\Models\Product;
 use App\Models\ProductValue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DriverBalanceDetail;
+use App\Models\Truck;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TripController extends Controller
 {
     public function indexCurrent()
     {
-        return view("user.pages.trip.current-trip", [
-            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->whereNotIn("status",  [2, 3])->with(["truckCategory", "product", "tripBids"])->latest()->get()
+        $datas = \DB::table("driver_details")
+            ->where("driver_details.id", auth()->user()->driver->id)
+            ->where("trips.status", 1)
+            ->join("trucks", "driver_details.truck_id", "trucks.id")
+            ->join("trip_bids", "trucks.id", "=", "trip_bids.truck_id")
+            ->join("trips", "trip_bids.trip_id", "=", "trips.id")
+            ->select(
+                "trips.id as id",
+                "driver_details.id as driver_id",
+                "trips.load_location as load_location",
+                "trips.unload_location as unload_location",
+                "trips.load_time as load_time",
+                "trips.status as trip_status",
+                "trip_bids.status as trip_bid_status"
+            )->get();
+        // dd($datas);
+        // $trip = Trip::latest()->get();
+        // dd($trip[0]->companyTrip(auth()->user()->driver));
+        // dd(Trip::latest()->get());
+        return view("driver.pages.trip.current-trip", [
+            "trips" => $datas
         ]);
     }
 
     public function indexHistory()
     {
-        return view("user.pages.trip.history-trip", [
-            "trips" => Trip::where("customer_id", auth()->user()->customer->id)->whereIn("status",  [2, 3])->with(["truckCategory", "product", "tripBids"])->latest()->get()
+        // dd(true);
+        $datas = \DB::table("driver_details")
+            ->where("driver_details.id", auth()->user()->driver->id)
+            ->where("trips.status", 3)
+            ->join("trucks", "driver_details.truck_id", "trucks.id")
+            ->join("trip_bids", "trucks.id", "=", "trip_bids.truck_id")
+            ->join("trips", "trip_bids.trip_id", "=", "trips.id")
+            ->select(
+                "trips.id as id",
+                "driver_details.id as driver_id",
+                "trips.load_location as load_location",
+                "trips.unload_location as unload_location",
+                "trips.load_time as load_time",
+                "trips.status as trip_status",
+                "trip_bids.status as trip_bid_status",
+                "trucks.id as truck_id",
+            )->get();
+        $datas = $datas->map(function ($data) {
+            $data->truck = Truck::where("id", $data->truck_id)->first();
+            return $data;
+        });
+        return view("driver.pages.trip.history-trip", [
+            "trips" => $datas
         ]);
     }
 
@@ -54,7 +96,7 @@ class TripController extends Controller
             }
             $tripData = [
                 "product_id" => $product->id,
-                "customer_id" => auth()->user()->customer->id,
+                "company_id" => auth()->user()->driver->id,
                 "truck_category_id" => $request->truck_category_id,
                 "load_location" => $request->load_location,
                 "unload_location" => $request->unload_location,
@@ -78,16 +120,25 @@ class TripController extends Controller
 
     public function showTrip($locale, Trip $trip)
     {
-        return view("user.pages.trip.single-current", [
+        return view("driver.pages.trip.single-trip", [
             "trip" => $trip
         ]);
     }
-    public function cancel($locale, Trip $trip)
+    public function finish(Request $request, $locale, Trip $trip)
     {
-        if ($trip->update(["status" => 2])) {
-            Toastr::success("Trip Canceled Successfully", "Success");
+        $driver = auth()->user()->driver;
+        if ($trip->update(["status" => 3])) {
+            if (empty($driver->balanceDetail)) {
+                $balance = new DriverBalanceDetail(["driver_id" => $driver->id, "balance" => $trip->approvedBid()->amount, "trip_no" => 1]);
+                $balance->save();
+            } else {
+                $driver->balanceDetail->increment("trip_no");
+                $driver->balanceDetail->balance = $driver->balanceDetail->balance + $trip->approvedBid()->amount;
+                $driver->balanceDetail->save();
+            }
+            Toastr::success("Trip Successfully Finished", "Success");
         } else {
-            Toastr::error("Something Went Wrong", "Error");
+            Toastr::success("Something Went Wrong", "Error");
         }
         return redirect()->back();
     }

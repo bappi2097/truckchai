@@ -1,9 +1,9 @@
-@extends('company.layout.master')
+@extends('driver.layout.master')
 
 @section('content')
 <div class="col-md-10">
     @foreach ($trips as $trip)
-    <a href="{{route('company.bid.show', ['trip' => $trip->id])}}" class="text-decoration-none">
+    <a href="{{route('driver.bid.show', ['trip' => $trip->id])}}" class="text-decoration-none">
         <div class="row">
             <div class="col-md-12">
                 <div class="card rounded px-5 py-3">

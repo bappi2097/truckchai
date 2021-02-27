@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Driver;
 
+use App\Models\Trip;
+use App\Models\User;
 use App\Models\TripBid;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,26 +11,39 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class BidController extends Controller
 {
-    public function bidApprove(Request $request, $locale, TripBid $tripBid)
+    public function show($locale, Trip $trip)
     {
-        foreach ($tripBid->trip->tripBids->where("id", "!=", $tripBid->id) as $declineTripBid) {
-            $declineTripBid->update(["status" => 2]);
+        if (empty(auth()->user()->driver)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("driver.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("driver")->first(),
+            ]);
         }
-        if ($tripBid->update(["status" => 1])) {
-            $tripBid->trip->update(["status" => 1]);
-            Toastr::success("Wow! Bid Approved", "SUccess");
-        } else {
-            Toastr::error("Something Went Wrong!", "Error");
-        }
-        return redirect()->back();
+        return view("driver.pages.trip.make-bid", [
+            "trip" => $trip,
+            "trucks" => auth()->user()->driver->trucks,
+        ]);
     }
-
-    public function bidDecline(Request $request, $locale, TripBid $tripBid)
+    public function create($locale, Request $request, Trip $trip)
     {
-        if ($tripBid->update(["status" => 2])) {
-            Toastr::success("Bid Declined", "SUccess");
+        $this->validate($request, [
+            "amount" => "required",
+            "truck_id" => "required|exists:trucks,id",
+        ]);
+
+        $data = [
+            "truck_id" => $request->truck_id,
+            "amount" => $request->amount,
+            "status" => 0,
+            "trip_id" => $trip->id
+        ];
+
+        $tripBid = new TripBid($data);
+
+        if ($tripBid->save()) {
+            Toastr::success("TripBid Successfully Added", "Success");
         } else {
-            Toastr::error("Something Went Wrong!", "Error");
+            Toastr::error("Something Went Wrong", "Error");
         }
         return redirect()->back();
     }

@@ -1,4 +1,4 @@
-@extends('company.layout.master')
+@extends('driver.layout.master')
 @section('content')
 <div class="col-md-10">
     <div class="row">
@@ -66,10 +66,10 @@
                         @endforeach
                     </div>
                 </div>
-                @if (auth()->user()->company->hasValidTruck())
-                @if (!$trip->hasBid(auth()->user()->company))
+                @if (auth()->user()->driver->hasValidTruck())
+                @if (!$trip->hasBidDriver(auth()->user()->driver))
                 <div>
-                    <form action="{{route("company.bid.create", $trip->id)}}" method="POST">
+                    <form action="{{route("driver.bid.create", $trip->id)}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -82,13 +82,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="truck_id">Truck</label>
-                                    <select name="truck_id" id="truck_id" class="form-control">
-                                        @foreach (auth()->user()->company->validTrucks() as $truck)
-                                        <option value="{{$truck->id}}">
-                                            {{$truck->truck_no . " (" . $truck->truckCategory->truckModelCategory->model . ")"}}
-                                        </option>
-                                        @endforeach
-                                    </select>
+                                    @php
+                                    $truck = auth()->user()->driver->validTruck();
+                                    @endphp
+                                    <input type="hidden" name="truck_id" value="{{$truck->id}}">
+                                    <input type="text" id="truck_id" class="form-control"
+                                        value="{{$truck->truck_no . ' (' . $truck->truckCategory->truckModelCategory->model . ')'}}">
                                 </div>
                             </div>
                         </div>
@@ -102,7 +101,7 @@
                     <div class="col-md-3">
                         <div class="card  p-3">
                             @php
-                            $bid = $trip->companyBid(auth()->user()->company);
+                            $bid = $trip->driverBid(auth()->user()->driver);
                             @endphp
                             <h5>My BID</h5>
                             <p>Amount: {{$bid->amount}}</p>
@@ -118,7 +117,7 @@
                         onclick="event.preventDefault(); document.getElementById('trip{{ $trip->id }}').submit();">
                         Finish Trip
                     </a>
-                    <form id="trip{{ $trip->id }}" action="{{ route('company.trip.finish', $trip->id) }}" method="POST"
+                    <form id="trip{{ $trip->id }}" action="{{ route('driver.trip.finish', $trip->id) }}" method="POST"
                         style="display: none;">
                         @csrf
                     </form>

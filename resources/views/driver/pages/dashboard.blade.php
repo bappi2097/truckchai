@@ -24,7 +24,7 @@
         </div>
         @foreach ($trips as $trip)
         <div class="col-md-5 col-sm-12 px-0 mr-5 mt-3">
-            <a href="{{route('company.bid.show', $trip->id)}}" class="text-decoration-none">
+            <a href="{{route('driver.bid.show', $trip->id)}}" class="text-decoration-none">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card rounded px-5 py-3 px-sm-0">

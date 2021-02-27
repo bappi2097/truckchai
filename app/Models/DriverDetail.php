@@ -33,4 +33,23 @@ class DriverDetail extends Model
     {
         return $this->hasOne(DriverBalanceDetail::class, "driver_id");
     }
+    public function validTruck()
+    {
+        return $this->hasValidTruck() ? $this->truck : null;
+    }
+
+    public function hasTruck()
+    {
+        return !empty($this->truck);
+    }
+
+    public function hasValidTruck()
+    {
+        return $this->hasTruck() ? $this->truck->is_valid == 1 : false;
+    }
+
+    public function tripBids()
+    {
+        return $this->hasMany(TripBid::class);
+    }
 }

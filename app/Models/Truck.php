@@ -31,4 +31,14 @@ class Truck extends Model
     {
         return $this->hasOne(DriverDetail::class, "truck_id");
     }
+
+    public function isCompany()
+    {
+        return !$this->company->isEmpty();
+    }
+
+    public function isDriver()
+    {
+        return !$this->driver->isEmpty();
+    }
 }

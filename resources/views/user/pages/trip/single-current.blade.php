@@ -70,7 +70,11 @@
     @if ($trip->isApprovedBid())
     @php
     $tripBid = $trip->approvedBid();
-    $tripCompany= $tripBid->truck->company->first();
+    if($tripBid->truck->isCompany()){
+    $tripUser= $tripBid->truck->company->first();
+    }else{
+    $tripUser= $tripBid->truck->driver;
+    }
     $truckCat = $tripBid->truck->truckCategory;
     @endphp
     <div class="row">
@@ -79,8 +83,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
-                            <img style="width: 100px; height:100px;" class="rounded"
-                                src="{{asset($tripCompany->image)}}" alt="">
+                            <img style="width: 100px; height:100px;" class="rounded" src="{{asset($tripUser->image)}}"
+                                alt="">
                         </div>
                         <div class="col-md-10 col-sm-12">
                             <div class="row">
@@ -88,7 +92,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <h5>
-                                                {{$tripCompany->user->name}}
+                                                {{$tripUser->user->name}}
                                             </h5>
                                             <p class="text-muted">
                                                 {{$truckCat->truckModelCategory->model . " " . $truckCat->truckModelCategory->truckBrandCategory->name}}
@@ -115,7 +119,11 @@
     @else
     @foreach ($trip->tripBids as $tripBid)
     @php
-    $tripCompany= $tripBid->truck->company->first();
+    if($tripBid->truck->isCompany()){
+    $tripUser= $tripBid->truck->company->first();
+    }else{
+    $tripUser= $tripBid->truck->driver;
+    }
     $truckCat = $tripBid->truck->truckCategory;
     @endphp
     <div class="row">
@@ -124,8 +132,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
-                            <img style="width: 100px; height:100px;" class="rounded"
-                                src="{{asset($tripCompany->image)}}" alt="">
+                            <img style="width: 100px; height:100px;" class="rounded" src="{{asset($tripUser->image)}}"
+                                alt="">
                         </div>
                         <div class="col-md-10 col-sm-12">
                             <div class="row">
@@ -133,7 +141,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <h5>
-                                                {{$tripCompany->user->name}}
+                                                {{$tripUser->user->name}}
                                             </h5>
                                             <p class="text-muted">
                                                 {{$truckCat->truckModelCategory->model . " " . $truckCat->truckModelCategory->truckBrandCategory->name}}

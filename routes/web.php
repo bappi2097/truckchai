@@ -147,6 +147,8 @@ Route::group(
 
             Route::post('logout',  [\App\Http\Controllers\backend\AuthController::class, 'logout'])->name('logout');
             Route::get('dashboard', [\App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
+            Route::get('profile', [\App\Http\Controllers\backend\ProfileController::class, 'show'])->name('profile');
+            Route::post('profile', [\App\Http\Controllers\backend\ProfileController::class, 'update'])->name('update');
             Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
                 Route::group(['prefix' => 'admins', 'as' => 'admins.'], function () {

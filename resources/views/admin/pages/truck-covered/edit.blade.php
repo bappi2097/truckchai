@@ -12,6 +12,9 @@
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Covered"
                     value="{{$truckCoveredCategory->name}}">
+                @error('name')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>

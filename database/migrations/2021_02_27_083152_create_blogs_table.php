@@ -17,8 +17,9 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->foreignId('admin_id')->constrained("admin_details");
             $table->text('title');
+            $table->text('slug')->unique();
             $table->text('image');
-            $table->text('description');
+            $table->longText('description');
             $table->softDeletes();
             $table->timestamps();
         });

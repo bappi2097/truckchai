@@ -32,7 +32,7 @@
                                 placeholder="221B Baker Street" required>
                         </div>
                         <div class="form-group">
-                            <label for="unload">Load Location</label>
+                            <label for="unload">Unload Location</label>
                             <input class="form-control" type="text" name="unload_location" id="unload"
                                 placeholder="Albert House, 256-260 Old St, Old Street" required>
                         </div>

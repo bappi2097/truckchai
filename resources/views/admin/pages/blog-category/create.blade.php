@@ -9,10 +9,16 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Home Shifting">
+                @error('name')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="slug">Slug</label>
                 <input type="text" class="form-control" name="slug" id="slug" placeholder="home-shifting">
+                @error('slug')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>

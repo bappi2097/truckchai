@@ -12,11 +12,17 @@
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Seven and Half Ton"
                     value="{{$truckWeightCategory->name}}">
+                @error('name')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="weight">Weight (Ton)</label>
                 <input type="number" class="form-control" name="weight" id="weight" placeholder="7.5" min="1" max="60"
                     value="{{$truckWeightCategory->weight}}">
+                @error('weight')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>

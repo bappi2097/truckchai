@@ -11,11 +11,17 @@
                 <label for="value">Name</label>
                 <input type="text" class="form-control" name="value" id="value" placeholder="Living creatures"
                     value="{{$productType->value}}">
+                @error('value')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="key">Key</label>
                 <input type="text" class="form-control" name="key" id="key" placeholder="living-creatures"
                     value="{{$productType->key}}">
+                @error('key')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Update</button>
             <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>

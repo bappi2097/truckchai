@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous" />
     <link href="{{ asset('assets/css/default/app.min.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
     @stack('style')
     <style>
         #myTable {
@@ -32,10 +32,9 @@
     <script src="{{asset('assets/js/demo/dashboard.js')}}" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{{asset('js/toastr.js')}}"></script>
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     {!! Toastr::message() !!}
     @stack('script')
-    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 </body>
-
 
 </html>

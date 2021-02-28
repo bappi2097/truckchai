@@ -11,6 +11,9 @@
                 <label for="model">Model</label>
                 <input type="text" class="form-control" name="model" id="model" value="{{$truckModelCategory->model}}"
                     placeholder="407 Gold SFC">
+                @error('model')
+                <span class="text-red">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="brand">Brand</label>

@@ -76,63 +76,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="#">
-                        <span class="sidebar-icon">
-                            <i class="icon-book"></i>
-                        </span>
-                        <span class="sidebar-link-name"> Address Book </span>
-                        <span class="ml-auto nav-rtl icon-right">
-                            <i class="icon-chevron-right"></i>
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="javascript:void(0);" onclick="sidebarLinkToggle(this);">
-                        <span class="sidebar-icon">
-                            <i class="icon-envelope"></i>
-                        </span>
-                        <span class="sidebar-link-name"> Inbox </span>
-                        <span class="ml-auto nav-rtl icon-right">
-                            <i class="icon-chevron-right"></i>
-                        </span>
-                    </a>
-                    <ul class="sidebar-list d-none">
-                        <li class="sidebar-list-item">
-                            <a class="sidebar-link" href="#">
-                                <span class="sidebar-icon">
-                                    <i class="icon-bell-alt"></i>
-                                </span>
-                                <span class="sidebar-link-name"> Notification </span>
-                                <span class="ml-auto nav-rtl icon-right">
-                                    <i class="icon-chevron-right"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-list-item">
-                            <a class="sidebar-link" href="#">
-                                <span class="sidebar-icon">
-                                    <i class="icon-dashboard"></i>
-                                </span>
-                                <span class="sidebar-link-name"> Campaign </span>
-                                <span class="ml-auto nav-rtl icon-right">
-                                    <i class="icon-chevron-right"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="#">
-                        <span class="sidebar-icon">
-                            <i class="icon-ticket"></i>
-                        </span>
-                        <span class="sidebar-link-name"> Cuppon </span>
-                        <span class="ml-auto nav-rtl icon-right">
-                            <i class="icon-chevron-right"></i>
-                        </span>
-                    </a>
-                </li> --}}
                 <li class="sidebar-list-item">
                     <a class="sidebar-link" href="{{route('customer.change-password.show')}}">
                         <span class="sidebar-icon">
@@ -144,17 +87,6 @@
                         </span>
                     </a>
                 </li>
-                {{-- <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="#">
-                        <span class="sidebar-icon">
-                            <i class="icon-cog"></i>
-                        </span>
-                        <span class="sidebar-link-name"> Setting </span>
-                        <span class="ml-auto nav-rtl icon-right">
-                            <i class="icon-chevron-right"></i>
-                        </span>
-                    </a>
-                </li> --}}
             </ul>
         </div>
     </div>

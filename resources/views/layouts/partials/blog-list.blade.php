@@ -5,119 +5,71 @@
         <span class="square"></span>
         <span class="line"></span>
     </div>
-    <div class="row custom-index-blog">
-        <div class="mt-5 row">
-            <div class="p-0 col-md-5 col-sm-12">
-                <img class="img-fluid w-100" src="{{ asset('images/why.jpeg') }}" alt="blog title" />
-            </div>
-            <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
-                <h5 class="custom-index-blog-title">
-                    <a href="./single-blog.html">
-                        IT ENHANCES TRUCKING EFFICIENCY, REDUCES POLLUTION AND WANDERING
-                        ON EMPTY TRUCKS
-                    </a>
-                </h5>
-                <div class="custom-index-blog-admin">
-                    <p>{{ __('utility.by') }}:: Admin</p>
-                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
-                </div>
-                <div>
-                    <span class="seperator"></span>
-                    <span class="ml-3 seperator"></span>
-                </div>
-                <p class="custom-index-blog-p">
-                    Truck drivers sometimes have to travel thousands of kilometers
-                    with empty trucks, which results in the production of millions of
-                    tons of carbon emissions. For example, when trucks transport loads
-                    to a specific place, they may return empty after emptying their
-                    load due to the lack of a new load, so the application of Traincu
-                    […]
-                </p>
-            </div>
-        </div>
-        <div class="custom-index-blog-date">
-            <span>
-                JUL
-                <br />
-                11
-            </span>
-        </div>
+    <div class="why-blogs">
+
     </div>
-    <div class="row custom-index-blog">
-        <div class="mt-5 row">
-            <div class="p-0 col-md-5 col-sm-12">
-                <img class="img-fluid w-100" src="{{ asset('images/why.jpeg') }}" alt="blog title" />
-            </div>
-            <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
-                <h5 class="custom-index-blog-title">
-                    <a href="./single-blog.html">
-                        IT ENHANCES TRUCKING EFFICIENCY, REDUCES POLLUTION AND WANDERING
-                        ON EMPTY TRUCKS
-                    </a>
-                </h5>
-                <div class="custom-index-blog-admin">
-                    <p>{{ __('utility.by') }}:: Admin</p>
-                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
-                </div>
-                <div>
-                    <span class="seperator"></span>
-                    <span class="ml-3 seperator"></span>
-                </div>
-                <p class="custom-index-blog-p">
-                    Truck drivers sometimes have to travel thousands of kilometers
-                    with empty trucks, which results in the production of millions of
-                    tons of carbon emissions. For example, when trucks transport loads
-                    to a specific place, they may return empty after emptying their
-                    load due to the lack of a new load, so the application of Traincu
-                    […]
-                </p>
-            </div>
-        </div>
-        <div class="custom-index-blog-date">
-            <span>
-                JUL
-                <br />
-                11
-            </span>
-        </div>
-    </div>
-    <div class="row custom-index-blog">
-        <div class="mt-5 row">
-            <div class="p-0 col-md-5 col-sm-12">
-                <img class="img-fluid w-100" src="{{ asset('images/why.jpeg') }}" alt="blog title" />
-            </div>
-            <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
-                <h5 class="custom-index-blog-title">
-                    <a href="./single-blog.html">
-                        IT ENHANCES TRUCKING EFFICIENCY, REDUCES POLLUTION AND WANDERING
-                        ON EMPTY TRUCKS
-                    </a>
-                </h5>
-                <div class="custom-index-blog-admin">
-                    <p>{{ __('utility.by') }}:: Admin</p>
-                    <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
-                </div>
-                <div>
-                    <span class="seperator"></span>
-                    <span class="ml-3 seperator"></span>
-                </div>
-                <p class="custom-index-blog-p">
-                    Truck drivers sometimes have to travel thousands of kilometers
-                    with empty trucks, which results in the production of millions of
-                    tons of carbon emissions. For example, when trucks transport loads
-                    to a specific place, they may return empty after emptying their
-                    load due to the lack of a new load, so the application of Traincu
-                    […]
-                </p>
-            </div>
-        </div>
-        <div class="custom-index-blog-date">
-            <span>
-                JUL
-                <br />
-                11
-            </span>
-        </div>
-    </div>
-    <a href="#" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
+    <a href="javascript::void(0)" class="mt-5 btn btn-outline-indigo why-blogs-load">{{ __('utility.more') }}</a>
 </div>
+
+@push('script')
+<script>
+    $( document ).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            }
+        });
+        // $(document).on("load", whyBlogs());
+        $("why-blogs-load").on("click", whyBlogs());
+        function whyBlogs(){
+            $.ajax({
+                url: "{{route('why-blogs')}}",
+                type: 'GET',
+                success: function( data ){
+                    if(data.next_page_url == null){
+                        // $(".why-blogs-load").attr("href", `data.next_page_url`);
+                        $(".why-blogs-load").addClass("d-none");
+                    }
+                    data.data.forEach((element) => {
+                        $(".why-blogs").append(
+                            `
+                            <div class="row custom-index-blog">
+                                <div class="mt-5 row">
+                                    <div class="p-0 col-md-5 col-sm-12">
+                                        <img class="img-fluid w-100" src="{{ asset( '${element.image}') }}" alt="${element.title}" />
+                                    </div>
+                                    <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
+                                        <h5 class="custom-index-blog-title">
+                                            <a href="#">
+                                                ${element.title}
+                                            </a>
+                                        </h5>
+                                        <div class="custom-index-blog-admin">
+                                            <p>{{ __('utility.by') }}:: Admin</p>
+                                            <p class="mx-2">{{ __('utility.comments') }}:: 0</p>
+                                        </div>
+                                        <div>
+                                            <span class="seperator"></span>
+                                            <span class="ml-3 seperator"></span>
+                                        </div>
+                                        <p class="custom-index-blog-p">
+                                            ${element.description}
+                                            […]
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="custom-index-blog-date">
+                                    <span class="text-wrap">
+                                        ${element.created.split(' ').join("<br>")}
+                                    </span>
+                                </div>
+                            </div>
+                            `
+                        );
+                    })
+                }
+            });
+        }
+    });
+</script>
+@endpush

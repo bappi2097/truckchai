@@ -23,9 +23,10 @@ Route::get('/', function () {
 Route::group(
     ['prefix' => '{locale}', 'where' => ['locale' => join("|", \App\Models\Language::pluck("code")->all())], 'middleware' => 'setlocale',],
     function () {
-        Route::get("/", function () {
-            return view('home');
-        })->name('home');
+
+        Route::get("/", [\App\Http\Controllers\HomeController::class, "index"])->name('home');
+        Route::get("/why-blogs", [\App\Http\Controllers\HomeController::class, "whyBlogs"])->name('why-blogs');
+        Route::get("/latest-blogs", [\App\Http\Controllers\HomeController::class, "latestBlogs"])->name('latest-blogs');
 
         Route::name('auth.')->group(function () {
             Route::get('login', [\App\Http\Controllers\Frontend\Auth\AuthController::class, 'loginPage'])->name('login');

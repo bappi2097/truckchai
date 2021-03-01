@@ -195,6 +195,7 @@ Route::group(
                 Route::group(['prefix' => 'driver', 'as' => 'driver.'], function () {
                     Route::get('/', [\App\Http\Controllers\backend\DriverController::class, 'index'])->name('index');
                     Route::get('/create', [\App\Http\Controllers\backend\DriverController::class, 'create'])->name('create');
+                    Route::get('/{user}', [\App\Http\Controllers\backend\DriverController::class, 'show'])->name('show');
                     Route::post('/', [\App\Http\Controllers\backend\DriverController::class, 'store'])->name('store');
                     Route::get('/edit/{user}', [\App\Http\Controllers\backend\DriverController::class, 'edit'])->name('edit');
                     Route::put('/{user}', [\App\Http\Controllers\backend\DriverController::class, 'update'])->name('update');

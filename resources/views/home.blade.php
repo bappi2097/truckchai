@@ -11,7 +11,12 @@
 @include('layouts.partials.testimonial-slider', ["title" => "frontend/home.testimonials"])
 @include('layouts.partials.image-slider')
 @include('layouts.partials.category-slider')
-<div class="container py-5 my-5 text-center">
+<div id="latest-blogs-spinner" class="row justify-content-center my-5">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div id="latest-blogs-div" class="container py-5 my-5 text-center d-none">
     <h3>{{ __('frontend/home.latest-news') }}</h3>
     <p class="custom-index-blog-p">{{ __('frontend/home.read-our-blog') }}</p>
     <div class="mt-4 d-flex justify-content-center align-items-center">
@@ -41,7 +46,10 @@
                 url: "{{route('latest-blogs')}}",
                 type: 'GET',
                 success: function( data ){
-                    console.log(data);;
+                    if(!$.isEmptyObject(data)){
+                        $("#latest-blogs-div").removeClass("d-none");
+                    }
+                    $("#latest-blogs-spinner").addClass("d-none");
                     data.forEach((element) => {
                         $(".latest-blogs").append(
                             `

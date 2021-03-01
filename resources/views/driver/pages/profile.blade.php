@@ -5,7 +5,7 @@
         @csrf
         <fieldset>
             <img id="user-image"
-                src="@if(!empty($user->driver)) {{asset($user->driver->image ?: 'images/user2-160x160.jpg')}} @else {{asset('images/user2-160x160.jpg')}} @endif"
+                src="@if(!empty($user->driver)) {{asset($user->driver->image ?: 'images/user.png')}} @else {{asset('images/user.png')}} @endif"
                 alt="your image" width="118" height="122" /><br>
             <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                 accept="image/*" />
@@ -60,25 +60,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <img id="nid-image"
-                        src="@if(!empty($user->driver)) {{asset($user->driver->nid ?: 'images/user2-160x160.jpg')}} @else {{asset('images/user2-160x160.jpg')}} @endif"
-                        alt="your nid" width="118" height="122" /><br>
+                        src="@if(!empty($user->driver)) {{asset($user->driver->nid ?: 'images/id-card.png')}} @else {{asset('images/id-card.png')}} @endif"
+                        alt="your nid" width="175" height="100" /><br>
                     <input type='file' name="nid" id="user-nid-btn" style="display: none;" onchange="readNIDURL(this);"
                         accept="nid/*" />
-                    <input type="button" class="btn btn-outline-secondary" value="Update Nid"
+                    <input type="button" style="width: 175px;" class="btn btn-outline-secondary" value="Update Nid"
                         onclick="document.getElementById('user-nid-btn').click();" />
                 </div>
                 <div class="col-md-6">
                     <img id="license-image"
-                        src="@if(!empty($user->driver)) {{asset($user->driver->license ?: 'images/user2-160x160.jpg')}} @else {{asset('images/user2-160x160.jpg')}} @endif"
-                        alt="your license" width="118" height="122" /><br>
+                        src="@if(!empty($user->driver)) {{asset($user->driver->license ?: 'images/id-card.png')}} @else {{asset('images/id-card.png')}} @endif"
+                        alt="your license" width="175" height="100" /><br>
                     <input type='file' name="license" id="user-license-btn" style="display: none;"
                         onchange="readLicenseURL(this);" accept="license/*" />
-                    <input type="button" class="btn btn-outline-secondary" value="Update License"
+                    <input type="button" style="width: 175px;" class="btn btn-outline-secondary" value="Update License"
                         onclick="document.getElementById('user-license-btn').click();" />
                 </div>
             </div>
-            <button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button>
-            <a href="{{url()->previous()}}" class="btn btn-sm btn-default">Cancel</a>
+            <button type="submit" class="btn btn-sm btn-primary m-r-5 mt-3">Save</button>
+            <a href="{{url()->previous()}}" class="btn btn-sm btn-default mt-3">Cancel</a>
         </fieldset>
     </form>
 </div>
@@ -90,9 +90,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#user-image')
-                    .attr('src', e.target.result)
-                    .width(105)
-                    .height(112);
+                    .attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -103,9 +101,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#nid-image')
-                    .attr('src', e.target.result)
-                    .width(105)
-                    .height(112);
+                    .attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -115,9 +111,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#license-image')
-                    .attr('src', e.target.result)
-                    .width(105)
-                    .height(112);
+                    .attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }

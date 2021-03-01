@@ -175,7 +175,11 @@ class TruckController extends Controller
 
     public function user(Truck $truck)
     {
-        return redirect()->route("admin.user.company.show", $truck->company->first()->user_id);
+        if ($truck->isCompany()) {
+            return redirect()->route("admin.user.company.show", $truck->company->first()->user_id);
+        } else {
+            return redirect()->route("admin.user.driver.show", $truck->driver->user_id);
+        }
     }
 
 

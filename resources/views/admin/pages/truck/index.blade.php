@@ -7,6 +7,7 @@
                 <tr>
                     <th>#</th>
                     <th>Truck No</th>
+                    <th>User Type</th>
                     <th>Category</th>
                     <th>License</th>
                     <th>Image</th>
@@ -19,6 +20,11 @@
                 <tr>
                     <td>{{ $index+1 }}</td>
                     <td>{{$truck->truck_no}}</td>
+                    @if ($truck->isCompany())
+                    <td>Company</td>
+                    @else
+                    <td>Driver</td>
+                    @endif
                     <td>
                         {{$truck->truckCategory->TruckSizeCategory->size . " Feet, " . $truck->truckCategory->TruckWeightCategory->weight . " Ton, " . $truck->truckCategory->TruckModelCategory->TruckBrandCategory->name . "-" . $truck->truckCategory->TruckModelCategory->model}}
                     </td>

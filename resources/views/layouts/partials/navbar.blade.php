@@ -49,6 +49,27 @@
                     href="{{ route('auth.register') }}">{{ __('frontend/navbar.register') }}</a>
             </li>
             @endauth
+            @auth
+            <li class="nav-item dropdown mt-1">
+                <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
+                    data-toggle="dropdown">
+                    <i class="icon-bell-alt position-absolute mt-1"></i>
+                    @if (hasNotification(auth()->user()))
+                    <span class="red-dot"></span>
+                    @endif
+                </a>
+                @if (hasNotification(auth()->user()))
+                <ul class="dropdown-menu dropdown-menu-right w-250p">
+                    <li class="text-wrap">
+                        <a class="dropdown-item d-flex align-items-center text-wrap"
+                            href="{{ join('en', explode(app()->getLocale(), \Request::url(), 2)) }}">
+                            Lorem ipsum dolor sit amet consectetur.
+                        </a>
+                    </li>
+                </ul>
+                @endif
+            </li>
+            @endauth
             <li class="nav-item dropdown">
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
                     data-toggle="dropdown">

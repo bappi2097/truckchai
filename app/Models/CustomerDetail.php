@@ -26,6 +26,13 @@ class CustomerDetail extends Model
     {
         return $this->hasMany(Trip::class, "customer_id");
     }
+
+    public function notification()
+    {
+        return $this->trips->map(function ($trip) {
+            return $trip->tripBids;
+        });
+    }
     /**
      * Get the user's testimonial.
      */

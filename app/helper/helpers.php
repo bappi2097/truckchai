@@ -78,3 +78,14 @@ function truckValid($status)
             return ["Rejected", "danger"];
     }
 }
+
+function hasNotification($user)
+{
+    // if ($user->hasRole('customer')) {
+    //     dd($user->customer->notification());
+    // } else if ($user->hasRole('driver')) {
+    //     dd(true);
+    // } else if ($user->hasRole('company')) {
+    //     dd(true);
+    // }
+}

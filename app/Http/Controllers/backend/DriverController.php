@@ -99,7 +99,10 @@ class DriverController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view("admin.pages.driver.show", [
+            "user" => $user,
+            "route" => url()->previous() == route("admin.trucks.index") ? "admin.trucks.index" : "admin.user.driver.index",
+        ]);
     }
 
     /**

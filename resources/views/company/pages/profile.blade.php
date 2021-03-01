@@ -4,8 +4,7 @@
     <form action="{{route('company.my-profile.update')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <fieldset>
-            <img id="user-image"
-                src="@if(!empty($user->company)) {{asset($user->company->image ?: 'images/user2-160x160.jpg')}} @endif"
+            <img id="user-image" src="{{asset( !empty($user->company) ? $user->company->image : 'images/user.png')}}"
                 alt="your image" width="118" height="122" /><br>
             <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                 accept="image/*" />

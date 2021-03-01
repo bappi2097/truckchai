@@ -30,8 +30,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <img id="user-image" src="{{asset('images/user2-160x160.jpg')}}" alt="your image" width="118"
-                            height="122" /><br>
+                        <img id="user-image" src="{{asset('images/truck-placeholder.png')}}" alt="your image"
+                            width="118" height="122" /><br>
                         <input type='file' name="image" id="user-user-btn" style="display: none;"
                             onchange="readURL(this);" accept="user/*" />
                         <input type="button" class="btn btn-outline-secondary" value="Update Image"
@@ -39,12 +39,12 @@
                     </div>
                     <div class="col-md-6">
                         <img id="license-image"
-                            src="@if(!empty($user->driver)) {{asset($user->driver->license ?: 'images/user2-160x160.jpg')}} @else {{asset('images/user2-160x160.jpg')}} @endif"
-                            alt="your license" width="118" height="122" /><br>
+                            src="@if(!empty($user->driver)) {{asset($user->driver->license ?: 'images/id-card.png')}} @else {{asset('images/id-card.png')}} @endif"
+                            alt="your license" width="175" height="100" /><br>
                         <input type='file' name="license" id="user-license-btn" style="display: none;"
                             onchange="readLicenseURL(this);" accept="license/*" />
-                        <input type="button" class="btn btn-outline-secondary" value="Update License"
-                            onclick="document.getElementById('user-license-btn').click();" />
+                        <input type="button" class="btn btn-outline-secondary" style="width: 175px;"
+                            value="Update License" onclick="document.getElementById('user-license-btn').click();" />
                     </div>
                 </div>
                 <button type="submit" class="btn btn-sm btn-primary mr-5 my-5">Save</button>
@@ -61,9 +61,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#user-image')
-                    .attr('src', e.target.result)
-                    .width(105)
-                    .height(112);
+                    .attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
@@ -73,9 +71,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#license-image')
-                    .attr('src', e.target.result)
-                    .width(105)
-                    .height(112);
+                    .attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }

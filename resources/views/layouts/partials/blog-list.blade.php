@@ -1,4 +1,9 @@
-<div class="container py-5 my-5 text-center">
+<div id="why-blogs-spinner" class="row justify-content-center my-5">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container py-5 my-5 text-center d-none" id="why-blogs-div">
     <h3>{{ __('frontend/home.why-choose-traincu') }}</h3>
     <div class="mt-4 d-flex justify-content-center align-items-center">
         <span class="line"></span>
@@ -26,10 +31,10 @@
                 url: "{{route('why-blogs')}}",
                 type: 'GET',
                 success: function( data ){
-                    if(data.next_page_url == null){
-                        // $(".why-blogs-load").attr("href", `data.next_page_url`);
-                        $(".why-blogs-load").addClass("d-none");
+                    if(!$.isEmptyObject(data)){
+                        $("#why-blogs-div").removeClass("d-none");
                     }
+                    $("#why-blogs-spinner").addClass("d-none");
                     data.data.forEach((element) => {
                         $(".why-blogs").append(
                             `

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/style-rtl.css') }}">
     @endif
     <link rel="stylesheet" href="{{asset('css/toastr.css')}}" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
 </head>
 
 <body class="bg-light-900">

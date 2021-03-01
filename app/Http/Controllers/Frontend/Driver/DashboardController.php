@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         return view('driver.pages.dashboard', [
             "trips" => Trip::where("status", 0)->latest()->get(),
-            "balance" => DriverBalanceDetail::where("driver_id", auth()->user()->driver->id)->first()
+            "balance" => empty(auth()->user()->driver) ? null : DriverBalanceDetail::where("driver_id", auth()->user()->driver->id)->first()
         ]);
     }
 }

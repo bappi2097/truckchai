@@ -3,7 +3,7 @@
         <div class="px-2 py-3 bg-purple-300 d-flex align-items-center">
             <div class="mx-2 sidebar-user-img-div">
                 <img class="sidebar-user-img"
-                    src="{{asset(auth()->user()->company ? auth()->user()->company->image : 'images/user2-160x160.jpg' )}}"
+                    src="{{asset(auth()->user()->company ? auth()->user()->company->image : 'images/user.png' )}}"
                     alt="" />
                 <div class="green-dot"></div>
             </div>

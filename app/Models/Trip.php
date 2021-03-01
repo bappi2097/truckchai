@@ -79,6 +79,11 @@ class Trip extends Model
         return !empty($this->approvedBid()) && $this->approvedBid()->exists();
     }
 
+    public function hasNotification()
+    {
+        dd($this);
+    }
+
     // public function companyTrip(CompanyDetail $company)
     // {
     //     dd($this);

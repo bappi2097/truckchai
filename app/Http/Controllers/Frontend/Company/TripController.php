@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers\Frontend\Company;
 
-use App\Http\Controllers\Controller;
-use App\Models\BalanceDetail;
-use App\Models\Product;
-use App\Models\ProductValue;
 use App\Models\Trip;
+use App\Models\User;
 use App\Models\Truck;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Product;
+use App\Models\CompanyType;
+use App\Models\ProductValue;
 use Illuminate\Http\Request;
+use App\Models\BalanceDetail;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class TripController extends Controller
 {
     public function indexCurrent()
     {
+        if (empty(auth()->user()->company)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("company.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
+                "companyTypes" => CompanyType::all(),
+            ]);
+        }
         $datas = \DB::table("company_detail_truck")
             ->where("company_detail_id", auth()->user()->company->id)
             ->where("trips.status", 1)
@@ -37,6 +46,13 @@ class TripController extends Controller
 
     public function indexHistory()
     {
+        if (empty(auth()->user()->company)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("company.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
+                "companyTypes" => CompanyType::all(),
+            ]);
+        }
         $datas = \DB::table("company_detail_truck")
             ->where("company_detail_id", auth()->user()->company->id)
             ->where("trips.status", 3)

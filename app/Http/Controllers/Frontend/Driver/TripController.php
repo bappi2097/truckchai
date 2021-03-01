@@ -3,18 +3,25 @@
 namespace App\Http\Controllers\Frontend\Driver;
 
 use App\Models\Trip;
+use App\Models\User;
+use App\Models\Truck;
 use App\Models\Product;
 use App\Models\ProductValue;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\DriverBalanceDetail;
-use App\Models\Truck;
+use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TripController extends Controller
 {
     public function indexCurrent()
     {
+        if (empty(auth()->user()->driver)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("driver.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("driver")->first(),
+            ]);
+        }
         $datas = \DB::table("driver_details")
             ->where("driver_details.id", auth()->user()->driver->id)
             ->where("trips.status", 1)
@@ -37,6 +44,12 @@ class TripController extends Controller
 
     public function indexHistory()
     {
+        if (empty(auth()->user()->driver)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("driver.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("driver")->first(),
+            ]);
+        }
         $datas = \DB::table("driver_details")
             ->where("driver_details.id", auth()->user()->driver->id)
             ->where("trips.status", 3)

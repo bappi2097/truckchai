@@ -13,7 +13,6 @@ class TripBid extends Model
         "truck_id",
         "amount",
         "status",
-        "is_seen"
     ];
 
     public function trip()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogCategoriesTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateBlogCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_categories', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->text('name', 500)->unique();
-            $table->text('slug', 500)->unique();
+            $table->unsignedBigInteger('trip_id')->nullable();
+            $table->unsignedBigInteger('trip_bid_id')->nullable();
+            $table->foreignId('user_id')->constrained("users");
+            $table->text('text')->default("");
+            $table->text('url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +32,6 @@ class CreateBlogCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_categories');
+        Schema::dropIfExists('notifications');
     }
 }

@@ -85,4 +85,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(DriverDetail::class, "user_id");
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

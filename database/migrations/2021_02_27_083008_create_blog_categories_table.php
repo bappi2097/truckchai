@@ -15,8 +15,8 @@ class CreateBlogCategoriesTable extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
-            $table->text('name', 500)->unique();
-            $table->text('slug', 500)->unique();
+            $table->text('name');
+            $table->text('slug');
             $table->softDeletes();
             $table->timestamps();
         });

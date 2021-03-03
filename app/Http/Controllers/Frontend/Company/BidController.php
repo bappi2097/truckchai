@@ -45,7 +45,7 @@ class BidController extends Controller
             $trip->addCustomerNotification(
                 $tripBid,
                 route("customer.make-trip.show-trip", $trip->id),
-                $tripBid->truck->company->first()->user . " make bid for Trip<br> Amount: " . $tripBid->amount
+                $tripBid->truck->company->first()->user->name . " make bid for Trip<br> Amount: " . $tripBid->amount
             );
             Toastr::success("TripBid Successfully Added", "Success");
         } else {

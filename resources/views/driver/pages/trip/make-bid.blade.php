@@ -52,7 +52,6 @@
                                     <p>Email: <span>{{$trip->customer->user->email}}</span></p>
                                 </div>
                             </div>
-                            {{-- {{dd($trip->customer->user)}} --}}
                         </div>
                     </div>
                     <div class="card px-5 py-2 mt-3">

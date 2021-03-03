@@ -32542,6 +32542,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/css/frontend/dashboard.css":
+/*!**********************************************!*\
+  !*** ./resources/css/frontend/dashboard.css ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -32568,6 +32581,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/bootstrap-select.css":
+/*!********************************************!*\
+  !*** ./resources/css/bootstrap-select.css ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/backend/toastr.css":
 /*!******************************************!*\
   !*** ./resources/css/backend/toastr.css ***!
@@ -32584,19 +32610,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ "./resources/css/frontend/style-rtl.css":
 /*!**********************************************!*\
   !*** ./resources/css/frontend/style-rtl.css ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/css/frontend/dashboard.css":
-/*!**********************************************!*\
-  !*** ./resources/css/frontend/dashboard.css ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -35337,6 +35350,7 @@ Popper.Defaults = Defaults;
 /******/ 			["./resources/js/app.js"],
 /******/ 			["./resources/sass/app.scss"],
 /******/ 			["./resources/css/frontend/frontend.css"],
+/******/ 			["./resources/css/bootstrap-select.css"],
 /******/ 			["./resources/css/backend/toastr.css"],
 /******/ 			["./resources/css/frontend/style-rtl.css"],
 /******/ 			["./resources/css/frontend/dashboard.css"]

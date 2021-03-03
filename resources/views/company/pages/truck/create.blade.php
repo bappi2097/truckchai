@@ -1,8 +1,4 @@
 @extends('company.layout.master')
-@push('style')
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
-@endpush
 @section('content')
 <div class="bg-white p-20 col-md-10 m-t-30">
     <a href="{{route('company.truck.index')}}" class="btn btn-outline-primary">Back</a>
@@ -66,8 +62,6 @@
 </div>
 @endsection
 @push('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -90,7 +84,7 @@
         }
     }
     $(function() {
-    $('.selectpicker').selectpicker();
+        $('.selectpicker').selectpicker();
     });
 </script>
 @endpush

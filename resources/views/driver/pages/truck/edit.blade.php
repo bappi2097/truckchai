@@ -17,7 +17,8 @@
                 </div>
                 <div class="form-group">
                     <label for="brand">Truck Category</label>
-                    <select name="truck_category_id" id="truck_category_id" class="form-control">
+                    <select name="truck_category_id" id="truck_category_id" class="form-control selectpicker"
+                        style="border: 1px solid #ced4da; border-radius: 0.25rem;" data-live-search="true">
                         <option selected>Choose Category</option>
                         @foreach ($truckCategories as $item)
                         <option value="{{$item->id}}" {{selected($item->id, $truck->truck_category_id)}}>
@@ -81,5 +82,8 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+    $(function() {
+    $('.selectpicker').selectpicker();
+    });
 </script>
 @endpush

@@ -82,7 +82,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="truck_id">Truck</label>
-                                    <select name="truck_id" id="truck_id" class="form-control">
+                                    <select name="truck_id" id="truck_id" class="form-control selectpicker"
+                                        style="border: 1px solid #ced4da; border-radius: 0.25rem;"
+                                        data-live-search="true">
                                         @foreach (auth()->user()->company->validTrucks() as $truck)
                                         <option value="{{$truck->id}}">
                                             {{$truck->truck_no . " (" . $truck->truckCategory->truckModelCategory->model . ")"}}
@@ -133,3 +135,10 @@
     </div>
 </div>
 @endsection
+@push('script')
+<script>
+    $(function() {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+@endpush

@@ -158,36 +158,12 @@
                                     <div>
                                         <span class="badge badge-success">Bid Apporved</span>
                                     </div>
-                                    @else
+                                    @endif
 
-                                    <div class="form-group mx-2">
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-outline-indigo"
-                                            onclick="event.preventDefault(); document.getElementById('trip-approve{{ $trip->id }}').submit();">
-                                            Approve Bid
-                                        </a>
-                                        <form id="trip-approve{{ $trip->id }}"
-                                            action="{{ route('customer.make-trip.bid-trip.approve', ["tripBid" => $tripBid->id]) }}"
-                                            method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
                                     @if ($tripBid->isDeclined())
                                     <div>
                                         <span class="badge badge-danger">Bid Declined</span>
                                     </div>
-                                    @else
-                                    <div class="form-group mx-2">
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger"
-                                            onclick="event.preventDefault(); document.getElementById('trip-decline{{ $trip->id }}').submit();">
-                                            Decline Bid
-                                        </a>
-                                        <form id="trip-decline{{ $trip->id }}"
-                                            action="{{ route('customer.make-trip.bid-trip.decline', ["tripBid" => $tripBid->id]) }}"
-                                            method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                    @endif
                                     @endif
                                 </div>
                             </div>

@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
                 <label for="trip">Trip</label>
-                <select name="truck_trip_category_id[]" id="trip" class="form-control" multiple>
+                <select name="truck_trip_category_id[]" id="trip" class="form-control">
                     @foreach ($truckTripCategories as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach

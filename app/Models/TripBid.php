@@ -37,4 +37,23 @@ class TripBid extends Model
     {
         return $this->belongsTo(CompanyDetail::class);
     }
+    public function approveNotification($text = "", $status = "Approve", $url = "")
+    {
+        $text = $this->trip->customer->user->name . " Bid " . $status;
+        if ($this->truck->isDriver()) {
+            return $this->truck->driver->user->notifications()->save(new Notification([
+                "trip_id" => $this->trip_id,
+                "trip_bid_id" => $this->id,
+                "text" => $text,
+                "url" => $url
+            ]));
+        } else {
+            return $this->truck->company->user->notifications()->save(new Notification([
+                "trip_id" => $this->trip_id,
+                "trip_bid_id" => $this->id,
+                "text" => $text,
+                "url" => $url
+            ]));
+        }
+    }
 }

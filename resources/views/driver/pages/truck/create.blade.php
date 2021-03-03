@@ -32,7 +32,7 @@
                             height="122" /><br>
                         <input type='file' name="image" id="user-user-btn" style="display: none;"
                             onchange="readURL(this);" accept="user/*" />
-                        <input type="button" class="btn btn-outline-secondary" value="Update Image"
+                        <input type="button" class="btn btn-outline-secondary" value="Truck Image"
                             onclick="document.getElementById('user-user-btn').click();" />
                     </div>
                     <div class="col-md-6">

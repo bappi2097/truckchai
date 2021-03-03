@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Trip extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         "customer_id",
         "truck_category_id",
@@ -79,14 +80,21 @@ class Trip extends Model
         return !empty($this->approvedBid()) && $this->approvedBid()->exists();
     }
 
-    public function hasNotification()
+    public function addCustomerNotification(TripBid $trip_bid, $url = "", $text = "")
     {
-        dd($this);
-    }
+        if (empty($text)) {
+            if ($trip_bid->truck->isDriver()) {
+                $text = $trip_bid->truck->driver->user->name . " make bid for Trip<br> Amount: " . $trip_bid->amount;
+            } else {
+                $text = $trip_bid->truck->company->first()->user . " make bid for Trip<br> Amount: " . $trip_bid->amount;
+            }
+        }
 
-    // public function companyTrip(CompanyDetail $company)
-    // {
-    //     dd($this);
-    //     dd(true);
-    // }
+        return $this->customer->user->notifications()->save(new Notification([
+            "trip_id" => $this->id,
+            "trip_bid_id" => $trip_bid->id,
+            "text" => $text,
+            "url" => $url
+        ]));
+    }
 }

@@ -54,18 +54,23 @@
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
                     data-toggle="dropdown">
                     <i class="icon-bell-alt position-absolute mt-1"></i>
-                    @if (hasNotification(auth()->user()))
+                    @if (auth()->user()->hasNotification())
                     <span class="red-dot"></span>
                     @endif
                 </a>
-                @if (hasNotification(auth()->user()))
-                <ul class="dropdown-menu dropdown-menu-right w-250p">
-                    <li class="text-wrap">
-                        <a class="dropdown-item d-flex align-items-center text-wrap"
-                            href="{{ join('en', explode(app()->getLocale(), \Request::url(), 2)) }}">
-                            Lorem ipsum dolor sit amet consectetur.
+                @if (auth()->user()->hasNotification())
+                <ul class="dropdown-menu dropdown-menu-right w-300p">
+                    @foreach (auth()->user()->notifications->where("is_seen", false) as $item)
+                    <li class="text-wrap w-300p">
+                        <a class="dropdown-item text-wrap"
+                            href="{{ route(auth()->user()->roles->first()->name . '.notification', $item->id) }}">
+                            {!! $item->text !!}
+                            {!! "<div class='text-primary float-right'> " . time_elapsed_string($item->created_at)
+                                . "
+                            </div>" !!}
                         </a>
                     </li>
+                    @endforeach
                 </ul>
                 @endif
             </li>

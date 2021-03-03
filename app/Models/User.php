@@ -88,6 +88,34 @@ class User extends Authenticatable implements JWTSubject
 
     public function notifications()
     {
-        return $this->hasMany(Notification::class);
+        return $this->hasMany(Notification::class)->latest();
+    }
+
+    public function hasNotification()
+    {
+        return !$this->notifications->where("is_seen", false)->isEmpty();
+    }
+
+    public function isCompany()
+    {
+        return $this->hasRole("company");
+    }
+
+    public function isCustomer()
+    {
+        return $this->hasRole("customer");
+    }
+    public function isDriver()
+    {
+        return $this->hasRole("driver");
+    }
+
+    public function setNotification($truck_id, $text = "", $url = "")
+    {
+        return $this->notifications()->save(new Notification([
+            "truck_id" => $truck_id,
+            "text" => $text,
+            "url" => $url
+        ]));
     }
 }

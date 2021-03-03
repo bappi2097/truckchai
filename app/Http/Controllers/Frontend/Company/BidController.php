@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Frontend\Company;
 
 use App\Models\Trip;
-use App\Models\Truck;
+use App\Models\User;
 use App\Models\TripBid;
+use App\Models\CompanyType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CompanyType;
-use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 
 class BidController extends Controller
@@ -43,6 +42,11 @@ class BidController extends Controller
 
         $tripBid = new TripBid($data);
         if ($tripBid->save()) {
+            $trip->addCustomerNotification(
+                $tripBid,
+                route("customer.make-trip.show-trip", $trip->id),
+                $tripBid->truck->company->first()->user . " make bid for Trip<br> Amount: " . $tripBid->amount
+            );
             Toastr::success("TripBid Successfully Added", "Success");
         } else {
             Toastr::error("Something Went Wrong", "Error");

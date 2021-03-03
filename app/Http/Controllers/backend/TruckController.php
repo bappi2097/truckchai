@@ -192,6 +192,11 @@ class TruckController extends Controller
     public function accept(Request $request, Truck $truck)
     {
         if ($truck->update(["is_valid" => 1])) {
+            if ($truck->isCompany()) {
+                $truck->user->setNotification($truck->id, "Your Truck Validation Complete : Accepted", route("company.truck.index", "en"));
+            } else {
+                $truck->user->setNotification($truck->id, "Your Truck Validation Complete : Accepted", route("driver.truck.show", "en"));
+            }
             Toastr::success("Truck is valid now", "Success");
         } else {
             Toastr::error("Something Went Wrong", "Error");
@@ -208,6 +213,11 @@ class TruckController extends Controller
     public function reject(Request $request, Truck $truck)
     {
         if ($truck->update(["is_valid" => 2])) {
+            if ($truck->isCompany()) {
+                $truck->user->setNotification($truck->id, "Your Truck Validation Complete : Rejected", route("company.truck.index", "en"));
+            } else {
+                $truck->user->setNotification($truck->id, "Your Truck Validation Complete : Rejected", route("driver.truck.show", "en"));
+            }
             Toastr::success("Truck is rejected now", "Success");
         } else {
             Toastr::error("Something Went Wrong", "Error");

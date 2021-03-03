@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Truck extends Model
 {
@@ -15,6 +15,15 @@ class Truck extends Model
     public function company()
     {
         return $this->belongsToMany(CompanyDetail::class);
+    }
+
+    public function user()
+    {
+        if ($this->isCompany()) {
+            return $this->company->first()->user();
+        } elseif ($this->isDriver()) {
+            return $this->driver->user();
+        }
     }
 
     public function truckCategory()
@@ -39,6 +48,6 @@ class Truck extends Model
 
     public function isDriver()
     {
-        return !$this->driver->isEmpty();
+        return !empty($this->driver);
     }
 }

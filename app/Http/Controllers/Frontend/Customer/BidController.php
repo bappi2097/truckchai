@@ -12,11 +12,14 @@ class BidController extends Controller
 {
     public function bidApprove(Request $request, $locale, TripBid $tripBid)
     {
+        $route = $tripBid->truck->isDriver() ? "driver.trip" : "company.make-trip";
         foreach ($tripBid->trip->tripBids->where("id", "!=", $tripBid->id) as $declineTripBid) {
             $declineTripBid->update(["status" => 2]);
         }
+
         if ($tripBid->update(["status" => 1])) {
             $tripBid->trip->update(["status" => 1]);
+            $tripBid->approveNotification("", "Approve", route($route . ".show-trip", $tripBid->trip_id));
             Toastr::success("Wow! Bid Approved", "SUccess");
         } else {
             Toastr::error("Something Went Wrong!", "Error");
@@ -27,6 +30,7 @@ class BidController extends Controller
     public function bidDecline(Request $request, $locale, TripBid $tripBid)
     {
         if ($tripBid->update(["status" => 2])) {
+            $tripBid->approveNotification("", "Decline");
             Toastr::success("Bid Declined", "SUccess");
         } else {
             Toastr::error("Something Went Wrong!", "Error");

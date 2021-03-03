@@ -17,9 +17,11 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('trip_id')->nullable();
             $table->unsignedBigInteger('trip_bid_id')->nullable();
+            $table->unsignedBigInteger('truck_id')->nullable();
             $table->foreignId('user_id')->constrained("users");
             $table->text('text')->default("");
             $table->text('url')->nullable();
+            $table->boolean('is_seen')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

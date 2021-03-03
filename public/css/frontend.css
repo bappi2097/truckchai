@@ -428,7 +428,15 @@ nav {
     -o-border-radius: 50%;
 }
 .w-250p {
-    width: 250px;
+    min-width: 250px !important;
+    width: 250px !important;
+    max-width: 250px !important;
+}
+
+.w-300p {
+    min-width: 300px !important;
+    width: 300px !important;
+    max-width: 300px !important;
 }
 @media all and (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {

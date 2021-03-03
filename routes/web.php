@@ -20,6 +20,7 @@ Route::get('/', function () {
     return redirect(app()->getLocale());
 });
 
+
 Route::group(
     ['prefix' => '{locale}', 'where' => ['locale' => join("|", \App\Models\Language::pluck("code")->all())], 'middleware' => 'setlocale',],
     function () {
@@ -47,6 +48,7 @@ Route::group(
 
         Route::group(["as" => "customer.", "prefix" => "customer", "middleware" => ["auth", "role:customer"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Customer\DashboardController::class, "index"])->name('dashboard');
+            Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
 
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
                 Route::get("/", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "showProfile"])->name('show');
@@ -73,6 +75,7 @@ Route::group(
 
         Route::group(["as" => "company.", "prefix" => "company", "middleware" => ["auth", "role:company"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Company\DashboardController::class, "index"])->name('dashboard');
+            Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
                 Route::get("/", [\App\Http\Controllers\Frontend\Company\ProfileController::class, "showProfile"])->name('show');
                 Route::post("/", [\App\Http\Controllers\Frontend\Company\ProfileController::class, "updateProfile"])->name('update');
@@ -106,6 +109,7 @@ Route::group(
 
         Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Driver\DashboardController::class, "index"])->name('dashboard');
+            Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
                 Route::get("/", [\App\Http\Controllers\Frontend\Driver\ProfileController::class, "showProfile"])->name('show');
                 Route::post("/", [\App\Http\Controllers\Frontend\Driver\ProfileController::class, "updateProfile"])->name('update');
@@ -333,6 +337,9 @@ Route::group(
     }
 );
 
+Route::get("login", function () {
+    return redirect("/");
+})->name("login");
 
 // Auth::routes();
 

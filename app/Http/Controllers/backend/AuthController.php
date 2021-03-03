@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RedirectsUsers;
@@ -73,12 +73,15 @@ class AuthController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        if (User::where('email', $request->email)->first()->hasRole('admin')) {
+        $admin = User::where('email', $request->email)->first();
+
+        if (!empty($admin) && $admin->hasRole('admin')) {
             return $this->guard()->attempt(
                 $this->credentials($request),
                 $request->filled('remember')
             );
         }
+        Toastr::error('Enter Correct Credentials', 'Wrong Credentials');
         return false;
     }
 

@@ -103,7 +103,7 @@
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-outline-indigo mt-3" type="button"
                                 onclick="next('product-div', 'time-div')">Back</button>
-                            <button class="btn btn-success mt-3" type="submit">Place BID</button>
+                            <button class="btn btn-success mt-3" type="submit">Make Trip</button>
                         </div>
                     </div>
                 </form>

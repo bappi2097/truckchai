@@ -41,6 +41,11 @@ class BidController extends Controller
         $tripBid = new TripBid($data);
 
         if ($tripBid->save()) {
+            $trip->addCustomerNotification(
+                $tripBid,
+                route("customer.make-trip.show-trip", $trip->id),
+                $tripBid->truck->driver->user->name . " make bid for Trip<br> Amount: " . $tripBid->amount
+            );
             Toastr::success("TripBid Successfully Added", "Success");
         } else {
             Toastr::error("Something Went Wrong", "Error");

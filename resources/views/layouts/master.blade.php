@@ -26,7 +26,7 @@
     <script src="{{asset('js/flickity.js')}}"></script>
     @stack('script')
     <script src="{{asset('js/frontend.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('js/toastr.js')}}" />
+    <script src="{{asset('js/toastr.js')}}"></script>
     {!! Toastr::message() !!}
 </body>
 

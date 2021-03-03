@@ -19,6 +19,7 @@ class CreateBlogsTable extends Migration
             $table->text('title');
             $table->text('slug');
             $table->text('image');
+            $table->text('summery')->nullable();
             $table->longText('description');
             $table->softDeletes();
             $table->timestamps();

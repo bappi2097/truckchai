@@ -13,21 +13,26 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 clo-sm-12">
-                @for ($i = 0; $i < 10; $i++) <div class="py-3 my-3 border b-grey-100 w-100 blog-rtl">
+                @foreach ($blogs as $blog)
+                <div class="py-3 my-3 border b-grey-100 w-100 blog-rtl">
                     <div class="px-2 mb-3 d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <img class="rounded-circle" width="50" src="{{ asset('images/admin.png') }}" alt="admin" />
-                            <span class="mx-2 text-dark font-weight-bold">Admin</span>
+                            <img class="rounded-circle" width="50"
+                                src="{{ asset( !empty($blog->admin) && !empty($blog->admin->image) ? $blog->admin->image : 'images/admin.png') }}"
+                                alt="admin" />
+                            <span class="mx-2 text-dark font-weight-bold">{{$blog->admin->user->name}}</span>
                         </div>
                         <div class="rounded-circle date-circle">
-                            <span class="font-weight-bold text-grey-100 d-block">24</span>
-                            <span class="font-weight-bold text-secondary">JAN</span>
+                            <span
+                                class="font-weight-bold text-grey-100 d-block">{{date("d", strtotime($blog->created_at))}}</span>
+                            <span
+                                class="font-weight-bold text-secondary">{{date("M", strtotime($blog->created_at))}}</span>
                         </div>
                     </div>
                     <div class="w-100">
                         <a href="./single-blog.html">
                             <div class="position-relative blog-img">
-                                <img width="100%" height="315" src="{{ asset('images/blog-1.jpg') }}" alt="" />
+                                <img width="100%" height="315" src="{{ asset($blog->image) }}" alt="" />
                                 <div></div>
                             </div>
                         </a>
@@ -35,34 +40,28 @@
                     <div class="p-3 w-100">
                         <h4>
                             <a class="links-h" href="./single-blog.html">
-                                BACHELOR HOME SHIFT: 6 THINGS YOU SHOULD KNOW BEFORE
-                                SHIFTING
+                                {{$blog->title}}
                             </a>
                         </h4>
                         <p>
-                            In Dhaka city, numerous families and bachelors shift their
-                            home every month. In the case of family home shifting, every
-                            family member has the opportunity to share the
-                            responsibilities together. But a bachelor has to take care of
-                            everything on his or her own when it comes to shifting. So
-                            even if the goods are […]
+                            {{$blog->summery}} […]
                         </p>
                         <a class="btn btn-outline-indigo" href="#">{{__('utility.read-more')}}</a>
                     </div>
+                </div>
+                @endforeach
+                <div class="w-100">
+                    <form action="/" class="d-flex">
+                        <button class="mx-auto btn btn-outline-indigo">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
+                            </span>
+                            {{__('utility.show-more')}}
+                        </button>
+                    </form>
+                </div>
             </div>
-            @endfor
-            <div class="w-100">
-                <form action="/" class="d-flex">
-                    <button class="mx-auto btn btn-outline-indigo">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
-                        </span>
-                        {{__('utility.show-more')}}
-                    </button>
-                </form>
-            </div>
+            @include('blog.right-sidebar')
         </div>
-        @include('blog.right-sidebar')
     </div>
-</div>
 </div>
 @endsection

@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" id="title"
-                    placeholder="Bachelor Home Shift: 6 things you should know before shifting">
+                    placeholder="Bachelor Home Shift: 6 things you should know before shifting" oninput="slugF();">
                 @error('title')
                 <span class="text-red">{{$message}}</span>
                 @enderror
@@ -49,6 +49,10 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="summery">Summery</label>
+                <textarea name="summery" id="summery" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="summernote" name="description"></textarea>
                 @error('description')
@@ -63,12 +67,24 @@
 @endsection
 
 @push('script')
+<script>
+    function slugF()
+    {
+        let title = document.querySelector('#title').value;
+        if(title)
+        {
+            document.querySelector('#slug').value = title.replace(/[^a-zA-Z0-9 -]/g, "").toLowerCase().split(" ").join('-');
+        }else{
+            document.querySelector('#slug').value = "";
+        }
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
     $(document).ready(function() {
-    $('#summernote').summernote({
-    height: 300,
-    });
+        $('#summernote').summernote({
+            height: 300,
+        });
     });
 </script>
 @endpush

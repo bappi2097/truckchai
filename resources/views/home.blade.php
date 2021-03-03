@@ -28,7 +28,7 @@
 
     </div>
 
-    <a href="#" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
+    <a href="{{route('blog')}}" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
 </div>
 @include('layouts.partials.footer-hero')
 @endsection

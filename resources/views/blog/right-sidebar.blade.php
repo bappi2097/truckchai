@@ -7,64 +7,23 @@
     </form>
     <h5 class="mt-4 text-uppercase">{{__('utility.categories')}}</h5>
     <ul class="mt-3 list-unstyled category-links">
+        @foreach ($blogCategories as $item)
         <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
+            <a href="#">{{$item->name}}</a>
             <span>&gt;</span>
         </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Enterprise</a>
-            <span>&gt;</span>
-        </li>
+        @endforeach
     </ul>
     <h5 class="mt-4 text-uppercase">{{__('utility.recent-posts')}}</h5>
     <ul class="mt-3 list-unstyled category-links">
+        @foreach ($latestBlogs as $item)
         <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
+            <a href="#">{{substr($item->title, 0, 57)}} ...</a>
             <span class="mx-1">&gt;</span>
         </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
-        <li class="d-flex justify-content-between align-items-center">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-            <span class="mx-1">&gt;</span>
-        </li>
+        @endforeach
     </ul>
 </div>
+@push('script')
+{{--  --}}
+@endpush

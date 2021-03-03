@@ -138,7 +138,6 @@ class TripController extends Controller
     }
     public function finish(Request $request, $locale, Trip $trip)
     {
-        dd($trip);
         $company = auth()->user()->company;
         if ($trip->update(["status" => 3])) {
             if (empty($company->balanceDetail)) {

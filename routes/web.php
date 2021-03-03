@@ -29,6 +29,7 @@ Route::group(
         Route::get("/why-blogs", [\App\Http\Controllers\HomeController::class, "whyBlogs"])->name('why-blogs');
         Route::get("/latest-blogs", [\App\Http\Controllers\HomeController::class, "latestBlogs"])->name('latest-blogs');
 
+
         Route::name('auth.')->group(function () {
             Route::get('login', [\App\Http\Controllers\Frontend\Auth\AuthController::class, 'loginPage'])->name('login');
             Route::post('login', [\App\Http\Controllers\Frontend\Auth\AuthController::class, 'login'])->name('login');
@@ -39,7 +40,8 @@ Route::group(
 
         Route::get('truck-operator', [\App\Http\Controllers\Frontend\Page\TruckOperatorController::class, 'index'])->name('truck-operator');
         Route::get('blog', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'index'])->name('blog');
-        Route::get('single-blog', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singlePage'])->name('single-blog');
+        Route::get('single-blog', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleBlog'])->name('single-blog');
+        Route::get('single-category', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleCategory'])->name('single-category');
         Route::get('contact-us', [\App\Http\Controllers\Frontend\Page\ContactUsPageController::class, 'index'])->name('contact-us');
         Route::get('privacy-and-policy', [\App\Http\Controllers\Frontend\Page\PageController::class, 'privacyAndPolicy'])->name('privacy-and-policy');
         Route::get('terms-and-condition', [\App\Http\Controllers\Frontend\Page\PageController::class, 'termsAndCondition'])->name('terms-and-condition');

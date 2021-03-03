@@ -47,6 +47,7 @@ class BlogController extends Controller
             "title" => "required|string|max:500",
             "slug" => "required|string|max:500|unique:blogs,slug",
             "image" => "required|file|mimes:jpg,jpeg,png",
+            "summery" => "required|string",
             "description" => "required",
             "blog_category_id" => "required|array",
         ]);
@@ -54,6 +55,7 @@ class BlogController extends Controller
             "title" => $request->title,
             "slug" => $request->slug,
             "image" =>  $request->hasFile('image') ? Storage::disk("local")->put("images\\blogs", $request->image) : "",
+            "summery" => $request->summery,
             "description" => $request->description,
             "admin_id" => auth()->user()->admin->id,
         ];
@@ -107,6 +109,7 @@ class BlogController extends Controller
             "title" => "required|string|max:500",
             "slug" => "required|string|max:500|unique:blogs,slug," . $blog->id,
             "image" => "nullable|file|mimes:jpg,jpeg,png",
+            "summery" => "required|string",
             "description" => "required",
             "blog_category_id" => "required|array",
         ]);
@@ -114,6 +117,7 @@ class BlogController extends Controller
         $data = [
             "title" => $request->title,
             "slug" => $request->slug,
+            "summery" => $request->summery,
             "description" => $request->description,
             "admin_id" => auth()->user()->admin->id,
         ];

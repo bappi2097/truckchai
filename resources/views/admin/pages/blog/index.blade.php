@@ -10,7 +10,6 @@
                     <th>Author</th>
                     <th>Title</th>
                     <th>Image</th>
-                    <th>Description</th>
                     <th width="1%">Action</th>
                 </tr>
             </thead>
@@ -23,7 +22,6 @@
                     <td class="with-img">
                         <img src="{{asset($blog->image)}}" class="img-rounded height-30">
                     </td>
-                    <td>{!! substr($blog->description, 0, 300) !!} ..</td>
                     <td class="with-btn" nowrap="">
                         <a href="{{route('admin.blog.edit', $blog->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>

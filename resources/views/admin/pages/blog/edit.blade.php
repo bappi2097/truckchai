@@ -54,6 +54,11 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="summery">Summery</label>
+                <textarea name="summery" id="summery" cols="30" rows="5"
+                    class="form-control">{{$blog->summery}}</textarea>
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="summernote" name="description">{!!$blog->description!!}</textarea>
                 @error('description')

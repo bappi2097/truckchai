@@ -5,7 +5,7 @@
         @csrf
         <fieldset>
             <img id="user-image"
-                src="@if(!empty($user->customer)) {{asset($user->customer->image ?: 'images/user2-160x160.jpg')}} @endif"
+                src="{{asset(!empty(auth()->user()->customer) && !empty(auth()->user()->customer->image) ? auth()->user()->customer->image : 'images/user.png')}}"
                 alt="your image" width="118" height="122" /><br>
             <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
                 accept="image/*" />

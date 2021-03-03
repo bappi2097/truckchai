@@ -23,6 +23,10 @@ class Trip extends Model
     {
         return $this->belongsTo(CustomerDetail::class, "customer_id");
     }
+    public function user()
+    {
+        return $this->customer->user();
+    }
 
     public function truckCategory()
     {

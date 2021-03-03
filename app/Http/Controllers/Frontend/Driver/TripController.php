@@ -10,6 +10,7 @@ use App\Models\ProductValue;
 use Illuminate\Http\Request;
 use App\Models\DriverBalanceDetail;
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TripController extends Controller
@@ -144,6 +145,11 @@ class TripController extends Controller
                 $driver->balanceDetail->balance = $driver->balanceDetail->balance + $trip->approvedBid()->amount;
                 $driver->balanceDetail->save();
             }
+            $trip->user->notifications()->save(new Notification([
+                "trip_id" => $trip->id,
+                "text" => "Trip Successfully Finished",
+                "url" => route("customer.make-trip.show-trip", $trip->id)
+            ]));
             Toastr::success("Trip Successfully Finished", "Success");
         } else {
             Toastr::success("Something Went Wrong", "Error");

@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\ProductValue;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CustomerDetail;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TripController extends Controller
@@ -31,8 +31,7 @@ class TripController extends Controller
         if (empty(auth()->user()->customer)) {
             Toastr::warning("First update your profile", "Warning");
             return view("company.pages.profile", [
-                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
-                "companyTypes" => CompanyType::all(),
+                "user" => User::where("id", auth()->user()->id)->with("customer")->first(),
             ]);
         }
         $this->validate($request, [

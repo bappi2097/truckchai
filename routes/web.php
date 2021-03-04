@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// auth()->login(App\Models\User::find(1));
-// auth()->logout();
 
 Route::get('/', function () {
     return redirect(app()->getLocale());
@@ -40,8 +38,8 @@ Route::group(
 
         Route::get('truck-operator', [\App\Http\Controllers\Frontend\Page\TruckOperatorController::class, 'index'])->name('truck-operator');
         Route::get('blog', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'index'])->name('blog');
-        Route::get('single-blog', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleBlog'])->name('single-blog');
-        Route::get('single-category', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleCategory'])->name('single-category');
+        Route::get('single-blog/{slug}', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleBlog'])->name('single-blog');
+        Route::get('category/{slug}', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'blogCategory'])->name('blog-category');
         Route::get('contact-us', [\App\Http\Controllers\Frontend\Page\ContactUsPageController::class, 'index'])->name('contact-us');
         Route::get('privacy-and-policy', [\App\Http\Controllers\Frontend\Page\PageController::class, 'privacyAndPolicy'])->name('privacy-and-policy');
         Route::get('terms-and-condition', [\App\Http\Controllers\Frontend\Page\PageController::class, 'termsAndCondition'])->name('terms-and-condition');

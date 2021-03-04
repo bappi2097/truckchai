@@ -52,11 +52,11 @@
                 </div>
                 @endforeach
                 @if ($blogs->lastPage() != $blogs->currentPage())
-                <div class="w-100 d-flex justify-content-center">
-                    <a href="{{$blogs->path() . '?' . $blogs->getPageName() . '=' . ($blogs->currentPage()+1)}}"
-                        class="mx-auto btn btn-outline-indigo">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
-                        </span>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-outline-indigo"
+                        href="{{$blogs->path() . '?' . $blogs->getPageName() . '=' . ($blogs->currentPage()+1)}}">
+                        {{-- <span class="spinner-border spinner-border-sm">
+                        </span> --}}
                         {{__('utility.show-more')}}
                     </a>
                 </div>

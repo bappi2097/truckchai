@@ -9,7 +9,7 @@
     <ul class="mt-3 list-unstyled category-links">
         @foreach ($blogCategories as $item)
         <li class="d-flex justify-content-between align-items-center">
-            <a href="#">{{$item->name}}</a>
+            <a href="{{route('blog-category', $item->slug)}}">{{$item->name}}</a>
             <span>&gt;</span>
         </li>
         @endforeach
@@ -18,7 +18,7 @@
     <ul class="mt-3 list-unstyled category-links">
         @foreach ($latestBlogs as $item)
         <li class="d-flex justify-content-between align-items-center">
-            <a href="#">{{substr($item->title, 0, 57)}} ...</a>
+            <a href="{{route('single-blog', $item->slug)}}">{{substr($item->title, 0, 57)}} ...</a>
             <span class="mx-1">&gt;</span>
         </li>
         @endforeach

@@ -10,7 +10,7 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = [
-        "admin_id", "title", "image", "description", "slug"
+        "admin_id", "title", "image", "description", "slug", "summery"
     ];
 
     public function blogCategories()

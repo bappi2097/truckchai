@@ -20,10 +20,20 @@ class BlogPageController extends Controller
 
     public function singleBlog($locale, $slug)
     {
-        return view("single-blog");
+        return view("single-blog", [
+            "blog" => Blog::where("slug", $slug)->first(),
+            "blogCategories" => BlogCategory::latest()->get(),
+            "latestBlogs" => Blog::latest()->take(5)->get(),
+        ]);
     }
-    public function singleCategory($locale, $slug)
+    public function blogCategory($locale, $slug)
     {
-        return view("single-blog");
+        $blogCategory = BlogCategory::where("slug", $slug)->with("blogs")->first();
+
+        return view("blog-category", [
+            "blogs" => !empty($blogCategory) ? $blogCategory->blogs()->paginate(5) : [],
+            "blogCategories" => BlogCategory::latest()->get(),
+            "latestBlogs" => Blog::latest()->take(5)->get(),
+        ]);
     }
 }

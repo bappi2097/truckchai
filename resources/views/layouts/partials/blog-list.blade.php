@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                                         <h5 class="custom-index-blog-title">
-                                            <a href="#">
+                                            <a href="{{url( 'en' . '/single-blog/' . '${element.slug}')}}">
                                                 ${element.title}
                                             </a>
                                         </h5>
@@ -58,7 +58,7 @@
                                             <span class="ml-3 seperator"></span>
                                         </div>
                                         <p class="custom-index-blog-p">
-                                            ${element.description}
+                                            ${element.summery}
                                             […]
                                         </p>
                                     </div>

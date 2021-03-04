@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Home Shifting"
-                    value="{{$blogCategory->name}}">
+                    value="{{$blogCategory->name}}" oninput="slugF()">
                 @error('name')
                 <span class="text-red">{{$message}}</span>
                 @enderror
@@ -30,3 +30,17 @@
     </form>
 </div>
 @endsection
+@push('script')
+<script>
+    function slugF()
+        {
+            let name = document.querySelector('#name').value;
+            if(name)
+            {
+                document.querySelector('#slug').value = name.replace(/[^a-zA-Z0-9 -]/g, "").toLowerCase().split(" ").join('-');
+            }else{
+                document.querySelector('#slug').value = "";
+            }
+        }
+</script>
+@endpush

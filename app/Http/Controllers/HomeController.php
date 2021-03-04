@@ -30,10 +30,10 @@ class HomeController extends Controller
 
     public function whyBlogs()
     {
-        $whyBlogs = BlogCategory::where("slug", "why-chose-traincu")->exists() ? BlogCategory::where("slug", "why-chose-traincu")->first()->blogs()->paginate(3) : null;
+        $whyBlogs = BlogCategory::where("slug", "why-choose-traincu")->exists() ? BlogCategory::where("slug", "why-choose-traincu")->first()->blogs()->paginate(3) : null;
         if (!empty($whyBlogs)) {
             $whyBlogs->reject(function ($blog) {
-                $blog->description = substr($blog->description, 0, 300);
+                $blog->summery = substr($blog->summery, 0, 270);
                 $blog->created = date("M j", strtotime($blog->created_at));
             });
         }
@@ -44,7 +44,7 @@ class HomeController extends Controller
         $blogs = Blog::latest()->take(3)->get();
         if (!empty($blogs)) {
             $blogs->reject(function ($blog) {
-                $blog->description = substr($blog->description, 0, 300);
+                $blog->summery = substr($blog->summery, 0, 270);
                 $blog->created = date("M j", strtotime($blog->created_at));
             });
         }

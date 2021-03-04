@@ -8,102 +8,24 @@
         </div>
     </div>
     <div class="category-carousel">
+        @foreach ($truckCategories as $item)
         <div class="carousel-cell">
             <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck.png') }}" alt="Card image cap" />
+                <img class="card-img-top" src="{{ asset( $item->image ?: 'images/truck.png') }}" alt="Card image cap" />
                 <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
+                    <h3>{{$item->truckWeightCategory->weight}} Ton Truck</h3>
                     <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
+                        {{$item->description}}
                     </p>
                 </div>
             </div>
         </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck-2.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck-2.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck-3.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck-2.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-cell">
-            <div class="card" style="width: 18rem">
-                <img class="card-img-top" src="{{ asset('images/truck-2.png') }}" alt="Card image cap" />
-                <div class="card-body">
-                    <h3>7.5 Ton Truck</h3>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up
-                        the bulk of the card's content.Some quick example text to build
-                        on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @push('script')
-    <script>
-        $(".category-carousel").flickity({
+<script>
+    $(".category-carousel").flickity({
             groupCells: true,
             freeScroll: true,
             wrapAround: true,
@@ -113,5 +35,5 @@
             pageDots: false,
         });
 
-    </script>
+</script>
 @endpush

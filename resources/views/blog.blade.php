@@ -55,8 +55,8 @@
                 <div class="w-100 d-flex justify-content-center">
                     <a href="{{$blogs->path() . '?' . $blogs->getPageName() . '=' . ($blogs->currentPage()+1)}}"
                         class="mx-auto btn btn-outline-indigo">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
-                        </span>
+                        {{-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true">
+                        </span> --}}
                         {{__('utility.show-more')}}
                     </a>
                 </div>

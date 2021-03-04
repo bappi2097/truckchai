@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\HeaderSlider;
 use Illuminate\Http\Request;
+use App\Models\TruckCategory;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            "truckCategories" => TruckCategory::with("truckWeightCategory")->latest()->take(12)->get(),
+            "sliders" => HeaderSlider::where("category", "home")->orderBy("position")->get()
+        ]);
     }
 
     public function whyBlogs()

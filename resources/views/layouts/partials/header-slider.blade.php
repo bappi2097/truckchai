@@ -1,15 +1,15 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        @foreach ($items as $index => $item)
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{$index}}" @if ($loop->first) class="active"
+            @endif></li>
+        @endforeach
     </ol>
     <div class="carousel-inner">
-        @foreach ($header_slider_imgs as $img)
-            <div class="carousel-item @if ($loop->first) active @endif">
-                <img class="d-block w-100" src="{{ asset($img) }}" alt="First slide" />
-            </div>
+        @foreach ($items as $item)
+        <div class="carousel-item @if ($loop->first) active @endif">
+            <img class="d-block w-100" src="{{ asset($item->image) }}" alt="First slide" />
+        </div>
         @endforeach
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -22,10 +22,9 @@
     </a>
 </div>
 @push('script')
-    <script>
-        $(".carousel").carousel({
-            interval: 2000,
-        });
-
-    </script>
+<script>
+    $(".carousel").carousel({
+        interval: 2000,
+    });
+</script>
 @endpush

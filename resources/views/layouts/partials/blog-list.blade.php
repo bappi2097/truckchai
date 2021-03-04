@@ -13,7 +13,8 @@
     <div class="why-blogs">
 
     </div>
-    <a href="javascript::void(0)" class="mt-5 btn btn-outline-indigo why-blogs-load">{{ __('utility.more') }}</a>
+    <a href="{{route('blog-category', 'why-choose-traincu')}}"
+        class="mt-5 btn btn-outline-indigo why-blogs-load">{{ __('utility.more') }}</a>
 </div>
 
 @push('script')
@@ -41,7 +42,7 @@
                             <div class="row custom-index-blog">
                                 <div class="mt-5 row">
                                     <div class="p-0 col-md-5 col-sm-12">
-                                        <img class="img-fluid w-100" src="{{ asset( '${element.image}') }}" alt="${element.title}" />
+                                        <img class="img-fluid w-100 h-100" src="{{ asset( '${element.image}') }}" alt="${element.title}" />
                                     </div>
                                     <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                                         <h5 class="custom-index-blog-title">

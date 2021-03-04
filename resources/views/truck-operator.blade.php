@@ -1,11 +1,6 @@
 @extends('layouts.master')
 @section('content')
-@include('layouts.partials.header-slider', ["header_slider_imgs" => [
-"images/slider/slider-3.jpg",
-"images/slider/slider-3.jpg",
-"images/slider/slider-3.jpg",
-"images/slider/slider-3.jpg",
-]])
+@include('layouts.partials.header-slider', ["items" => $sliders])
 <div class="container py-5 my-5 text-center">
     <h3>Why Register at Traincu?</h3>
     <div class="mt-4 d-flex justify-content-center align-items-center">

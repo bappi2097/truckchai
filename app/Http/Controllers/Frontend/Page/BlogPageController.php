@@ -11,8 +11,9 @@ class BlogPageController extends Controller
 {
     public function index()
     {
+        // dd();
         return view('blog', [
-            "blogs" => Blog::latest()->get(),
+            "blogs" => Blog::latest()->paginate(5),
             "blogCategories" => BlogCategory::latest()->get(),
             "latestBlogs" => Blog::latest()->take(5)->get(),
         ]);

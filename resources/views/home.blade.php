@@ -1,16 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-@include('layouts.partials.header-slider', ["header_slider_imgs" => [
-"images/slider/slider-1.jpg",
-"images/slider/slider-2.jpg",
-"images/slider/slider-3.jpg",
-"images/slider/slider-4.jpg",
-]])
+@include('layouts.partials.header-slider', ["items" => $sliders])
 @include('layouts.partials.blog-list')
 @include('layouts.partials.testimonial-slider', ["title" => "frontend/home.testimonials"])
 @include('layouts.partials.image-slider')
-@include('layouts.partials.category-slider')
+@include('layouts.partials.category-slider', ["truckCategories" => $truckCategories])
 <div id="latest-blogs-spinner" class="row justify-content-center my-5">
     <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
@@ -56,7 +51,7 @@
                             <div class="row custom-index-blog">
                                 <div class="mt-5 row">
                                     <div class="p-0 col-md-5 col-sm-12">
-                                        <img class="img-fluid w-100" src="{{ asset( '${element.image}') }}" alt="${element.title}" />
+                                        <img class="img-fluid w-100 h-100" src="{{ asset( '${element.image}') }}" alt="${element.title}" />
                                     </div>
                                     <div class="p-5 text-left col-md-7 col-sm-12 card text-rtl">
                                         <h5 class="custom-index-blog-title">

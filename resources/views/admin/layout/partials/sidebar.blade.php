@@ -40,7 +40,7 @@
             <li class="has-sub {{set_active('admin/user*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fas fa-lg fa-fw m-r-10 fa-user"></i>
                     <span>Users</span>
                 </a>
                 <ul class="sub-menu">
@@ -74,7 +74,7 @@
             <li class="has-sub {{set_active('admin/truck-*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fas fa-lg fa-fw m-r-10 fa-list"></i>
                     <span>Truck Category</span>
                 </a>
                 <ul class="sub-menu">
@@ -104,7 +104,7 @@
             <li class="has-sub {{set_active('admin/trucks*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fas fa-lg fa-fw m-r-10 fa-truck"></i>
                     <span>Truck</span>
                 </a>
                 <ul class="sub-menu">
@@ -117,7 +117,7 @@
             <li class="has-sub {{set_active('admin/product-*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fas fa-lg fa-fw m-r-10 fa-archive"></i>
                     <span>Product</span>
                 </a>
                 <ul class="sub-menu">
@@ -129,7 +129,7 @@
             <li class="nav-header">Language</li>
             <li class="{{active('admin.language.index')}}">
                 <a href="{{route('admin.language.index')}}">
-                    <i class="fa fa-th-large"></i>
+                    <i class="fas fa-lg fa-fw m-r-10 fa-american-sign-language-interpreting"></i>
                     <span>Languages</span>
                 </a>
             </li>
@@ -137,7 +137,7 @@
             <li class="has-sub {{set_active('admin/blog*')}}">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+                    <i class="fab fa-lg fa-fw m-r-10 fa-blogger-b"></i>
                     <span>Blog</span>
                 </a>
                 <ul class="sub-menu">
@@ -149,18 +149,17 @@
                     </li>
                 </ul>
             </li>
-            <li class="has-sub">
+            <li class="has-sub {{set_active('admin/setting*')}}">
                 <a href="javascript:;">
-                    <span class="badge pull-right">10</span>
-                    <i class="fa fa-hdd"></i>
-                    <span>Email</span>
+                    <b class="caret"></b>
+                    <i class="fas fa-cog fa-fw"></i>
+                    <span>Setting</span>
                 </a>
-            </li>
-            <li>
-                <a href="widget.html">
-                    <i class="fab fa-simplybuilt"></i>
-                    <span>Widgets <span class="label label-theme">NEW</span></span>
-                </a>
+                <ul class="sub-menu">
+                    <li class="{{active('admin.setting.slider.index')}}">
+                        <a href="{{route('admin.setting.slider.index')}}">Header Slider</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i

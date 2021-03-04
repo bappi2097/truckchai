@@ -333,6 +333,16 @@ Route::group(
                 Route::put('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'update'])->name('update');
                 Route::delete('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'destroy'])->name('destroy');
             });
+            Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+                Route::group(['prefix' => 'slider', 'as' => 'slider.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\SliderController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\SliderController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\SliderController::class, 'store'])->name('store');
+                    Route::get('/edit/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'edit'])->name('edit');
+                    Route::put('/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'update'])->name('update');
+                    Route::delete('/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'destroy'])->name('destroy');
+                });
+            });
         });
     }
 );

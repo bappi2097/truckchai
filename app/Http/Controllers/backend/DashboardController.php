@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BalanceDetail;
+use App\Models\DriverBalanceDetail;
+use App\Models\Trip;
+use App\Models\TripBid;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +19,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.dashboard');
+        $total_user = User::get()->count();
+        $total_trip = Trip::get()->count();
+        $total_transection = BalanceDetail::get()->sum("amount") + DriverBalanceDetail::get()->sum("amount");
+        $total_bid = TripBid::get()->count();
+        return view('admin.pages.dashboard', [
+            "total_user" => $total_user,
+            "total_trip" => $total_trip,
+            "total_transection" => $total_transection,
+            "total_bid" => $total_bid,
+        ]);
     }
 
     /**

@@ -16,22 +16,26 @@
     </div>
     <div class="row text-rtl">
         <div class="mx-auto col-md-6 col-sm-12">
-            <form>
+            <form method="POST" action="{{route("contact-store")}}">
+                @csrf
                 <div class="form-group">
                     <label for="name">{{__('utility.full-name')}}</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
+                        required />
                 </div>
                 <div class="form-group">
                     <label for="email">{{__('utility.email-address')}}</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" />
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                        required />
                 </div>
                 <div class="form-group">
                     <label for="subject">{{__('utility.subject')}}</label>
-                    <input type="text" class="form-control" id="subject" aria-describedby="emailHelp" />
+                    <input type="text" class="form-control" name="subject" id="subject" aria-describedby="emailHelp"
+                        required />
                 </div>
                 <div class="form-group">
                     <label for="message">{{__('utility.message')}}</label>
-                    <textarea class="form-control" name="message" id="message" cols="30" rows="5"></textarea>
+                    <textarea class="form-control" name="message" id="message" cols="30" rows="5" required></textarea>
                 </div>
                 <div class="form-group d-flex">
                     <button type="submit" class="mx-auto btn btn-outline-indigo">

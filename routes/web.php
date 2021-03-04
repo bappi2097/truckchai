@@ -42,6 +42,7 @@ Route::group(
         Route::get('single-blog/{slug}', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'singleBlog'])->name('single-blog');
         Route::get('category/{slug}', [\App\Http\Controllers\Frontend\Page\BlogPageController::class, 'blogCategory'])->name('blog-category');
         Route::get('contact-us', [\App\Http\Controllers\Frontend\Page\ContactUsPageController::class, 'index'])->name('contact-us');
+        Route::post('contact-us', [\App\Http\Controllers\Frontend\Page\ContactUsPageController::class, 'store'])->name('contact-store');
         Route::get('privacy-and-policy', [\App\Http\Controllers\Frontend\Page\PageController::class, 'privacyAndPolicy'])->name('privacy-and-policy');
         Route::get('terms-and-condition', [\App\Http\Controllers\Frontend\Page\PageController::class, 'termsAndCondition'])->name('terms-and-condition');
         Route::get('faq', [\App\Http\Controllers\Frontend\Page\PageController::class, 'faq'])->name('faq');
@@ -333,6 +334,10 @@ Route::group(
                 Route::get('/edit/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'edit'])->name('edit');
                 Route::put('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'update'])->name('update');
                 Route::delete('/{blog}', [\App\Http\Controllers\backend\BlogController::class, 'destroy'])->name('destroy');
+            });
+            Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+                Route::get('/', [\App\Http\Controllers\backend\ContactController::class, 'index'])->name('index');
+                Route::get('/{contact}', [\App\Http\Controllers\backend\ContactController::class, 'destroy'])->name('destroy');
             });
             Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
                 Route::group(['prefix' => 'slider', 'as' => 'slider.'], function () {

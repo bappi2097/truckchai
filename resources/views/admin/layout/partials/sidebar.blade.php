@@ -164,6 +164,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="has-sub {{active('admin.contact.index')}}">
+                <a href="{{route('admin.contact.index')}}">
+                    <i class="fa fa-th-large"></i>
+                    <span>Mail</span>
+                </a>
+            </li>
             <li>
                 <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
                         class="fa fa-angle-double-left"></i></a>

@@ -36,10 +36,7 @@
         <span class="square"></span>
         <span class="line"></span>
     </div>
-    <div class="latest-blogs">
-
-    </div>
-
+    <div class="latest-blogs"> </div>
     <a href="{{route('blog')}}" class="mt-5 btn btn-outline-indigo">{{ __('utility.more') }}</a>
 </div>
 @include('layouts.partials.footer-hero')

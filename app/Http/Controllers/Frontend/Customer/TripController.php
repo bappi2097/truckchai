@@ -30,7 +30,7 @@ class TripController extends Controller
     {
         if (empty(auth()->user()->customer)) {
             Toastr::warning("First update your profile", "Warning");
-            return view("company.pages.profile", [
+            return view("user.pages.profile", [
                 "user" => User::where("id", auth()->user()->id)->with("customer")->first(),
             ]);
         }

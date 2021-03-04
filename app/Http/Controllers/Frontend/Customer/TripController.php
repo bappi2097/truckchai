@@ -28,6 +28,13 @@ class TripController extends Controller
 
     public function store(Request $request)
     {
+        if (empty(auth()->user()->customer)) {
+            Toastr::warning("First update your profile", "Warning");
+            return view("company.pages.profile", [
+                "user" => User::where("id", auth()->user()->id)->with("company")->first(),
+                "companyTypes" => CompanyType::all(),
+            ]);
+        }
         $this->validate($request, [
             "load_location" => "required|string",
             "unload_location" => "required|string",

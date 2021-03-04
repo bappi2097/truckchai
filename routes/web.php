@@ -26,6 +26,7 @@ Route::group(
         Route::get("/", [\App\Http\Controllers\HomeController::class, "index"])->name('home');
         Route::get("/why-blogs", [\App\Http\Controllers\HomeController::class, "whyBlogs"])->name('why-blogs');
         Route::get("/latest-blogs", [\App\Http\Controllers\HomeController::class, "latestBlogs"])->name('latest-blogs');
+        Route::get("/clients", [\App\Http\Controllers\HomeController::class, "clients"])->name('clients');
 
 
         Route::name('auth.')->group(function () {
@@ -341,6 +342,14 @@ Route::group(
                     Route::get('/edit/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'edit'])->name('edit');
                     Route::put('/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'update'])->name('update');
                     Route::delete('/{slider}', [\App\Http\Controllers\backend\SliderController::class, 'destroy'])->name('destroy');
+                });
+                Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+                    Route::get('/', [\App\Http\Controllers\backend\ClientController::class, 'index'])->name('index');
+                    Route::get('/create', [\App\Http\Controllers\backend\ClientController::class, 'create'])->name('create');
+                    Route::post('/', [\App\Http\Controllers\backend\ClientController::class, 'store'])->name('store');
+                    Route::get('/edit/{client}', [\App\Http\Controllers\backend\ClientController::class, 'edit'])->name('edit');
+                    Route::put('/{client}', [\App\Http\Controllers\backend\ClientController::class, 'update'])->name('update');
+                    Route::delete('/{client}', [\App\Http\Controllers\backend\ClientController::class, 'destroy'])->name('destroy');
                 });
             });
         });

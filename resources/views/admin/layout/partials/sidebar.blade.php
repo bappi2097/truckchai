@@ -159,6 +159,9 @@
                     <li class="{{active('admin.setting.slider.index')}}">
                         <a href="{{route('admin.setting.slider.index')}}">Header Slider</a>
                     </li>
+                    <li class="{{active('admin.setting.client.index')}}">
+                        <a href="{{route('admin.setting.client.index')}}">Client</a>
+                    </li>
                 </ul>
             </li>
             <li>

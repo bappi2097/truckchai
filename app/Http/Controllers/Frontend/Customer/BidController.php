@@ -12,7 +12,7 @@ class BidController extends Controller
 {
     public function bidApprove(Request $request, $locale, TripBid $tripBid)
     {
-        $route = $tripBid->truck->isDriver() ? "driver.trip" : "company.make-trip";
+        $route = $tripBid->truck->isDriver() ? "driver.trip" : "company.trip";
         foreach ($tripBid->trip->tripBids->where("id", "!=", $tripBid->id) as $declineTripBid) {
             $declineTripBid->update(["status" => 2]);
         }

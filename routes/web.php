@@ -54,7 +54,7 @@ Route::group(
 
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
                 Route::get("/", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "showProfile"])->name('show');
-                Route::post("/", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "updateProfile"])->name('update');
+                Route::post("/update", [\App\Http\Controllers\Frontend\Customer\ProfileController::class, "updateProfile"])->name('update');
             });
 
             Route::group(['prefix' => 'change-password', 'as' => 'change-password.'], function () {

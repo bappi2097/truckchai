@@ -71,7 +71,7 @@
     @php
     $tripBid = $trip->approvedBid();
     if($tripBid->truck->isCompany()){
-    $tripUser= $tripBid->truck->driver->first();
+    $tripUser= !empty($tripBid->truck->company) ? $tripBid->truck->company->first() : null;
     }else{
     $tripUser= $tripBid->truck->driver;
     }
@@ -120,7 +120,7 @@
     @foreach ($trip->tripBids as $tripBid)
     @php
     if($tripBid->truck->isCompany()){
-    $tripUser= $tripBid->truck->driver->first();
+    $tripUser= !empty($tripBid->truck->driver) ? $tripBid->truck->driver->first() : null;
     }else{
     $tripUser= $tripBid->truck->driver;
     }

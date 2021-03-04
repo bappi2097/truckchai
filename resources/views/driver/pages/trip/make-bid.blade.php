@@ -129,5 +129,113 @@
             </div>
         </div>
     </div>
+    @if ($trip->isApprovedBid() && !empty($trip->approvedBid()->truck->driver))
+    @php
+    $tripBid = $trip->approvedBid();
+    if($tripBid->truck->isCompany()){
+    $tripUser= !empty($trip->approvedBid()->truck->driver) ? $tripBid->truck->driver->first() : null;
+    }else{
+    $tripUser= $tripBid->truck->driver;
+    }
+    $truckCat = $tripBid->truck->truckCategory;
+    @endphp
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card rounded px-5 py-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <img style="width: 100px; height:100px;" class="rounded" src="{{asset($tripUser->image)}}"
+                                alt="">
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <h5>
+                                                {{$tripUser->user->name}}
+                                            </h5>
+                                            <p class="text-muted">
+                                                {{$truckCat->truckModelCategory->model . " " . $truckCat->truckModelCategory->truckBrandCategory->name}}
+                                                <br>
+                                                {{$truckCat->truckSizeCategory->size . " Feet " . $truckCat->truckWeightCategory->weight . " Ton " . $truckCat->truckCoveredCategory->name}}
+                                                <br>
+                                                {{$tripBid->amount . " TK"}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex">
+                                    <div>
+                                        <span class="badge badge-success">Bid Apporved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @else
+    @foreach ($trip->tripBids as $tripBid)
+    @php
+    if($tripBid->truck->isCompany()){
+    $tripUser= !empty($trip->approvedBid()->truck->company) ? $tripBid->truck->company->first() : null;
+    }else{
+    $tripUser= $tripBid->truck->driver;
+    }
+    $truckCat = $tripBid->truck->truckCategory;
+    @endphp
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card rounded px-5 py-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <img style="width: 100px; height:100px;" class="rounded" src="{{asset($tripUser->image)}}"
+                                alt="">
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <h5>
+                                                {{$tripUser->user->name}}
+                                            </h5>
+                                            <p class="text-muted">
+                                                {{$truckCat->truckModelCategory->model . " " . $truckCat->truckModelCategory->truckBrandCategory->name}}
+                                                <br>
+                                                {{$truckCat->truckSizeCategory->size . " Feet " . $truckCat->truckWeightCategory->weight . " Ton " . $truckCat->truckCoveredCategory->name}}
+                                                <br>
+                                                {{$tripBid->amount . " TK"}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex">
+                                    @if ($tripBid->isApproved())
+                                    <div>
+                                        <span class="badge badge-success">Bid Apporved</span>
+                                    </div>
+                                    @endif
+
+                                    @if ($tripBid->isDeclined())
+                                    <div>
+                                        <span class="badge badge-danger">Bid Declined</span>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
 </div>
 @endsection

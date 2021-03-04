@@ -48,7 +48,7 @@ class TripBid extends Model
                 "url" => $url
             ]));
         } else {
-            return $this->truck->company->user->notifications()->save(new Notification([
+            return $this->truck->user->notifications()->save(new Notification([
                 "trip_id" => $this->trip_id,
                 "trip_bid_id" => $this->id,
                 "text" => $text,

@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'hire-truck-now' => "Hire a truck Now",
-    'hire-truck' => "Hire truck",
+    'hire-truck-now' => "Buy or rent a truck now",
+    'hire-truck' => "Buy / Rent a truck",
     'download-app' => "Download the App",
 ];

@@ -5,15 +5,16 @@
                 <a href="javascript:;" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="{{asset('assets/img/user/user-13.jpg')}}" alt="" />
+                        <img src="{{asset( !empty(auth()->user()->admin) && !empty(auth()->user()->admin->image) ? auth()->user()->admin->image : 'assets/img/user/user-13.jpg')}}"
+                            alt="" />
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>{{auth()->user()->name}}
-                        <small>Front end developer</small>
+                        {{-- <b class="caret pull-right"></b> --}}
+                        {{auth()->user()->name}}
                     </div>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <ul class="nav nav-profile">
                     <li>
                         <a href="javascript:;"><i class="fa fa-cog"></i> Settings</a>
@@ -25,7 +26,7 @@
                         <a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
 
         <ul class="nav">

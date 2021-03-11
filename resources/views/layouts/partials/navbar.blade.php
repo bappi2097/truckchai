@@ -91,22 +91,15 @@
                     @endif
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
+                    @foreach (\App\Models\Language::all() as $item)
                     <li>
                         <a class="dropdown-item d-flex align-items-center"
-                            href="{{ join('en', explode(app()->getLocale(), \Request::url(), 2)) }}">
-                            <img class="lang-icon" src="{{ asset('images/flag/uk.svg') }}" alt="English" />
-                            <span>English</span>
+                            href="{{ join($item->code, explode(app()->getLocale(), \Request::url(), 2)) }}">
+                            <img class="lang-icon" src="{{ asset($item->logo) }}" alt="{{$item->name}}" />
+                            <span>{{$item->name}}</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center"
-                            href="{{ join('ar', explode(app()->getLocale(), \Request::url(), 2)) }}">
-                            <img class="lang-icon"
-                                src="{{ asset(\App\Models\Language::where("code", "ar")->first() ? \App\Models\Language::where("code", "ar")->first()->logo : 'images/flag/uae.png') }}"
-                                alt="English" />
-                            <span>العربية</span>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </li>
         </ul>

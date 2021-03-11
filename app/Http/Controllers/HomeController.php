@@ -48,7 +48,7 @@ class HomeController extends Controller
     }
     public function latestBlogs()
     {
-        $blogs = Blog::latest()->take(3)->get();
+        $blogs = BlogCategory::where("slug", "!=", "why-choose-traincu")->exists() ? BlogCategory::where("slug", "!=", "why-choose-traincu")->first()->blogs()->paginate(3) : null;
         if (!empty($blogs)) {
             $blogs->reject(function ($blog) {
                 $blog->summery = substr($blog->summery, 0, 270);

@@ -7,6 +7,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>User ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -19,6 +20,10 @@
                 @foreach ($admins as $index => $admin)
                 <tr>
                     <td>{{$index+1}}</td>
+                    <td class="with-img">
+                        <img src="{{asset(!empty($admin->admin) && !empty($admin->admin->image) ? $admin->admin->image : "images/admin.png")}}"
+                            class="img-rounded height-30">
+                    </td>
                     <td>{{$admin->admin->uuid}}</td>
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>

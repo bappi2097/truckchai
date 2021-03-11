@@ -7,6 +7,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Images</th>
                     <th>User ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -18,6 +19,10 @@
                 @foreach ($customers as $index => $customer)
                 <tr>
                     <td>{{$index+1}}</td>
+                    <td class="with-img">
+                        <img src="{{asset(!empty($customer->customer) && !empty($customer->customer->image) ? $customer->customer->image : "images/admin.png")}}"
+                            class="img-rounded height-30">
+                    </td>
                     <td>{{$customer->customer->uuid}}</td>
                     <td>{{$customer->name}}</td>
                     <td>{{$customer->email}}</td>

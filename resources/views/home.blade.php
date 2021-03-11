@@ -55,11 +55,12 @@
                 url: "{{route('latest-blogs')}}",
                 type: 'GET',
                 success: function( data ){
-                    if(!$.isEmptyObject(data)){
+                    console.log(data);
+                    if(!$.isEmptyObject(data.data)){
                         $("#latest-blogs-div").removeClass("d-none");
                     }
                     $("#latest-blogs-spinner").addClass("d-none");
-                    data.forEach((element) => {
+                    data.data.forEach((element) => {
                         $(".latest-blogs").append(
                             `
                             <div class="row custom-index-blog">

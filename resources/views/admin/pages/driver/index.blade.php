@@ -28,7 +28,9 @@
                     </td>
                     <td class="with-btn" nowrap="">
                         <a href="{{route('admin.user.driver.truck.create', $driver->driver->id)}}"
-                            class="btn btn-sm btn-warning width-60 m-r-2">truck</a>
+                            class="btn btn-sm btn-warning width-60 m-r-2">Truck</a>
+                        <a href="{{route('admin.user.driver.show', $driver->id)}}"
+                            class="btn btn-sm btn-success width-60 m-r-2">View</a>
                         <a href="{{route('admin.user.driver.edit', $driver->id)}}"
                             class="btn btn-sm btn-primary width-60 m-r-2">Edit</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-danger width-60"

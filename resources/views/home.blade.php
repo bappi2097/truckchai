@@ -55,7 +55,6 @@
                 url: "{{route('latest-blogs')}}",
                 type: 'GET',
                 success: function( data ){
-                    console.log(data);
                     if(!$.isEmptyObject(data.data)){
                         $("#latest-blogs-div").removeClass("d-none");
                     }

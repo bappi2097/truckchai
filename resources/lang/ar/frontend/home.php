@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'why-choose-traincu' => 'لماذا تختار Traincu؟ ',
+    'why-choose-traincu' => 'لماذا تختار لماذا ترانكو؟',
     'types-of-vehicle' => 'أنواع المركبات  ',
     'our-clients' => 'عملائنا  ',
     'testimonials' => 'الشهادات - التوصيات  ',

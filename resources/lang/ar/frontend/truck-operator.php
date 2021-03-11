@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'why-register-traincu' => " لماذا التسجيل في Traincu؟  ",
+    'why-register-traincu' => " لماذا التسجيل في لماذا ترانكو؟",
     'lucrative-fare' => " أجرة مربحة ",
     'verified-shipper' => "تم التحقق من الشاحن  ",
     'no-middleman' => "  لا وسيط  ",

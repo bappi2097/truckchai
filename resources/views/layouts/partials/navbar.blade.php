@@ -78,17 +78,14 @@
             <li class="nav-item dropdown">
                 <a class="text-white nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
                     data-toggle="dropdown">
-                    @if (app()->getLocale() == 'en')
+                    @foreach (\App\Models\Language::all() as $item)
+                    @if (app()->getLocale() == $item->code)
                     <span>
-                        <img class="lang-icon" src="{{ asset('images/flag/uk.svg') }}" alt="English" />
+                        <img class="lang-icon" src="{{ asset($item->logo) }}" alt="{{$item->name}}" />
                     </span>
-                    <span class="mx-1"> ENGLISH </span>
-                    @else
-                    <span>
-                        <img class="lang-icon" src="{{ asset('images/flag/uae.svg') }}" alt="Arabic" />
-                    </span>
-                    <span class="mx-1"> العربية </span>
+                    <span class="mx-1"> {{$item->name}} </span>
                     @endif
+                    @endforeach
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     @foreach (\App\Models\Language::all() as $item)

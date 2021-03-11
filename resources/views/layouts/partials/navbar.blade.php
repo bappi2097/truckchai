@@ -101,7 +101,9 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center"
                             href="{{ join('ar', explode(app()->getLocale(), \Request::url(), 2)) }}">
-                            <img class="lang-icon" src="{{ asset('images/flag/uae.svg') }}" alt="English" />
+                            <img class="lang-icon"
+                                src="{{ asset(\App\Models\Language::where("code", "ar")->first() ? \App\Models\Language::where("code", "ar")->first()->logo : 'images/flag/uae.png') }}"
+                                alt="English" />
                             <span>العربية</span>
                         </a>
                     </li>

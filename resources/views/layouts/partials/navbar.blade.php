@@ -34,7 +34,7 @@
             </li>
             <li class="nav-item">
                 <a class="text-white nav-link text-uppercase" href="javascript:void(0)"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('utility.logout')}}</a>
                 <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>

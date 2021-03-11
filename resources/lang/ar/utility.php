@@ -44,4 +44,5 @@ return [
     "john-email" => "john.doe@email.com",
     "mobile" => "Mobile No",
     "mobile-no" => "+9710XXXXXXXXXX",
+    'logout' => 'تسجيل خروج',
 ];

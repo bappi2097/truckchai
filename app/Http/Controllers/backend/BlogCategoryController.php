@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use App\Models\Language;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class BlogCategoryController extends Controller
     {
         return view("admin.pages.blog-category.index", [
             "blogCategories"  => BlogCategory::all(),
+            "languages" => Language::all(),
         ]);
     }
 
@@ -29,7 +31,9 @@ class BlogCategoryController extends Controller
      */
     public function create()
     {
-        return view("admin.pages.blog-category.create");
+        return view("admin.pages.blog-category.create", [
+            "languages" => Language::all(),
+        ]);
     }
 
     /**
@@ -41,14 +45,16 @@ class BlogCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "name" => "required|string",
+            "name.*" => "required|string",
             "slug" => "required|string",
         ]);
 
         $data = [
-            "name" => $request->name,
             "slug" => $request->slug,
         ];
+        foreach ($request->name as $key => $name) {
+            $data["name"][$key] = $name;
+        }
         $blogCategory = new BlogCategory($data);
         if ($blogCategory->save()) {
             Toastr::success("Blog Category Successfully added", "Success");
@@ -79,6 +85,7 @@ class BlogCategoryController extends Controller
     {
         return view("admin.pages.blog-category.edit", [
             "blogCategory" => $blogCategory,
+            "languages" => Language::all(),
         ]);
     }
 
@@ -92,14 +99,16 @@ class BlogCategoryController extends Controller
     public function update(Request $request, BlogCategory $blogCategory)
     {
         $this->validate($request, [
-            "name" => "required|string",
+            "name.*" => "required|string",
             "slug" => "required|string",
         ]);
 
         $data = [
-            "name" => $request->name,
             "slug" => $request->slug,
         ];
+        foreach ($request->name as $key => $name) {
+            $data["name"][$key] = $name;
+        }
         $blogCategory->fill($data);
         if ($blogCategory->save()) {
             Toastr::success("Blog Category Successfully updated", "Success");

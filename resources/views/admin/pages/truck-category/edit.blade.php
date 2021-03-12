@@ -82,10 +82,15 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" name="image" id="image" />
+                <img id="user-image" style="width: 180px; height: 180px;"
+                    src="{{asset(!empty($truckCategory->image) ? $truckCategory->image : 'images/truck-placeholder.png')}}"
+                    alt="your image" /><br>
+                <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
+                    accept="images/*" />
+                <input type="button" class="btn btn-outline-secondary" style="width: 180px;" value="Update Image"
+                    onclick="document.getElementById('user-image-btn').click();" />
                 @error('image')
-                <span>{{$message}}</span>
+                <span class="text-red">{{$message}}</span>
                 @enderror
             </div>
             <button type="submit" class="btn btn-sm btn-primary m-r-5">Save</button>

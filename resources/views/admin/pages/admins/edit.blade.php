@@ -57,7 +57,7 @@
                     src="{{asset(!empty($user->admin->image) ? $user->admin->image : 'images/admin.png')}}"
                     alt="your image" /><br>
                 <input type='file' name="image" id="user-image-btn" style="display: none;" onchange="readURL(this);"
-                    accept="image/*" />
+                    accept="images/*" />
                 <input type="button" class="btn btn-outline-secondary" style="width: 180px;" value="Update Image"
                     onclick="document.getElementById('user-image-btn').click();" />
                 @error('image')

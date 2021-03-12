@@ -6,14 +6,15 @@
         @csrf
         <fieldset>
             <legend class="m-b-15">Add Blog Category</legend>
+            @foreach ($languages as $item)
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Home Shifting"
-                    oninput="slugF()">
+                <label for="name">Name ({{$item->code}})</label>
+                <input type="text" class="form-control" name="name[{{$item->code}}]" id="name" oninput="slugF()">
                 @error('name')
                 <span class="text-red">{{$message}}</span>
                 @enderror
             </div>
+            @endforeach
             <div class="form-group">
                 <label for="slug">Slug</label>
                 <input type="text" class="form-control" name="slug" id="slug" placeholder="home-shifting">

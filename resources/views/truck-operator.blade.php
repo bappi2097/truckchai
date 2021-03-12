@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.partials.header-slider', ["items" => $sliders])
 <div class="container py-5 my-5 text-center">
-    <h3>Why Register at Traincu?</h3>
+    <h3>{{__('frontend/truck-operator.why-register-traincu')}}</h3>
     <div class="mt-4 d-flex justify-content-center align-items-center">
         <span class="line"></span>
         <span class="square"></span>
@@ -11,25 +11,25 @@
     <div class="my-5 row">
         <div class="col-md-3 col-sm-12 why-logo">
             <img src="{{ asset('images/demo-png.png') }}" alt="Fast Booking" />
-            <p>Lucrative Fare</p>
+            <p>{{__('frontend/truck-operator.lucrative-fare')}}</p>
         </div>
         <div class="col-md-3 col-sm-12 why-logo">
             <img src="{{ asset('images/demo-png.png') }}" alt="Fast Booking" />
-            <p>Verified Shipper</p>
+            <p>{{__('frontend/truck-operator.verified-shipper')}}</p>
         </div>
         <div class="col-md-3 col-sm-12 why-logo">
             <img src="{{ asset('images/demo-png.png') }}" alt="Fast Booking" />
-            <p>No Middleman</p>
+            <p>{{__('frontend/truck-operator.no-middleman')}}</p>
         </div>
         <div class="col-md-3 col-sm-12 why-logo">
             <img src="{{ asset('images/demo-png.png') }}" alt="Fast Booking" />
-            <p>Customer Care Support</p>
+            <p>{{__('frontend/truck-operator.customer-care')}}</p>
         </div>
     </div>
 </div>
 <div id="category" class="py-5 my-5 bg-white">
     <div class="container text-center">
-        <h3 class="testimonial-text">Traincu Registered Truck Operator</h3>
+        <h3 class="testimonial-text">{{__('frontend/truck-operator.traincu-truck-operator')}}</h3>
         <div class="my-4 d-flex justify-content-center align-items-center">
             <span class="line"></span>
             <span class="square"></span>
@@ -57,7 +57,7 @@
 </div>
 <div id="testimonial" class="py-5 my-5 bg-white">
     <div class="container text-center">
-        <h3 class="testimonial-text">How Traincu Works?</h3>
+        <h3 class="testimonial-text">{{__('frontend/truck-operator.how-traincu-works')}}</h3>
         <div class="my-4 d-flex justify-content-center align-items-center">
             <span class="line"></span>
             <span class="square"></span>
@@ -71,7 +71,7 @@
     </div>
 </div>
 @include('layouts.partials.category-slider')
-@include('layouts.partials.testimonial-slider',["title" => "How Traincu Works?"])
+@include('layouts.partials.testimonial-slider',["title" => __('frontend/truck-operator.how-traincu-works')])
 @include('layouts.partials.footer-hero')
 @endsection
 @push('script')

@@ -8,14 +8,17 @@
         @method('PUT')
         <fieldset>
             <legend class="m-b-15">Edit Blog Category</legend>
+            @foreach ($languages as $item)
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Home Shifting"
-                    value="{{$blogCategory->name}}" oninput="slugF()">
+                <label for="name">Name ({{$item->code}})</label>
+                <input type="text" class="form-control" name="name[{{$item->code}}]" id="name"
+                    placeholder="Home Shifting" value="{{$blogCategory->getTranslation('name', $item->code)}}"
+                    oninput="slugF()">
                 @error('name')
                 <span class="text-red">{{$message}}</span>
                 @enderror
             </div>
+            @endforeach
             <div class="form-group">
                 <label for="slug">Slug</label>
                 <input type="text" class="form-control" name="slug" id="slug" placeholder="home-shifting"

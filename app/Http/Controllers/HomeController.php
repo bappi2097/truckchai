@@ -28,33 +28,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', [
-            "truckCategories" => TruckCategory::with("truckWeightCategory")->latest()->take(12)->get(),
-            "sliders" => HeaderSlider::where("category", "home")->orderBy("position")->get(),
-            "clients" => Client::latest()->take(12)->get()
-        ]);
-    }
-
-    public function whyBlogs()
-    {
         $whyBlogs = BlogCategory::where("slug", "why-choose-traincu")->exists() ? BlogCategory::where("slug", "why-choose-traincu")->first()->blogs()->paginate(3) : null;
         if (!empty($whyBlogs)) {
             $whyBlogs->reject(function ($blog) {
-                $blog->summery = substr($blog->summery, 0, 270);
                 $blog->created = date("M j", strtotime($blog->created_at));
             });
         }
-        return response()->json($whyBlogs);
-    }
-    public function latestBlogs()
-    {
         $blogs = BlogCategory::where("slug", "!=", "why-choose-traincu")->exists() ? BlogCategory::where("slug", "!=", "why-choose-traincu")->first()->blogs()->paginate(3) : null;
         if (!empty($blogs)) {
             $blogs->reject(function ($blog) {
-                $blog->summery = substr($blog->summery, 0, 270);
                 $blog->created = date("M j", strtotime($blog->created_at));
             });
         }
-        return response()->json($blogs);
+        return view('home', [
+            "truckCategories" => TruckCategory::with("truckWeightCategory")->latest()->take(12)->get(),
+            "sliders" => HeaderSlider::where("category", "home")->orderBy("position")->get(),
+            "clients" => Client::latest()->take(12)->get(),
+            "whyBlogs" => $whyBlogs,
+            "blogs" => $blogs,
+        ]);
     }
 }

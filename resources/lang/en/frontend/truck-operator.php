@@ -16,4 +16,8 @@ return [
     'lucrative-fare' => "Lucrative Fare",
     'verified-shipper' => "Verified Shipper",
     'no-middleman' => "No Middleman",
+    'customer-care' => "Customer Care Support",
+    "traincu-truck-operator" => "Traincu Registered Truck Operator",
+    "how-traincu-works" => "How Traincu Works?",
+
 ];

@@ -45,4 +45,9 @@ return [
     "mobile" => "Mobile No",
     "mobile-no" => "+880XXXXXXXXXX",
     'logout' => 'Logout',
+    "enables" => "Traincu enables you to have easy access to a wide range of trucks of various types and to make immediate reservation for purchase or lease",
+    'save-time' => 'Save time — book and pick-up your vehicle in minutes.',
+    'rent' => 'Rent on your own schedule — no restrictive business hours ',
+    'rates' => 'Get great rates tailored to your needs',
+    "take" => "Take the headache out of renting. No Paperwork, no hidden fees.",
 ];

@@ -7,7 +7,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    @foreach ($languages as $item)
+                    <th>Name ({{$item->code}})</th>
+                    @endforeach
                     <th>Slug</th>
                     <th width="1%">Action</th>
                 </tr>
@@ -16,7 +18,9 @@
                 @foreach ($blogCategories as $index => $blogCategory)
                 <tr>
                     <td>{{$index+1}}</td>
-                    <td>{{$blogCategory->name}}</td>
+                    @foreach ($languages as $item)
+                    <td>{{$blogCategory->getTranslation('name', $item->code)}}</td>
+                    @endforeach
                     <td>{{$blogCategory->slug}}</td>
                     <td class="with-btn" nowrap="">
                         <a href="{{route('admin.blog-category.edit', $blogCategory->id)}}"

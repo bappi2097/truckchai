@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Blog;
+use App\Models\Language;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +19,10 @@ class BlogController extends Controller
      */
     public function index()
     {
+
         return view("admin.pages.blog.index", [
             "blogs" => Blog::latest()->get(),
+            "languages" => Language::all(),
         ]);
     }
 
@@ -32,6 +35,7 @@ class BlogController extends Controller
     {
         return view("admin.pages.blog.create", [
             "blogCategories" => BlogCategory::all(),
+            "languages" => Language::all()
         ]);
     }
 
@@ -44,21 +48,23 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "title" => "required|string|max:500",
+            "title.*" => "required|string|max:500",
             "slug" => "required|string|max:500|unique:blogs,slug",
             "image" => "required|file|mimes:jpg,jpeg,png",
-            "summery" => "required|string",
-            "description" => "required",
+            "summery.*" => "required|string",
+            "description.*" => "required",
             "blog_category_id" => "required|array",
         ]);
         $data = [
-            "title" => $request->title,
             "slug" => $request->slug,
             "image" =>  $request->hasFile('image') ? Storage::disk("local")->put("images\\blogs", $request->image) : "",
-            "summery" => $request->summery,
-            "description" => $request->description,
             "admin_id" => auth()->user()->admin->id,
         ];
+        foreach ($request->title as $key => $title) {
+            $data["title"][$key] = $request->title[$key];
+            $data["summery"][$key] = $request->summery[$key];
+            $data["description"][$key] = $request->description[$key];
+        }
 
         $blog = new Blog($data);
 
@@ -93,6 +99,7 @@ class BlogController extends Controller
         return view("admin.pages.blog.edit", [
             "blog" => $blog,
             "blogCategories" => BlogCategory::all(),
+            "languages" => Language::all(),
         ]);
     }
 
@@ -106,21 +113,22 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $this->validate($request, [
-            "title" => "required|string|max:500",
+            "title.*" => "required|string|max:500",
             "slug" => "required|string|max:500|unique:blogs,slug," . $blog->id,
             "image" => "nullable|file|mimes:jpg,jpeg,png",
-            "summery" => "required|string",
-            "description" => "required",
+            "summery.*" => "required|string",
+            "description.*" => "required",
             "blog_category_id" => "required|array",
         ]);
-
         $data = [
-            "title" => $request->title,
             "slug" => $request->slug,
-            "summery" => $request->summery,
-            "description" => $request->description,
             "admin_id" => auth()->user()->admin->id,
         ];
+        foreach ($request->title as $key => $title) {
+            $data["title"][$key] = $request->title[$key];
+            $data["summery"][$key] = $request->summery[$key];
+            $data["description"][$key] = $request->description[$key];
+        }
 
         if ($request->hasFile('image')) {
             if (Storage::disk("local")->exists($blog->image)) {

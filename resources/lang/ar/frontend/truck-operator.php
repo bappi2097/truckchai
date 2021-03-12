@@ -13,7 +13,10 @@ return [
     |
     */
     'why-register-traincu' => " لماذا التسجيل في لماذا ترانكو؟",
-    'lucrative-fare' => " أجرة مربحة ",
-    'verified-shipper' => "تم التحقق من الشاحن  ",
-    'no-middleman' => "  لا وسيط  ",
+    'lucrative-fare' => "أسعار تناسب احتياجاتك",
+    'verified-shipper' => "سائقين موثوقين ",
+    'no-middleman' => "لا يوجد وسيط",
+    'customer-care' => "دعم خدمة العملاء",
+    "traincu-truck-operator" => "شائقي الشاحنة المسجلين بمنصة ترانكو",
+    "how-traincu-works" => "كيف يعمل ترانكو؟",
 ];

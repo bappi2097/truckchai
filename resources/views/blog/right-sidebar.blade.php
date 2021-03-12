@@ -18,7 +18,8 @@
     <ul class="mt-3 list-unstyled category-links">
         @foreach ($latestBlogs as $item)
         <li class="d-flex justify-content-between align-items-center">
-            <a href="{{route('single-blog', $item->slug)}}">{{substr($item->title, 0, 57)}} ...</a>
+            <a href="{{route('single-blog', $item->slug)}}">{{$item->title}}
+                ...</a>
             <span class="mx-1">&gt;</span>
         </li>
         @endforeach

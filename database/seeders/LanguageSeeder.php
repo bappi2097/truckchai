@@ -23,19 +23,19 @@ class LanguageSeeder extends Seeder
         Language::create([
             "name" => "Arabic",
             "code" => "ar",
-            "logo" => "images/flag/uae.svg"
+            "logo" => "images/flag/uae.png"
         ]);
 
         Language::create([
             "name" => "Urdu",
             "code" => "ur",
-            "logo" => "images/flag/ur.svg"
+            "logo" => "images/flag/pakistan.svg"
         ]);
 
         Language::create([
             "name" => "Bangla",
             "code" => "bn",
-            "logo" => "images/flag/bn.svg"
+            "logo" => "images/flag/bangladesh.svg"
         ]);
     }
 }

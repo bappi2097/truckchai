@@ -3,19 +3,19 @@
         <div class="px-2 py-3 bg-purple-300 d-flex align-items-center">
             <div class="mx-2 sidebar-user-img-div">
                 <img class="sidebar-user-img"
-                    src="{{asset(auth()->user()->company ? auth()->user()->company->image : 'images/user.png' )}}"
+                    src="{{ asset(auth()->user()->company ? auth()->user()->company->image : 'images/user.png') }}"
                     alt="" />
                 <div class="green-dot"></div>
             </div>
             <div class="ml-2 text-white text-rtl">
                 <p class="m-0 text-17 font-weight-bold">Welcome Back!</p>
-                <p class="m-0 text-17">{{auth()->user()->name}}</p>
+                <p class="m-0 text-17">{{ auth()->user()->name }}</p>
             </div>
         </div>
         <div>
             <ul class="sidebar-list">
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link {{active('company.dashboard')}}" href="{{route('company.dashboard')}}">
+                    <a class="sidebar-link {{ active('company.dashboard') }}" href="{{ route('company.dashboard') }}">
                         <span class="sidebar-icon">
                             <i class="icon-dashboard"></i>
                         </span>
@@ -26,8 +26,8 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link {{active('company.my-profile.show')}}"
-                        href="{{route('company.my-profile.show')}}">
+                    <a class="sidebar-link {{ active('company.my-profile.show') }}"
+                        href="{{ route('company.my-profile.show') }}">
                         <span class="sidebar-icon">
                             <i class="icon-user"></i>
                         </span>
@@ -44,15 +44,15 @@
                         </span>
                         <span class="sidebar-link-name"> Trip </span>
                         <span
-                            class="ml-auto nav-rtl icon-right {{active('company.trip.current-trip', 'icon-down')}}{{active('company.trip.history-trip', 'icon-down')}}">
+                            class="ml-auto nav-rtl icon-right {{ active('company.trip.current-trip', 'icon-down') }}{{ active('company.trip.history-trip', 'icon-down') }}">
                             <i class="icon-chevron-right"></i>
                         </span>
                     </a>
                     <ul
-                        class="sidebar-list d-none {{active('company.trip.current-trip', 'd-block')}}{{active('company.trip.history-trip', 'd-block')}}">
+                        class="sidebar-list d-none {{ active('company.trip.current-trip', 'd-block') }}{{ active('company.trip.history-trip', 'd-block') }}">
                         <li class="sidebar-list-item">
-                            <a class="sidebar-link {{active('company.trip.current-trip')}}"
-                                href="{{route('company.trip.current-trip')}}">
+                            <a class="sidebar-link {{ active('company.trip.current-trip') }}"
+                                href="{{ route('company.trip.current-trip') }}">
                                 <span class="sidebar-icon">
                                     <i class="icon-bolt"></i>
                                 </span>
@@ -63,8 +63,8 @@
                             </a>
                         </li>
                         <li class="sidebar-list-item">
-                            <a class="sidebar-link {{active('company.trip.history-trip')}}"
-                                href="{{route('company.trip.history-trip')}}">
+                            <a class="sidebar-link {{ active('company.trip.history-trip') }}"
+                                href="{{ route('company.trip.history-trip') }}">
                                 <span class="sidebar-icon">
                                     <i class="icon-calendar"></i>
                                 </span>
@@ -77,7 +77,8 @@
                     </ul>
                 </li>
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link {{active('company.truck.index')}}" href="{{route('company.truck.index')}}">
+                    <a class="sidebar-link {{ active('company.truck.index') }}"
+                        href="{{ route('company.truck.index') }}">
                         <span class="sidebar-icon">
                             <i class="icon-truck"></i>
                         </span>
@@ -88,7 +89,7 @@
                     </a>
                 </li>
                 <li class="sidebar-list-item">
-                    <a class="sidebar-link" href="{{route('company.change-password.show')}}">
+                    <a class="sidebar-link" href="{{ route('company.change-password.show') }}">
                         <span class="sidebar-icon">
                             <i class="icon-key"></i>
                         </span>

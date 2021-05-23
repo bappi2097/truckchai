@@ -67,7 +67,7 @@ class ProfileController extends Controller
             }
         }
 
-        return redirect()->back();
+        return redirect()->route('customer.dashboard');
     }
 
     public function changePassword(Request $request)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Customer;
+namespace App\Http\Controllers\Frontend\Driver;
 
 use App\Models\User;
 use Illuminate\Http\Request;

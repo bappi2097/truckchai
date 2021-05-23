@@ -1,6 +1,6 @@
 <div id="header" class="header navbar-default">
     <div class="navbar-header">
-        <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> Admin</a>
+        <a href="/" class="navbar-brand"><span class="navbar-logo"></span> Admin</a>
         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -88,29 +88,29 @@
 </div>
 </div>
 </li> --}}
-<li class="dropdown navbar-user">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <img src="{{asset( !empty(auth()->user()->admin) && !empty(auth()->user()->admin->image) ? auth()->user()->admin->image : 'assets/img/user/user-13.jpg')}}"
-            alt="" />
-        <span class="d-none d-md-inline">{{auth()->user()->name}}</span>
-        <b class="caret"></b>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a href="{{route('admin.profile')}}" class="dropdown-item">Edit Profile</a>
-        {{-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span>
+        <li class="dropdown navbar-user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="{{ asset(!empty(auth()->user()->admin) && !empty(auth()->user()->admin->image) ? auth()->user()->admin->image : 'assets/img/user/user-13.jpg') }}"
+                    alt="" />
+                <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
+                <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('admin.profile') }}" class="dropdown-item">Edit Profile</a>
+                {{-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span>
                     Inbox</a> --}}
-        {{-- <a href="javascript:;" class="dropdown-item">Calendar</a>
+                {{-- <a href="javascript:;" class="dropdown-item">Calendar</a>
                 <a href="javascript:;" class="dropdown-item">Setting</a>
                 <div class="dropdown-divider"></div> --}}
-        <a href="javascript:void(0)" class="dropdown-item"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <span>Logout</span>
-            <i class="fab fa-sign-out" aria-hidden="true"></i>
-        </a>
-        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-    </div>
-</li>
-</ul>
+                <a href="javascript:void(0)" class="dropdown-item"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span>Logout</span>
+                    <i class="fab fa-sign-out" aria-hidden="true"></i>
+                </a>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
+    </ul>
 </div>

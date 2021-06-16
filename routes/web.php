@@ -48,7 +48,7 @@ Route::group(
         Route::get('faq', [\App\Http\Controllers\Frontend\Page\PageController::class, 'faq'])->name('faq');
 
 
-        Route::group(["as" => "customer.", "prefix" => "customer", "middleware" => ["auth", "role:customer"]], function () {
+        Route::group(["as" => "customer.", "prefix" => "customer", "middleware" => ["auth", "role:customer", 'prevent-back-history']], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Customer\DashboardController::class, "index"])->name('dashboard');
             Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
 
@@ -75,7 +75,7 @@ Route::group(
             });
         });
 
-        Route::group(["as" => "company.", "prefix" => "company", "middleware" => ["auth", "role:company"]], function () {
+        Route::group(["as" => "company.", "prefix" => "company", "middleware" => ["auth", "role:company", 'prevent-back-history']], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Company\DashboardController::class, "index"])->name('dashboard');
             Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
@@ -109,7 +109,7 @@ Route::group(
             });
         });
 
-        Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver"]], function () {
+        Route::group(["as" => "driver.", "prefix" => "driver", "middleware" => ["auth", "role:driver", 'prevent-back-history']], function () {
             Route::get("dashboard", [\App\Http\Controllers\Frontend\Driver\DashboardController::class, "index"])->name('dashboard');
             Route::get("notification/{notification}", [\App\Http\Controllers\NotificationController::class, "notification"])->name("notification");
             Route::group(['prefix' => 'my-profile', 'as' => 'my-profile.'], function () {
@@ -150,7 +150,7 @@ Route::group(
         Route::get('login',  [\App\Http\Controllers\backend\AuthController::class, 'loginPage'])->name('login');
         Route::post('login',  [\App\Http\Controllers\backend\AuthController::class, 'login'])->name('login');
 
-        Route::group(["middleware" => ["auth", "role:admin"]], function () {
+        Route::group(["middleware" => ["auth", "role:admin", 'prevent-back-history']], function () {
 
             Route::post('logout',  [\App\Http\Controllers\backend\AuthController::class, 'logout'])->name('logout');
             Route::get('dashboard', [\App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');

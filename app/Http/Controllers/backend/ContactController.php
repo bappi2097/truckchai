@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ContactController extends Controller
 {
@@ -16,7 +17,7 @@ class ContactController extends Controller
     public function index()
     {
         return view("admin.pages.contact.index", [
-            "contacts" => Contact::all()
+            "contacts" => Contact::latest()->paginate(15)
         ]);
     }
 
@@ -49,7 +50,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('admin.pages.contact.show', compact('contact'));
     }
 
     /**
@@ -83,6 +84,11 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        // 
+        if ($contact->delete()) {
+            Toastr::success('Success', "Email Deleted Successfully");
+        } else {
+            Toastr::Error('Error', "Something Went Wrong!");
+        }
+        return redirect()->route('admin.contact.index');
     }
 }

@@ -337,7 +337,8 @@ Route::group(
             });
             Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
                 Route::get('/', [\App\Http\Controllers\backend\ContactController::class, 'index'])->name('index');
-                Route::get('/{contact}', [\App\Http\Controllers\backend\ContactController::class, 'destroy'])->name('destroy');
+                Route::get('/{contact}', [\App\Http\Controllers\backend\ContactController::class, 'show'])->name('show');
+                Route::delete('/{contact}', [\App\Http\Controllers\backend\ContactController::class, 'destroy'])->name('destroy');
             });
             Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
                 Route::group(['prefix' => 'slider', 'as' => 'slider.'], function () {

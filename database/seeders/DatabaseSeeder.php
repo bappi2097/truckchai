@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             TestSeeder::class,
             CompanyTypeSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }

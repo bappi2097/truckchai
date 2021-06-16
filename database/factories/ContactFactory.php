@@ -22,7 +22,10 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'subject' => $this->faker->sentence(7),
+            'message' => $this->faker->sentence(50),
         ];
     }
 }
